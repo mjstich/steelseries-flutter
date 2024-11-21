@@ -30,6 +30,119 @@ The gauges and widgets support a wide array of visualization options with defaul
 
 ### Radial Gauges
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/radial_gauges.png" />
+</div>
+
+### Radial Bargraph Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/radial_bargraph_gauges.png" />
+</div>
+
+### Radial Vertical Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/radial_vertical_gauges.png" />
+</div>
+
+### Horizontal Linear Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/horizontal_linear_gauges.png" />
+</div>
+
+### Horizontal Linear Bargraph Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/horizontal_linear_bargraph_gauges.png" />
+</div>
+
+
+### Vertical Linear Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/vertical_linear_gauges.png" />
+</div>
+
+### Vertical Linear Bargraph Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/vertical_linear_bargraph_gauges.png" />
+</div>
+
+### Vertical Clock Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/clock_gauges.png" />
+</div>
+
+### Odometer Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/odometer_gauges.png" />
+</div>
+
+### Horizon Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/horizon_gauges.png" />
+</div>
+
+### Altimeter Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/altimeter_gauges.png" />
+</div>
+
+### Stopwatch Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/stopwatch_gauges.png" />
+</div>
+
+### Level Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/level_gauges.png" />
+</div>
+
+### Wind Direction Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/winddirection_gauges.png" />
+</div>
+
+### Single LCD Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/single_lcd_gauges.png" />
+</div>
+
+### LED Widgets
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/led_widgets.png" />
+</div>
+
+### Traffic Light Widgets
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/trafficlight_widgets.png" />
+</div>
+
+### Light Bulb Widgets
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/lightbulb_widgets.png" />  
+</div>
+
+### Battery Gauges
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/battery_gauges.png" />
+</div>
+
 ### Code
 
 ````dart
@@ -38,14 +151,6 @@ The gauges and widgets support a wide array of visualization options with defaul
     return Scaffold(
       appBar: AppBar(
         title: const Text('Radial Gauges'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.code_outlined),
-            onPressed: () async {
-              //await launch('https://github.com/JulianAssmann/flutter_gauges/tree/master/example/lib/pages/segments_page.dart');
-            },
-          ),
-        ],
       ),
       body: GridView.count(
         crossAxisCount: 2,

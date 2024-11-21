@@ -14,3 +14,7 @@
 
 * Fix readme and remove enums for unsupported backgrounds.
 
+## 0.0.5
+
+* Update readme.
+
