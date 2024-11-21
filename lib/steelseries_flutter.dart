@@ -2,7 +2,7 @@ library steelseries_flutter;
 
 export './src/draw/altimeter.dart';
 export './src/draw/battery.dart';
-export './src/draw/carbonbuffer.dart';
+export './src/draw/carbonBuffer.dart';
 export './src/draw/clock.dart';
 export './src/draw/compass.dart';
 export './src/draw/createKnobImage.dart';
@@ -33,7 +33,7 @@ export './src/draw/linearBargraph.dart';
 export './src/draw/odometer.dart';
 export './src/draw/punchedSheetBuffer.dart';
 export './src/draw/radial.dart';
-export './src/draw/radialBarGraph.dart';
+export './src/draw/radialBargraph.dart';
 export './src/draw/radialVertical.dart';
 export './src/draw/stopWatch.dart';
 export './src/draw/tools.dart';
