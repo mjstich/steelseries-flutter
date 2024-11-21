@@ -1,5 +1,3 @@
-library steelseries_flutter;
-
 export './src/draw/altimeter.dart';
 export './src/draw/battery.dart';
 export './src/draw/carbonBuffer.dart';

@@ -92,10 +92,7 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
       }
 
       String lcdText = value.toStringAsFixed(lcdDecimals);
-      double vPos = 0.38;
-      if (headerStringVisible) {
-        vPos = 0.52;
-      }
+
       var textSpan = TextSpan(
         text: lcdText,
         style: font,

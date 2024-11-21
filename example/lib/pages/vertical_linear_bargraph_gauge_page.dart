@@ -50,7 +50,7 @@ class _VerticalLinearBargraphGaugePageState extends State<VerticalLinearBargraph
               ],
             ),
           ),
-          Expanded(
+          const Expanded(
             child: LinearBargraphGauge(
               value: 20,
               frameVisible: true,
@@ -69,8 +69,8 @@ class _VerticalLinearBargraphGaugePageState extends State<VerticalLinearBargraph
               fontType: FontTypeEnum.RobotoMono,
             ),
           ),
-          Expanded(
-            child: const LinearBargraphGauge(
+          const Expanded(
+            child: LinearBargraphGauge(
               value: 180,
               frameVisible: true,
               end: 200,

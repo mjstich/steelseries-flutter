@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:steelseries_flutter/src/draw/definitions.dart';
-
 import 'odometer_gauge_painter.dart';
 
 ///

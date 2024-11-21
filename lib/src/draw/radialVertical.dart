@@ -66,7 +66,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
   double rotationOffset = 1.25 * PI;
   double angleRange = HALF_PI;
   double angleStep = angleRange / range;
-  double shadowOffset = imageWidth * 0.006;
+  //double shadowOffset = imageWidth * 0.006;
   double pointerOffset = (imageWidth * 1.17) / 2;
 
   double angle = rotationOffset + (value - minValue) * angleStep;

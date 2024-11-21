@@ -1,5 +1,4 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
-import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -129,39 +128,39 @@ enum BackgroundColorEnum {
     Color.fromRGBO(255, 255, 255, 1),
     Color.fromRGBO(180, 180, 180, 1),
     'CARBON',
-  ),
-  STAINLESS(
-    Color.fromRGBO(130, 130, 130, 1),
-    Color.fromRGBO(181, 181, 181, 1),
-    Color.fromRGBO(253, 253, 253, 1),
-    Color.fromRGBO(0, 0, 0, 1),
-    Color.fromRGBO(80, 80, 80, 1),
-    'STAINLESS',
-  ),
-  BRUSHED_METAL(
-    Color.fromRGBO(50, 50, 54, 1),
-    Color.fromRGBO(47, 47, 51, 1),
-    Color.fromRGBO(69, 69, 74, 1),
-    Color.fromRGBO(0, 0, 0, 1),
-    Color.fromRGBO(80, 80, 80, 1),
-    'BRUSHED_METAL',
-  ),
-  BRUSHED_STAINLESS(
-    Color.fromRGBO(50, 50, 54, 1),
-    Color.fromRGBO(47, 47, 51, 1),
-    Color.fromRGBO(110, 110, 112, 1),
-    Color.fromRGBO(0, 0, 0, 1),
-    Color.fromRGBO(80, 80, 80, 1),
-    'BRUSHED_STAINLESS',
-  ),
-  TURNED(
-    Color.fromRGBO(130, 130, 130, 1),
-    Color.fromRGBO(181, 181, 181, 1),
-    Color.fromRGBO(253, 253, 253, 1),
-    Color.fromRGBO(0, 0, 0, 1),
-    Color.fromRGBO(80, 80, 80, 1),
-    'TURNED',
   );
+  // STAINLESS(
+  //   Color.fromRGBO(130, 130, 130, 1),
+  //   Color.fromRGBO(181, 181, 181, 1),
+  //   Color.fromRGBO(253, 253, 253, 1),
+  //   Color.fromRGBO(0, 0, 0, 1),
+  //   Color.fromRGBO(80, 80, 80, 1),
+  //   'STAINLESS',
+  // ),
+  // BRUSHED_METAL(
+  //   Color.fromRGBO(50, 50, 54, 1),
+  //   Color.fromRGBO(47, 47, 51, 1),
+  //   Color.fromRGBO(69, 69, 74, 1),
+  //   Color.fromRGBO(0, 0, 0, 1),
+  //   Color.fromRGBO(80, 80, 80, 1),
+  //   'BRUSHED_METAL',
+  // ),
+  // BRUSHED_STAINLESS(
+  //   Color.fromRGBO(50, 50, 54, 1),
+  //   Color.fromRGBO(47, 47, 51, 1),
+  //   Color.fromRGBO(110, 110, 112, 1),
+  //   Color.fromRGBO(0, 0, 0, 1),
+  //   Color.fromRGBO(80, 80, 80, 1),
+  //   'BRUSHED_STAINLESS',
+  // ),
+  // TURNED(
+  //   Color.fromRGBO(130, 130, 130, 1),
+  //   Color.fromRGBO(181, 181, 181, 1),
+  //   Color.fromRGBO(253, 253, 253, 1),
+  //   Color.fromRGBO(0, 0, 0, 1),
+  //   Color.fromRGBO(80, 80, 80, 1),
+  //   'TURNED',
+  // );
 
   const BackgroundColorEnum(this.gradientStart, this.gradientFraction, this.gradientStop, this.labelColor, this.symbolColor, this.name);
 

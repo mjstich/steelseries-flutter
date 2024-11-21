@@ -80,8 +80,6 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
     lcdFontSize = (imageHeight / 9).floorToDouble();
   }
 
-  bool initialized = false;
-
   // Tickmark specific private variables
   double niceMinValue = minValue;
   double niceMaxValue = maxValue;
@@ -610,7 +608,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
       valueBackgroundStopY = 0;
     }
     if (gaugeType == GaugeTypeEnum.TYPE1) {
-      double darker = backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET || backgroundColor == BackgroundColorEnum.STAINLESS || backgroundColor == BackgroundColorEnum.BRUSHED_STAINLESS || backgroundColor == BackgroundColorEnum.TURNED ? 0.3 : 0;
+      //double darker = backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET || backgroundColor == BackgroundColorEnum.STAINLESS || backgroundColor == BackgroundColorEnum.BRUSHED_STAINLESS || backgroundColor == BackgroundColorEnum.TURNED ? 0.3 : 0;
+      double darker = backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET ? 0.3 : 0;
       ui.Gradient valueBackgroundTrackGradient = ui.Gradient.linear(
         Offset(valueBackgroundStartX, valueBackgroundStartY),
         Offset(valueBackgroundStopX, valueBackgroundStopY),

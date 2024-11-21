@@ -49,7 +49,7 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
   double centerX = imageWidth / 2;
   double centerY = imageHeight / 2;
 
-  double shadowOffset = imageWidth * 0.006;
+  //double shadowOffset = imageWidth * 0.006;
 
   // **************   Image creation  ********************
   void drawTickmarksImage(Canvas ctx) {
@@ -62,9 +62,6 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
       ..color = backgroundColor.labelColor
       ..strokeWidth = 1
       ..style = ui.PaintingStyle.stroke;
-    Paint fillPath = Paint()
-      ..color = backgroundColor.labelColor
-      ..style = ui.PaintingStyle.fill;
     ctx.translate(centerX, centerY);
 
     if (!degreeScale) {

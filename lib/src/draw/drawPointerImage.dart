@@ -668,7 +668,7 @@ ui.Picture drawPointerImage(double size, PointerTypeEnum ptrType, ColorDef ptrCo
       canvas.drawPath(path, paint);
       break;
 
-    case 'type1':
+    case PointerTypeEnum.TYPE1:
     /* falls through */
     default:
       ui.Gradient grad = ui.Gradient.linear(

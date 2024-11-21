@@ -565,7 +565,7 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // have to draw to a rotated temporary image area so we can translate in
     // absolute x, y values when drawing to main context
-    double shadowOffset = imageWidth * 0.006;
+    //double shadowOffset = imageWidth * 0.006;
 
     double rotationAngle = (minutePointerAngle + -0.03 * math.sin(minutePointerAngle * RAD_FACTOR)) * RAD_FACTOR;
     double secRotationAngle = (secondPointerAngle + -0.03 * math.sin(secondPointerAngle * math.pi / 180.0)) * math.pi / 180.0;

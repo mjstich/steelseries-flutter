@@ -486,7 +486,7 @@ void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // have to draw to a rotated temporary image area so we can translate in
     // absolute x, y values when drawing to main context
-    double shadowOffset = imageWidth * 0.006;
+    //double shadowOffset = imageWidth * 0.006;
 
     // draw hour pointer
     // Define rotation center

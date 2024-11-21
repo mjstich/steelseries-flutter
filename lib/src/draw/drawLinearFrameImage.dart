@@ -256,26 +256,26 @@ ui.Picture drawLinearFrameImage(FrameDesignEnum frameDesign, double imageWidth, 
       break;
 
     case FrameDesignEnum.BLACK_METAL:
-      List<double> fractions = [0, 0.125, 0.347222, 0.5, 0.680555, 0.875, 1];
+      // List<double> fractions = [0, 0.125, 0.347222, 0.5, 0.680555, 0.875, 1];
 
-      List<Color> colors = [
-        colorFromHex('#FFFFFF'),
-        colorFromHex('#000000'),
-        colorFromHex('#999999'),
-        colorFromHex('#000000'),
-        colorFromHex('#999999'),
-        colorFromHex('#000000'),
-        colorFromHex('#FFFFFF'),
-      ];
-      // Set the clip
-      Path clipPath = roundedRectangle(
-        1,
-        1,
-        imageWidth - 2,
-        imageHeight - 2,
-        OUTER_FRAME_CORNER_RADIUS,
-      );
-      canvas.clipPath(clipPath);
+      // List<Color> colors = [
+      //   colorFromHex('#FFFFFF'),
+      //   colorFromHex('#000000'),
+      //   colorFromHex('#999999'),
+      //   colorFromHex('#000000'),
+      //   colorFromHex('#999999'),
+      //   colorFromHex('#000000'),
+      //   colorFromHex('#FFFFFF'),
+      // ];
+      // // Set the clip
+      // Path clipPath = roundedRectangle(
+      //   1,
+      //   1,
+      //   imageWidth - 2,
+      //   imageHeight - 2,
+      //   OUTER_FRAME_CORNER_RADIUS,
+      // );
+      // canvas.clipPath(clipPath);
       // grad = new ConicalGradient(fractions, colors)
       // grad.fillRect(
       //   linFCtx,
@@ -289,28 +289,28 @@ ui.Picture drawLinearFrameImage(FrameDesignEnum frameDesign, double imageWidth, 
       break;
 
     case FrameDesignEnum.SHINY_METAL:
-      List<double> fractions = [0, 0.125, 0.25, 0.347222, 0.5, 0.652777, 0.75, 0.875, 1];
+      // List<double> fractions = [0, 0.125, 0.25, 0.347222, 0.5, 0.652777, 0.75, 0.875, 1];
 
-      List<Color> colors = [
-        colorFromHex('#FFFFFF'),
-        colorFromHex('#D2D2D2'),
-        colorFromHex('#B3B3B3'),
-        colorFromHex('#EEEEEE'),
-        colorFromHex('#A0A0A0'),
-        colorFromHex('#EEEEEE'),
-        colorFromHex('#B3B3B3'),
-        colorFromHex('#D2D2D2'),
-        colorFromHex('#FFFFFF'),
-      ];
-      // Set the clip
-      Path clipPath = roundedRectangle(
-        1,
-        1,
-        imageWidth - 2,
-        imageHeight - 2,
-        OUTER_FRAME_CORNER_RADIUS,
-      );
-      canvas.clipPath(clipPath);
+      // List<Color> colors = [
+      //   colorFromHex('#FFFFFF'),
+      //   colorFromHex('#D2D2D2'),
+      //   colorFromHex('#B3B3B3'),
+      //   colorFromHex('#EEEEEE'),
+      //   colorFromHex('#A0A0A0'),
+      //   colorFromHex('#EEEEEE'),
+      //   colorFromHex('#B3B3B3'),
+      //   colorFromHex('#D2D2D2'),
+      //   colorFromHex('#FFFFFF'),
+      // ];
+      // // Set the clip
+      // Path clipPath = roundedRectangle(
+      //   1,
+      //   1,
+      //   imageWidth - 2,
+      //   imageHeight - 2,
+      //   OUTER_FRAME_CORNER_RADIUS,
+      // );
+      // canvas.clipPath(clipPath);
       // grad = new ConicalGradient(fractions, colors)
       // grad.fillRect(
       //   linFCtx,
@@ -324,54 +324,54 @@ ui.Picture drawLinearFrameImage(FrameDesignEnum frameDesign, double imageWidth, 
       break;
 
     case FrameDesignEnum.CHROME:
-      List<double> fractions = [
-        0,
-        0.09,
-        0.12,
-        0.16,
-        0.25,
-        0.29,
-        0.33,
-        0.38,
-        0.48,
-        0.52,
-        0.63,
-        0.68,
-        0.8,
-        0.83,
-        0.87,
-        0.97,
-        1,
-      ];
+      // List<double> fractions = [
+      //   0,
+      //   0.09,
+      //   0.12,
+      //   0.16,
+      //   0.25,
+      //   0.29,
+      //   0.33,
+      //   0.38,
+      //   0.48,
+      //   0.52,
+      //   0.63,
+      //   0.68,
+      //   0.8,
+      //   0.83,
+      //   0.87,
+      //   0.97,
+      //   1,
+      // ];
 
-      List<Color> colors = [
-        colorFromHex('#FFFFFF'),
-        colorFromHex('#FFFFFF'),
-        colorFromHex('#888890'),
-        colorFromHex('#A4B9BE'),
-        colorFromHex('#9EB3B6'),
-        colorFromHex('#707070'),
-        colorFromHex('#DDE3E3'),
-        colorFromHex('#9BB0B3'),
-        colorFromHex('#9CB0B1'),
-        colorFromHex('#FEFFFF'),
-        colorFromHex('#FFFFFF'),
-        colorFromHex('#9CB4B4'),
-        colorFromHex('#C6D1D3'),
-        colorFromHex('#F6F8F7'),
-        colorFromHex('#CCD8D8'),
-        colorFromHex('#A4BCBE'),
-        colorFromHex('#FFFFFF'),
-      ];
-      // Set the clip
-      Path clipPath = roundedRectangle(
-        1,
-        1,
-        imageWidth - 2,
-        imageHeight - 2,
-        OUTER_FRAME_CORNER_RADIUS,
-      );
-      canvas.clipPath(clipPath);
+      // List<Color> colors = [
+      //   colorFromHex('#FFFFFF'),
+      //   colorFromHex('#FFFFFF'),
+      //   colorFromHex('#888890'),
+      //   colorFromHex('#A4B9BE'),
+      //   colorFromHex('#9EB3B6'),
+      //   colorFromHex('#707070'),
+      //   colorFromHex('#DDE3E3'),
+      //   colorFromHex('#9BB0B3'),
+      //   colorFromHex('#9CB0B1'),
+      //   colorFromHex('#FEFFFF'),
+      //   colorFromHex('#FFFFFF'),
+      //   colorFromHex('#9CB4B4'),
+      //   colorFromHex('#C6D1D3'),
+      //   colorFromHex('#F6F8F7'),
+      //   colorFromHex('#CCD8D8'),
+      //   colorFromHex('#A4BCBE'),
+      //   colorFromHex('#FFFFFF'),
+      // ];
+      // // Set the clip
+      // Path clipPath = roundedRectangle(
+      //   1,
+      //   1,
+      //   imageWidth - 2,
+      //   imageHeight - 2,
+      //   OUTER_FRAME_CORNER_RADIUS,
+      // );
+      // canvas.clipPath(clipPath);
       // grad = new ConicalGradient(fractions, colors)
       // grad.fillRect(
       //   linFCtx,

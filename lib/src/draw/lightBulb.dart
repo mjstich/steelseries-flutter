@@ -12,7 +12,6 @@ void drawLightbulb(Canvas canvas, Size canvasSize, Parameters parameters) {
   double height = canvasSize.height;
   Color glowColor = parameters.glowColorWithDefault(colorFromHex('#ffff00'));
   bool lightOn = parameters.lightOnWithDefault(false);
-  double alpha = 1;
 
   var offContextRecorder = ui.PictureRecorder();
   var offCxt = Canvas(offContextRecorder);

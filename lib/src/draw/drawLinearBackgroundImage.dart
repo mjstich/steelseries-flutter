@@ -41,12 +41,12 @@ ui.Picture drawLinearBackgroundImage(BackgroundColorEnum backgroundColor, double
   );
 
   // If the backgroundColor is a texture fill it with the texture instead of the gradient
-  if (backgroundColor == BackgroundColorEnum.CARBON ||
-      backgroundColor == BackgroundColorEnum.PUNCHED_SHEET ||
-      backgroundColor == BackgroundColorEnum.STAINLESS ||
-      backgroundColor == BackgroundColorEnum.BRUSHED_METAL ||
-      backgroundColor == BackgroundColorEnum.BRUSHED_STAINLESS ||
-      backgroundColor == BackgroundColorEnum.TURNED) {
+  if (backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET)
+  // backgroundColor == BackgroundColorEnum.STAINLESS ||
+  // backgroundColor == BackgroundColorEnum.BRUSHED_METAL ||
+  // backgroundColor == BackgroundColorEnum.BRUSHED_STAINLESS ||
+  // backgroundColor == BackgroundColorEnum.TURNED)
+  {
     if (backgroundColor == BackgroundColorEnum.CARBON) {
       var carbonImage = carbonBuffer();
       if (carbonImage != null) {
@@ -75,121 +75,121 @@ ui.Picture drawLinearBackgroundImage(BackgroundColorEnum backgroundColor, double
       }
     }
 
-    if (backgroundColor == BackgroundColorEnum.STAINLESS || backgroundColor == BackgroundColorEnum.TURNED) {
-      // Define the fraction of the conical gradient paint
-      List<double> fractions = [0, 0.03, 0.1, 0.14, 0.24, 0.33, 0.38, 0.5, 0.62, 0.67, 0.76, 0.81, 0.85, 0.97, 1];
+    // if (backgroundColor == BackgroundColorEnum.STAINLESS || backgroundColor == BackgroundColorEnum.TURNED) {
+    //   // Define the fraction of the conical gradient paint
+    //   List<double> fractions = [0, 0.03, 0.1, 0.14, 0.24, 0.33, 0.38, 0.5, 0.62, 0.67, 0.76, 0.81, 0.85, 0.97, 1];
 
-      //   // Define the colors of the conical gradient paint
-      //   List<Color> colors = [
-      //     colorFromHex('#FDFDFD'),
-      //     colorFromHex('#FDFDFD'),
-      //     colorFromHex('#B2B2B4'),
-      //     colorFromHex('#ACACAE'),
-      //     colorFromHex('#FDFDFD'),
-      //     colorFromHex('#8E8E8E'),
-      //     colorFromHex('#8E8E8E'),
-      //     colorFromHex('#FDFDFD'),
-      //     colorFromHex('#8E8E8E'),
-      //     colorFromHex('#8E8E8E'),
-      //     colorFromHex('#FDFDFD'),
-      //     colorFromHex('#ACACAE'),
-      //     colorFromHex('#B2B2B4'),
-      //     colorFromHex('#FDFDFD'),
-      //     colorFromHex('#FDFDFD'),
-      //   ];
-      //   grad = new ConicalGradient(fractions, colors)
-      //   // Set a clip as we will be drawing outside the required area
-      //   linBCtx.clip()
-      //   grad.fillRect(
-      //     linBCtx,
-      //     imageWidth / 2,
-      //     imageHeight / 2,
-      //     imageWidth - frameWidth * 2,
-      //     imageHeight - frameWidth * 2,
-      //     imageWidth / 2,
-      //     imageHeight / 2
-      //   )
-      // Add an additional inner shadow to fade out brightness at the top
+    //   //   // Define the colors of the conical gradient paint
+    //   //   List<Color> colors = [
+    //   //     colorFromHex('#FDFDFD'),
+    //   //     colorFromHex('#FDFDFD'),
+    //   //     colorFromHex('#B2B2B4'),
+    //   //     colorFromHex('#ACACAE'),
+    //   //     colorFromHex('#FDFDFD'),
+    //   //     colorFromHex('#8E8E8E'),
+    //   //     colorFromHex('#8E8E8E'),
+    //   //     colorFromHex('#FDFDFD'),
+    //   //     colorFromHex('#8E8E8E'),
+    //   //     colorFromHex('#8E8E8E'),
+    //   //     colorFromHex('#FDFDFD'),
+    //   //     colorFromHex('#ACACAE'),
+    //   //     colorFromHex('#B2B2B4'),
+    //   //     colorFromHex('#FDFDFD'),
+    //   //     colorFromHex('#FDFDFD'),
+    //   //   ];
+    //   //   grad = new ConicalGradient(fractions, colors)
+    //   //   // Set a clip as we will be drawing outside the required area
+    //   //   linBCtx.clip()
+    //   //   grad.fillRect(
+    //   //     linBCtx,
+    //   //     imageWidth / 2,
+    //   //     imageHeight / 2,
+    //   //     imageWidth - frameWidth * 2,
+    //   //     imageHeight - frameWidth * 2,
+    //   //     imageWidth / 2,
+    //   //     imageHeight / 2
+    //   //   )
+    //   // Add an additional inner shadow to fade out brightness at the top
 
-      ui.Gradient grad = ui.Gradient.linear(
-        Offset(0, frameWidth),
-        Offset(0, imageHeight - frameWidth * 2),
-        [
-          const Color.fromRGBO(0, 0, 0, 0.25),
-          const Color.fromRGBO(0, 0, 0, 0.05),
-          const Color.fromRGBO(0, 0, 0, 0),
-        ],
-        [0, 0.1, 1],
-      );
+    //   ui.Gradient grad = ui.Gradient.linear(
+    //     Offset(0, frameWidth),
+    //     Offset(0, imageHeight - frameWidth * 2),
+    //     [
+    //       const Color.fromRGBO(0, 0, 0, 0.25),
+    //       const Color.fromRGBO(0, 0, 0, 0.05),
+    //       const Color.fromRGBO(0, 0, 0, 0),
+    //     ],
+    //     [0, 0.1, 1],
+    //   );
 
-      //   linBCtx.fillStyle = grad
-      //   linBCtx.fill()
+    //   //   linBCtx.fillStyle = grad
+    //   //   linBCtx.fill()
 
-      if (backgroundColor == BackgroundColorEnum.TURNED) {
-        // Define the turning radius
-        double radius = math.sqrt((imageWidth - frameWidth * 2) * (imageWidth - frameWidth * 2) + (imageHeight - frameWidth * 2) * (imageHeight - frameWidth * 2)) / 2;
-        double turnRadius = radius * 0.55;
-        double centerX = imageWidth / 2;
-        double centerY = imageHeight / 2;
-        // Step size proporational to radius
-        double stepSize = (TWO_PI / 360) * (400 / radius);
+    //   if (backgroundColor == BackgroundColorEnum.TURNED) {
+    //     // Define the turning radius
+    //     double radius = math.sqrt((imageWidth - frameWidth * 2) * (imageWidth - frameWidth * 2) + (imageHeight - frameWidth * 2) * (imageHeight - frameWidth * 2)) / 2;
+    //     double turnRadius = radius * 0.55;
+    //     double centerX = imageWidth / 2;
+    //     double centerY = imageHeight / 2;
+    //     // Step size proporational to radius
+    //     double stepSize = (TWO_PI / 360) * (400 / radius);
 
-        // Save before we start
-        canvas.save();
+    //     // Save before we start
+    //     canvas.save();
 
-        // Set a clip as we will be drawing outside the required area
-        Path path = roundedRectangle(
-          frameWidth,
-          frameWidth,
-          imageWidth - frameWidth * 2,
-          imageHeight - frameWidth * 2,
-          CORNER_RADIUS,
-        );
-        canvas.clipPath(path);
+    //     // Set a clip as we will be drawing outside the required area
+    //     Path path = roundedRectangle(
+    //       frameWidth,
+    //       frameWidth,
+    //       imageWidth - frameWidth * 2,
+    //       imageHeight - frameWidth * 2,
+    //       CORNER_RADIUS,
+    //     );
+    //     canvas.clipPath(path);
 
-        // set the style for the turnings
-        double lineWidth = 0.5;
-        double end = TWO_PI - stepSize * 0.3;
-        // Step the engine round'n'round
-        for (double i = 0; i < end; i += stepSize) {
-          // draw a 'turn'
+    //     // set the style for the turnings
+    //     double lineWidth = 0.5;
+    //     double end = TWO_PI - stepSize * 0.3;
+    //     // Step the engine round'n'round
+    //     for (double i = 0; i < end; i += stepSize) {
+    //       // draw a 'turn'
 
-          path = Path();
-          Rect rect = Rect.fromCenter(center: Offset(centerX + turnRadius, centerY), width: turnRadius * 2, height: turnRadius * 2);
-          path.addArc(rect, 0, TWO_PI);
-          canvas.drawPath(
-              path,
-              Paint()
-                ..color = const Color.fromRGBO(240, 240, 255, 0.25)
-                ..strokeWidth = lineWidth
-                ..style = ui.PaintingStyle.stroke);
-          // rotate the 'piece'
-          canvas.translate(centerX, centerY);
-          canvas.rotate(stepSize * 0.3);
-          canvas.translate(-centerX, -centerY);
-          // draw a 'turn'
-          path = Path();
-          rect = Rect.fromCenter(center: Offset(centerX + turnRadius, centerY), width: turnRadius * 2, height: turnRadius * 2);
-          path.addArc(rect, 0, TWO_PI);
-          canvas.drawPath(
-              path,
-              Paint()
-                ..color = const Color.fromRGBO(25, 10, 10, 0.1)
-                ..strokeWidth = lineWidth
-                ..style = ui.PaintingStyle.stroke);
-          canvas.translate(centerX, centerY);
-          canvas.rotate(-stepSize * 0.3);
-          canvas.translate(-centerX, -centerY);
+    //       path = Path();
+    //       Rect rect = Rect.fromCenter(center: Offset(centerX + turnRadius, centerY), width: turnRadius * 2, height: turnRadius * 2);
+    //       path.addArc(rect, 0, TWO_PI);
+    //       canvas.drawPath(
+    //           path,
+    //           Paint()
+    //             ..color = const Color.fromRGBO(240, 240, 255, 0.25)
+    //             ..strokeWidth = lineWidth
+    //             ..style = ui.PaintingStyle.stroke);
+    //       // rotate the 'piece'
+    //       canvas.translate(centerX, centerY);
+    //       canvas.rotate(stepSize * 0.3);
+    //       canvas.translate(-centerX, -centerY);
+    //       // draw a 'turn'
+    //       path = Path();
+    //       rect = Rect.fromCenter(center: Offset(centerX + turnRadius, centerY), width: turnRadius * 2, height: turnRadius * 2);
+    //       path.addArc(rect, 0, TWO_PI);
+    //       canvas.drawPath(
+    //           path,
+    //           Paint()
+    //             ..color = const Color.fromRGBO(25, 10, 10, 0.1)
+    //             ..strokeWidth = lineWidth
+    //             ..style = ui.PaintingStyle.stroke);
+    //       canvas.translate(centerX, centerY);
+    //       canvas.rotate(-stepSize * 0.3);
+    //       canvas.translate(-centerX, -centerY);
 
-          // rotate the 'piece'
-          canvas.translate(centerX, centerY);
-          canvas.rotate(stepSize);
-          canvas.translate(-centerX, -centerY);
-        }
-        // Restore canvas now we are done
-        canvas.restore();
-      }
-    }
+    //       // rotate the 'piece'
+    //       canvas.translate(centerX, centerY);
+    //       canvas.rotate(stepSize);
+    //       canvas.translate(-centerX, -centerY);
+    //     }
+    //     // Restore canvas now we are done
+    //     canvas.restore();
+    //   }
+    // }
 
     ui.Gradient grad = ui.Gradient.linear(
       Offset(frameWidth, frameWidth),

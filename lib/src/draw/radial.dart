@@ -100,7 +100,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
   double lcdPosY = imageHeight * 0.57;
   double odoPosX = 0;
   double odoPosY = imageHeight * 0.61;
-  double shadowOffset = imageWidth * 0.006;
+  //double shadowOffset = imageWidth * 0.006;
 
   // Constants
   // let initialized = false
@@ -494,14 +494,14 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
     //   ctx.strokeStyle = backgroundColor.labelColor.getRgbaColor()
     //   ctx.fillStyle = backgroundColor.labelColor.getRgbaColor()
 
-    double _fontSize = fontSize * 1.1;
+    double localFontSize = fontSize * 1.1;
 
     ctx.translate(centerX, centerY);
     ctx.rotate(rotationOffset);
 
     if (gaugeType == GaugeTypeEnum.TYPE1 || gaugeType == GaugeTypeEnum.TYPE2) {
       TEXT_WIDTH = imageWidth * 0.09;
-      _fontSize = fontSize * 0.75;
+      localFontSize = fontSize * 0.75;
     }
 
     if (tickLabelOrientation == TickLabelOrientationEnum.HORIZONTAL || tickLabelOrientation == TickLabelOrientationEnum.TANGENT) {
@@ -511,7 +511,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
       }
     }
 
-    final TextStyle stdFont = getFont(_fontSize, backgroundColor.labelColor);
+    final TextStyle stdFont = getFont(localFontSize, backgroundColor.labelColor);
 
     for (double i = minValue; double.parse(i.toStringAsFixed(2)) <= MAX_VALUE_ROUNDED; i += minorTickSpacing) {
       textRotationAngle = rotationStep + HALF_PI;

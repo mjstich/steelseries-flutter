@@ -64,7 +64,7 @@ class _HorizontalLinearGaugePageState extends State<HorizontalLinearGaugePage> {
             ),
           ),
           Expanded(
-            child: const LinearGauge(
+            child: LinearGauge(
               value: 180,
               frameVisible: true,
               end: 200,

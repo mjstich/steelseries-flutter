@@ -87,13 +87,6 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
   bool unitStringPosY = false;
 
   // const stdFont = Math.floor(imageWidth * 0.09) + 'px ' + stdFontName
-  final TextStyle stdFont = TextStyle(
-    fontSize: (0.09 * imageWidth).floorToDouble(),
-    fontStyle: FontStyle.normal,
-    fontFeatures: const [FontFeature.tabularFigures()],
-    //color: degreeFontColor,
-    fontFamily: 'RobotoMono',
-  );
 
   // **************   Image creation  ********************
   void drawLcdText(double value) {
@@ -664,7 +657,7 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
     // re-calculate the spearate pointer values
     calcValues();
 
-    double shadowOffset = imageWidth * 0.006 * 0.5;
+    //ßdouble shadowOffset = imageWidth * 0.006 * 0.5;
 
     canvas.save();
     // Draw 10000ft pointer

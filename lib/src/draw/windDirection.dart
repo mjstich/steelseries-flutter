@@ -843,7 +843,7 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // we have to draw to a rotated temporary image area so we can translate in
     // absolute x, y values when drawing to main context
-    double shadowOffset = imageWidth * 0.006;
+    //double shadowOffset = imageWidth * 0.006;
 
     // Define rotation center
     canvas.save();

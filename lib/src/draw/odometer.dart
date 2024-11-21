@@ -15,7 +15,7 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
   Color decimalForeColor = parameters.decimalForeColorDefault(colorFromHex('#F01010'));
   Color valueBackColor = parameters.valueBackColorDefault(colorFromHex('#050505'));
   Color valueForeColor = parameters.valueForeColorDefault(colorFromHex('#F8F8F8'));
-  double wobbleFactor = parameters.wobbleFactorWithDefault(0);
+  //double wobbleFactor = parameters.wobbleFactorWithDefault(0);
   //
   //let ctx
   List<double> wobble = [];
@@ -36,9 +36,9 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
 
   double digitWidth = (height * 0.68).floorToDouble();
   double width = digitWidth * (digits + decimals);
-  double columnHeight = digitHeight * 11;
-  double verticalSpace = columnHeight / 12;
-  double zeroOffset = verticalSpace * 0.81;
+  //double columnHeight = digitHeight * 11;
+  //double verticalSpace = columnHeight / 12;
+  //double zeroOffset = verticalSpace * 0.81;
 
   // Create buffers
   var backgroundContextRecorder = ui.PictureRecorder();
@@ -80,7 +80,7 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
   }
 
   void drawDigits() {
-    double pos = 1;
+    //ßdouble pos = 1;
     double val = value;
 
     // do not use Math.pow() - rounding errors!
@@ -89,9 +89,9 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
     }
 
     int numb = val.floor();
-    double frac = val - numb;
+    //double frac = val - numb;
     String numbString = numb.toInt().toString();
-    int prevNum = 9;
+    //int prevNum = 9;
 
     for (int i = decimals + digits - 1; i >= 0; i--) {
       int num = 0;
@@ -100,11 +100,8 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
         if (val != null) {
           num = val;
         }
+        // ignore: empty_catches
       } catch (e) {}
-
-      if (prevNum != 9) {
-        frac = 0;
-      }
 
       if (i < decimals) {
         TextStyle stdFont = getFont(digitHeight, decimalForeColor);
@@ -176,8 +173,6 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
               ..style = ui.PaintingStyle.stroke);
         textPainter.paint(backgroundContext, Offset(digitWidth * ((decimals + digits) - i - 1) + 4, -height * .1));
       }
-      pos++;
-      prevNum = num;
     }
   }
 

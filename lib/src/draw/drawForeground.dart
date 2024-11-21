@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import 'createKnobImage.dart';
 import 'definitions.dart';
-import 'tools.dart';
 
 Map<String, ui.Picture> foregroundCache = {};
 
@@ -13,7 +12,7 @@ ui.Picture drawForeground(ForegroundTypeEnum foregroundType, double imageWidth, 
   double knobSize = (imageHeight * 0.084112).ceilToDouble();
   double knobX = imageWidth * 0.5 - knobSize / 2;
   double knobY = imageHeight * 0.5 - knobSize / 2;
-  double shadowOffset = imageWidth * 0.008;
+  //double shadowOffset = imageWidth * 0.008;
   //String cacheKey = foregroundType.toString() + imageWidth.toString() + imageHeight.toString() + withCenterKnob.toString() + knob.toString() + style.toString() + orientation.toString();
 
   // check if we have already created and cached this buffer, if so return it and exit
