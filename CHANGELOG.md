@@ -18,3 +18,7 @@
 
 * Update readme.
 
+## 0.0.6
+
+* Add thumbnail image.
+
