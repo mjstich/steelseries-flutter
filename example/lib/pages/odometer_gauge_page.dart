@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:steelseries_flutter/steelseries_flutter.dart';
-// import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OdometerGaugePage extends StatefulWidget {
   const OdometerGaugePage({super.key});
@@ -19,7 +19,7 @@ class _OdometerGaugePageState extends State<OdometerGaugePage> {
           IconButton(
             icon: const Icon(Icons.code_outlined),
             onPressed: () async {
-              //await launch('https://github.com/JulianAssmann/flutter_gauges/tree/master/example/lib/pages/segments_page.dart');
+              await launchUrl(Uri.parse('https://github.com/mjstich/steelseries-flutter/blob/main/example/lib/pages/odometer_gauge_page.dart'));
             },
           ),
         ],

@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Steel Series Gauges Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
       ),
       initialRoute: '/',
       routes: getRoutes(context),

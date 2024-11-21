@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   steelseries_flutter:
     path: ../    
+  url_launcher: ^6.3.1
 
 
 dev_dependencies:

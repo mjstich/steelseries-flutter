@@ -1,8 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:steelseries_flutter/steelseries_flutter.dart';
-// import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BatteryGaugePage extends StatefulWidget {
   const BatteryGaugePage({super.key});
@@ -16,12 +14,12 @@ class _BatteryGaugePageState extends State<BatteryGaugePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Battery Gauges'),
+        title: const Text('Battery Gauges'),
         actions: [
           IconButton(
-            icon: Icon(Icons.code_outlined),
+            icon: const Icon(Icons.code_outlined),
             onPressed: () async {
-              //await launch('https://github.com/JulianAssmann/flutter_gauges/tree/master/example/lib/pages/segments_page.dart');
+              await launchUrl(Uri.parse('https://github.com/mjstich/steelseries-flutter/blob/main/example/lib/pages/battery_gauge_page.dart'));
             },
           ),
         ],
