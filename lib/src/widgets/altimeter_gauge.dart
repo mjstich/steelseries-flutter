@@ -248,7 +248,8 @@ class AltimeterGauge extends StatefulWidget {
   State<AltimeterGauge> createState() => _AltimeterGaugeState();
 }
 
-class _AltimeterGaugeState extends State<AltimeterGauge> with TickerProviderStateMixin {
+class _AltimeterGaugeState extends State<AltimeterGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double _from = 0;
@@ -270,7 +271,8 @@ class _AltimeterGaugeState extends State<AltimeterGauge> with TickerProviderStat
 
   @override
   void didUpdateWidget(covariant AltimeterGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value) {
       _from = oldWidget.value!;
 
       _initializeAnimation();
@@ -399,7 +401,8 @@ class _LeafAltimeterGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderAltimeterGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderAltimeterGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setTitleString = titleString

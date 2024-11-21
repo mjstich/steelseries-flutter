@@ -284,7 +284,8 @@ class CompassGauge extends StatefulWidget {
   State<CompassGauge> createState() => _CompassGaugeState();
 }
 
-class _CompassGaugeState extends State<CompassGauge> with TickerProviderStateMixin {
+class _CompassGaugeState extends State<CompassGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double _from = 0;
@@ -306,7 +307,8 @@ class _CompassGaugeState extends State<CompassGauge> with TickerProviderStateMix
 
   @override
   void didUpdateWidget(covariant CompassGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value) {
       _from = oldWidget.value!;
 
       _initializeAnimation();
@@ -446,7 +448,8 @@ class _LeafCompassGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderCompassGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderCompassGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setFrameDesign = frameDesign

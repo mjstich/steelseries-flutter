@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 Map<String, ui.Picture> linearForegroundImageCache = {};
 
-ui.Picture drawLinearForegroundImage(double imageWidth, double imageHeight, bool vertical) {
+ui.Picture drawLinearForegroundImage(
+    double imageWidth, double imageHeight, bool vertical) {
   //String cacheKey = imageWidth.toString() + imageHeight.toString() + vertical.toString();
 
   // check if we have already created and cached this buffer, if not create it
@@ -15,8 +16,10 @@ ui.Picture drawLinearForegroundImage(double imageWidth, double imageHeight, bool
   var pictureRecorder = ui.PictureRecorder();
   var canvas = Canvas(pictureRecorder);
 
-  double frameWidth = math.sqrt(imageWidth * imageWidth + imageHeight * imageHeight) * 0.04;
-  frameWidth = math.min(frameWidth, (vertical ? imageWidth : imageHeight) * 0.1);
+  double frameWidth =
+      math.sqrt(imageWidth * imageWidth + imageHeight * imageHeight) * 0.04;
+  frameWidth =
+      math.min(frameWidth, (vertical ? imageWidth : imageHeight) * 0.1);
   double fgOffset = frameWidth * 1.3;
   double fgOffset2 = fgOffset * 1.33;
 
@@ -77,7 +80,22 @@ ui.Picture drawLinearForegroundImage(double imageWidth, double imageHeight, bool
       const Color.fromRGBO(255, 255, 255, 0),
       const Color.fromRGBO(255, 255, 255, 0),
     ],
-    [0, 0.06, 0.07, 0.12, 0.17, 0.1701, 0.79, 0.8, 0.84, 0.93, 0.94, 0.96, 0.97, 1],
+    [
+      0,
+      0.06,
+      0.07,
+      0.12,
+      0.17,
+      0.1701,
+      0.79,
+      0.8,
+      0.84,
+      0.93,
+      0.94,
+      0.96,
+      0.97,
+      1
+    ],
   );
   Paint paint = Paint()
     ..shader = grad

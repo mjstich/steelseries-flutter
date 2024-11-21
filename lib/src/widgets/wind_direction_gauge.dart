@@ -404,7 +404,8 @@ class WindDirectionGauge extends StatefulWidget {
   State<WindDirectionGauge> createState() => _WindDirectionGaugeState();
 }
 
-class _WindDirectionGaugeState extends State<WindDirectionGauge> with TickerProviderStateMixin {
+class _WindDirectionGaugeState extends State<WindDirectionGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _valueAnimation;
   Animation<double>? _valueAverageAnimation;
@@ -428,7 +429,9 @@ class _WindDirectionGaugeState extends State<WindDirectionGauge> with TickerProv
 
   @override
   void didUpdateWidget(covariant WindDirectionGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value || oldWidget.valueAverage != widget.valueAverage) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value ||
+        oldWidget.valueAverage != widget.valueAverage) {
       _valueFrom = oldWidget.value!;
       _valueAverageFrom = oldWidget.valueAverage!;
 
@@ -451,7 +454,8 @@ class _WindDirectionGaugeState extends State<WindDirectionGauge> with TickerProv
           milliseconds: widget.animationDuration,
         ),
       );
-      _valueAnimation = Tween<double>(begin: _valueFrom, end: widget.value).animate(
+      _valueAnimation =
+          Tween<double>(begin: _valueFrom, end: widget.value).animate(
         CurvedAnimation(
           parent: _animationController!,
           curve: Interval(
@@ -461,7 +465,9 @@ class _WindDirectionGaugeState extends State<WindDirectionGauge> with TickerProv
           ),
         ),
       );
-      _valueAverageAnimation = Tween<double>(begin: _valueAverageFrom, end: widget.valueAverage).animate(
+      _valueAverageAnimation =
+          Tween<double>(begin: _valueAverageFrom, end: widget.valueAverage)
+              .animate(
         CurvedAnimation(
           parent: _animationController!,
           curve: Interval(
@@ -481,7 +487,8 @@ class _WindDirectionGaugeState extends State<WindDirectionGauge> with TickerProv
       return AnimatedBuilder(
         animation: _animationController!,
         builder: (context, child) {
-          return _getChild(context, _valueAnimation!.value, _valueAverageAnimation!.value);
+          return _getChild(
+              context, _valueAnimation!.value, _valueAverageAnimation!.value);
         },
       );
     } else {
@@ -619,7 +626,8 @@ class _LeafWindDirectionGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderWindDirectionGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderWindDirectionGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setValueAverage = valueAverage!

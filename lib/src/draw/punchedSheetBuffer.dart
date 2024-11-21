@@ -11,7 +11,8 @@ ui.Image? punchedSheetBuffer() {
   return _punchedSheetBuffer;
 }
 
-Future<ui.Image> punchedSheetBufferInit({double width = 15.0, double height = 15.0}) async {
+Future<ui.Image> punchedSheetBufferInit(
+    {double width = 15.0, double height = 15.0}) async {
   if (_punchedSheetBuffer == null) {
     double imageWidth = width;
     double imageHeight = height;

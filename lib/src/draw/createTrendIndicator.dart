@@ -8,7 +8,8 @@ import 'tools.dart';
 
 Map<String, ui.Picture> trendIndicatorCache = {};
 
-ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<LedColorEnum> colors) {
+ui.Picture createTrendIndicator(
+    double width, TrendStateEnum onSection, List<LedColorEnum> colors) {
   double height = width * 2;
   //String cacheKey = onSection.toString() + width.toString() + colors[0].toString() + colors[1].toString() + colors[2].toString();
 
@@ -103,7 +104,10 @@ ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<Led
         ..shader = grad
         ..style = ui.PaintingStyle.fill;
       Path path = Path();
-      Rect rect = Rect.fromCenter(center: Offset(0.5 * width, 0.2 * height), width: 0.7 * width * 2, height: 0.7 * width * 2);
+      Rect rect = Rect.fromCenter(
+          center: Offset(0.5 * width, 0.2 * height),
+          width: 0.7 * width * 2,
+          height: 0.7 * width * 2);
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);
@@ -119,9 +123,11 @@ ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<Led
 
     if (onSection == TrendStateEnum.STEADY) {
       paint.color = ledColor.outerColor_ON;
-      Rect rect = Rect.fromLTWH(0.128 * width, 0.41 * height, 0.744 * width, 0.074 * height);
+      Rect rect = Rect.fromLTWH(
+          0.128 * width, 0.41 * height, 0.744 * width, 0.074 * height);
       path.addRect(rect);
-      rect = Rect.fromLTWH(0.128 * width, 0.516 * height, 0.744 * width, 0.074 * height);
+      rect = Rect.fromLTWH(
+          0.128 * width, 0.516 * height, 0.744 * width, 0.074 * height);
       path.addRect(rect);
       path.close();
       canvas.drawPath(path, paint);
@@ -138,7 +144,8 @@ ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<Led
       Paint paint = Paint()
         ..shader = grad
         ..style = ui.PaintingStyle.fill;
-      Rect rect = Rect.fromLTWH(0.128 * width, 0.41 * height, 0.744 * width, 0.074 * height);
+      Rect rect = Rect.fromLTWH(
+          0.128 * width, 0.41 * height, 0.744 * width, 0.074 * height);
       path.addRect(rect);
       path.close();
       canvas.drawPath(path, paint);
@@ -154,7 +161,8 @@ ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<Led
       );
       paint.shader = grad;
       path = Path();
-      rect = Rect.fromLTWH(0.128 * width, 0.516 * height, 0.744 * width, 0.074 * height);
+      rect = Rect.fromLTWH(
+          0.128 * width, 0.516 * height, 0.744 * width, 0.074 * height);
       path.addRect(rect);
       path.close();
       canvas.drawPath(path, paint);
@@ -180,13 +188,15 @@ ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<Led
       paint.color = const Color.fromRGBO(255, 255, 255, 0.3);
       path = Path();
       path.moveTo(0.128 * width + 0.744 * width, 0.41 * height);
-      path.lineTo(0.128 * width + 0.744 * width, 0.41 * height + 0.074 * height);
+      path.lineTo(
+          0.128 * width + 0.744 * width, 0.41 * height + 0.074 * height);
       path.lineTo(0.128 * width, 0.41 * height + 0.074 * height);
       canvas.drawPath(path, paint);
 
       path = Path();
       path.moveTo(0.128 * width + 0.744 * width, 0.516 * height);
-      path.lineTo(0.128 * width + 0.744 * width, 0.516 * height + 0.074 * height);
+      path.lineTo(
+          0.128 * width + 0.744 * width, 0.516 * height + 0.074 * height);
       path.lineTo(0.128 * width, 0.516 * height + 0.074 * height);
       canvas.drawPath(path, paint);
     } else {
@@ -213,7 +223,10 @@ ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<Led
         ..style = ui.PaintingStyle.fill;
 
       Path path = Path();
-      Rect rect = Rect.fromCenter(center: Offset(0.5 * width, 0.2 * height), width: 0.7 * width * 2, height: 0.7 * width * 2);
+      Rect rect = Rect.fromCenter(
+          center: Offset(0.5 * width, 0.2 * height),
+          width: 0.7 * width * 2,
+          height: 0.7 * width * 2);
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);
@@ -316,7 +329,10 @@ ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<Led
         ..shader = grad
         ..style = ui.PaintingStyle.fill;
       Path path = Path();
-      Rect rect = Rect.fromCenter(center: Offset(0.5 * width, 0.8 * height), width: 0.7 * width * 2, height: 0.7 * width * 2);
+      Rect rect = Rect.fromCenter(
+          center: Offset(0.5 * width, 0.8 * height),
+          width: 0.7 * width * 2,
+          height: 0.7 * width * 2);
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);

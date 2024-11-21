@@ -47,7 +47,8 @@ class RenderLEDWidget extends RenderBox {
 
   @override
   void performLayout() {
-    double minWidthHeight = math.min(constraints.maxWidth, constraints.maxHeight);
+    double minWidthHeight =
+        math.min(constraints.maxWidth, constraints.maxHeight);
     size = Size(minWidthHeight, minWidthHeight);
   }
 

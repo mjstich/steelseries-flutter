@@ -10,7 +10,8 @@ import 'tools.dart';
 
 Map<String, ui.Picture> lcdBackgroundImageCache = {};
 
-ui.Picture createLcdBackgroundImage(double width, double height, LcdColorEnum lcdColor) {
+ui.Picture createLcdBackgroundImage(
+    double width, double height, LcdColorEnum lcdColor) {
   double xB = 0;
   double yB = 0;
   double wB = width.toDouble();

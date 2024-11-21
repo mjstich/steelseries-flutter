@@ -74,7 +74,8 @@ class _LeafLEDWidget extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderLEDWidget renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderLEDWidget renderObject) {
     renderObject
       ..setLedColor = ledColor
       ..setLedOn = ledOn;

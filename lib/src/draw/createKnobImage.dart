@@ -9,7 +9,8 @@ import 'tools.dart';
 
 Map<String, ui.Picture> knobImageCache = {};
 
-ui.Picture createKnobImage(double size, KnobTypeEnum knob, KnobStyleEnum style) {
+ui.Picture createKnobImage(
+    double size, KnobTypeEnum knob, KnobStyleEnum style) {
   double maxPostCenterX = size / 2;
   double maxPostCenterY = size / 2;
 
@@ -346,7 +347,10 @@ ui.Picture createKnobImage(double size, KnobTypeEnum knob, KnobStyleEnum style) 
         [0, 0.46, 1],
       );
       paint.shader = grad;
-      Rect rect = Rect.fromCenter(center: Offset(maxPostCenterX, maxPostCenterY), width: size, height: size);
+      Rect rect = Rect.fromCenter(
+          center: Offset(maxPostCenterX, maxPostCenterY),
+          width: size,
+          height: size);
       Path path = Path();
       path.addArc(rect, 0, TWO_PI);
       path.close();
@@ -382,7 +386,10 @@ ui.Picture createKnobImage(double size, KnobTypeEnum knob, KnobStyleEnum style) 
       );
       paint.shader = grad;
       path = Path();
-      rect = Rect.fromCenter(center: Offset(maxPostCenterX, maxPostCenterY), width: (size * 0.77), height: (size * 0.77));
+      rect = Rect.fromCenter(
+          center: Offset(maxPostCenterX, maxPostCenterY),
+          width: (size * 0.77),
+          height: (size * 0.77));
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);
@@ -404,7 +411,10 @@ ui.Picture createKnobImage(double size, KnobTypeEnum knob, KnobStyleEnum style) 
       );
       paint.shader = grad;
       path = Path();
-      rect = Rect.fromCenter(center: Offset(maxPostCenterX, maxPostCenterY), width: (size * 0.77), height: (size * 0.77));
+      rect = Rect.fromCenter(
+          center: Offset(maxPostCenterX, maxPostCenterY),
+          width: (size * 0.77),
+          height: (size * 0.77));
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);

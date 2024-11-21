@@ -46,7 +46,8 @@ class RenderLightBulbWidget extends RenderBox {
 
   @override
   void performLayout() {
-    double minMaxWidthHeight = math.min(constraints.maxWidth, constraints.maxHeight);
+    double minMaxWidthHeight =
+        math.min(constraints.maxWidth, constraints.maxHeight);
     size = Size(minMaxWidthHeight, minMaxWidthHeight);
   }
 

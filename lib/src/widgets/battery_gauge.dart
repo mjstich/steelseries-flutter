@@ -76,7 +76,8 @@ class BatteryGauge extends StatefulWidget {
   State<BatteryGauge> createState() => _BatteryGaugeState();
 }
 
-class _BatteryGaugeState extends State<BatteryGauge> with TickerProviderStateMixin {
+class _BatteryGaugeState extends State<BatteryGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double _from = 0;
@@ -98,7 +99,8 @@ class _BatteryGaugeState extends State<BatteryGauge> with TickerProviderStateMix
 
   @override
   void didUpdateWidget(covariant BatteryGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value) {
       _from = oldWidget.value!;
 
       _initializeAnimation();
@@ -170,7 +172,8 @@ class _LeafBatteryGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderBatteryGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderBatteryGauge renderObject) {
     renderObject.setValue = value!;
   }
 }

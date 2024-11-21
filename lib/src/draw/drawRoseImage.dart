@@ -6,7 +6,13 @@ import 'package:flutter/material.dart';
 import 'definitions.dart';
 import 'tools.dart';
 
-void drawRoseImage(Canvas ctx, double centerX, double centerY, double imageWidth, double imageHeight, BackgroundColorEnum backgroundColor) {
+void drawRoseImage(
+    Canvas ctx,
+    double centerX,
+    double centerY,
+    double imageWidth,
+    double imageHeight,
+    BackgroundColorEnum backgroundColor) {
   bool fill = true;
   Color symbolColor = backgroundColor.symbolColor;
 
@@ -26,9 +32,15 @@ void drawRoseImage(Canvas ctx, double centerX, double centerY, double imageWidth
 
     Path path = Path();
 
-    Rect rect1 = Rect.fromCenter(center: const Offset(0, 0), width: imageWidth * 0.26 * 2, height: imageWidth * 0.26 * 2);
+    Rect rect1 = Rect.fromCenter(
+        center: const Offset(0, 0),
+        width: imageWidth * 0.26 * 2,
+        height: imageWidth * 0.26 * 2);
     path.arcTo(rect1, i * RAD_FACTOR, (15) * RAD_FACTOR, true);
-    Rect rect2 = Rect.fromCenter(center: const Offset(0, 0), width: imageWidth * 0.23 * 2, height: imageWidth * 0.23 * 2);
+    Rect rect2 = Rect.fromCenter(
+        center: const Offset(0, 0),
+        width: imageWidth * 0.23 * 2,
+        height: imageWidth * 0.23 * 2);
     var startAngle = i * RAD_FACTOR + (15) * RAD_FACTOR;
     path.arcTo(rect2, startAngle, -15 * RAD_FACTOR, false);
 
@@ -86,7 +98,10 @@ void drawRoseImage(Canvas ctx, double centerX, double centerY, double imageWidth
   // Central ring
   Path path = Path();
   ctx.translate(centerX, centerY);
-  Rect rect = Rect.fromCenter(center: const Offset(0, 0), width: imageWidth * 0.1 * 2, height: imageWidth * 0.1 * 2);
+  Rect rect = Rect.fromCenter(
+      center: const Offset(0, 0),
+      width: imageWidth * 0.1 * 2,
+      height: imageWidth * 0.1 * 2);
   path.addArc(rect, 0, TWO_PI);
   Paint paint = Paint()
     ..strokeWidth = imageWidth * 0.022

@@ -15,32 +15,40 @@ import 'drawTitleImage.dart';
 import 'tools.dart';
 
 void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
-  GaugeTypeEnum gaugeType = parameters.gaugeTypeWithDefault(GaugeTypeEnum.TYPE1);
+  GaugeTypeEnum gaugeType =
+      parameters.gaugeTypeWithDefault(GaugeTypeEnum.TYPE1);
 
   double width = canvasSize.width;
   double height = canvasSize.height;
   double minValue = parameters.minValueWithDefault(0);
   double maxValue = parameters.maxValueWithDefault(100);
   bool niceScale = parameters.niceScaleWithDefault(true);
-  double threshold = parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
+  double threshold =
+      parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
   bool thresholdVisible = parameters.thresholdVisibleWithDefault(true);
   String titleString = parameters.titleStringWithDefault('');
   String unitString = parameters.unitStringWithDefault('');
-  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  FrameDesignEnum frameDesign =
+      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
+  BackgroundColorEnum backgroundColor =
+      parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
   ColorEnum valueColor = parameters.valueColorWithDefault(ColorEnum.RED);
   LcdColorEnum lcdColor = parameters.lcdColorWithDefault(LcdColorEnum.STANDARD);
   bool lcdVisible = parameters.lcdVisibleWithDefault(true);
   int lcdDecimals = parameters.lcdDecimalsWithDefault(1);
-  FontTypeEnum fontType = parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
+  FontTypeEnum fontType =
+      parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
   LedColorEnum ledColor = parameters.ledColorWithDefault(LedColorEnum.RED_LED);
   bool ledVisible = parameters.ledVisibleWithDefault(false);
   bool ledOn = parameters.ledOnWithDefault(false);
-  bool minMeasuredValueVisible = parameters.minMeasuredValueVisibleWithDefault(false);
-  bool maxMeasuredValueVisible = parameters.maxMeasuredValueVisibleWithDefault(false);
-  LabelNumberFormatEnum labelNumberFormat = parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
+  bool minMeasuredValueVisible =
+      parameters.minMeasuredValueVisibleWithDefault(false);
+  bool maxMeasuredValueVisible =
+      parameters.maxMeasuredValueVisibleWithDefault(false);
+  LabelNumberFormatEnum labelNumberFormat =
+      parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
 
   double imageWidth = width;
@@ -97,8 +105,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
         niceRange / (maxNoOfMajorTicks - 1),
         true,
       );
-      niceMinValue = (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
-      niceMaxValue = (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
+      niceMinValue =
+          (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
+      niceMaxValue =
+          (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
       minorTickSpacing = calcNiceNumber(
         majorTickSpacing / (maxNoOfMinorTicks - 1),
         true,
@@ -173,7 +183,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
   void drawLcdText(Canvas ctx, double value, bool vertical) {
     ctx.save();
 
-    if (lcdColor == LcdColorEnum.STANDARD || lcdColor == LcdColorEnum.STANDARD_GREEN) {
+    if (lcdColor == LcdColorEnum.STANDARD ||
+        lcdColor == LcdColorEnum.STANDARD_GREEN) {
       // ctx.shadowColor = 'gray'
       // if (vertical) {
       //   ctx.shadowOffsetX = imageHeight * 0.003
@@ -189,7 +200,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
     double lcdTextX;
     double lcdTextY;
     double lcdTextWidth;
-    TextStyle font = getFont(fontType == FontTypeEnum.LCDMono ? lcdFontSize : stdFontSize, lcdColor.textColor, fontType: fontType);
+    TextStyle font = getFont(
+        fontType == FontTypeEnum.LCDMono ? lcdFontSize : stdFontSize,
+        lcdColor.textColor,
+        fontType: fontType);
 
     if (vertical) {
       lcdTextWidth = imageWidth * 0.571428;
@@ -216,11 +230,13 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
       //lcdTextX = (imageWidth - imageWidth * 0.571428) / 2 + imageWidth * 0.571428 - 2;
       lcdTextX = (imageWidth - imageWidth * 0.571428) / 2;
       //lcdTextY = imageHeight * 0.875;
-      lcdTextY = imageHeight * 0.88 + imageHeight * 0.055 / 2 - textPainter.height / 2;
+      lcdTextY =
+          imageHeight * 0.88 + imageHeight * 0.055 / 2 - textPainter.height / 2;
     } else {
       lcdTextX = imageWidth * 0.695 - 5;
       //lcdTextY = imageHeight * 0.225 - (fontType == FontTypeEnum.LCDMono ? 2 : 0);
-      lcdTextY = imageHeight * 0.22 + imageHeight * 0.15 / 2 - textPainter.height / 2;
+      lcdTextY =
+          imageHeight * 0.22 + imageHeight * 0.15 / 2 - textPainter.height / 2;
     }
 
     textPainter.paint(ctx, Offset(lcdTextX, lcdTextY));
@@ -312,7 +328,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
     }
   }
 
-  void drawTickmarksImage(Canvas ctx, LabelNumberFormatEnum labelNumberFormat, bool vertical) {
+  void drawTickmarksImage(
+      Canvas ctx, LabelNumberFormatEnum labelNumberFormat, bool vertical) {
     ctx.save();
 
     double TEXT_WIDTH = imageWidth * 0.3;
@@ -378,10 +395,13 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     double labelCounter = minValue;
     tickCounter = 0;
-    for (; labelCounter <= maxValue; labelCounter += minorTickSpacing, tickCounter += minorTickSpacing) {
+    for (;
+        labelCounter <= maxValue;
+        labelCounter += minorTickSpacing, tickCounter += minorTickSpacing) {
       // Calculate the bounds of the scaling
       if (vertical) {
-        currentPos = scaleBoundsY + scaleBoundsH - tickCounter * tickSpaceScaling;
+        currentPos =
+            scaleBoundsY + scaleBoundsH - tickCounter * tickSpaceScaling;
       } else {
         currentPos = scaleBoundsX + tickCounter * tickSpaceScaling;
       }
@@ -420,7 +440,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(imageWidth * 0.28 - textPainter.size.width / 1.25, currentPos - textPainter.size.height / 2));
+              textPainter.paint(
+                  ctx,
+                  Offset(imageWidth * 0.28 - textPainter.size.width / 1.25,
+                      currentPos - textPainter.size.height / 2));
               break;
 
             case LabelNumberFormatEnum.SCIENTIFIC:
@@ -437,7 +460,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(imageWidth * 0.28 - textPainter.size.width / 1.25, currentPos - textPainter.size.height / 2));
+              textPainter.paint(
+                  ctx,
+                  Offset(imageWidth * 0.28 - textPainter.size.width / 1.25,
+                      currentPos - textPainter.size.height / 2));
               break;
 
             case LabelNumberFormatEnum.STANDARD:
@@ -456,7 +482,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(imageWidth * 0.28 - textPainter.size.width / 1.25, currentPos - textPainter.size.height / 2));
+              textPainter.paint(
+                  ctx,
+                  Offset(imageWidth * 0.28 - textPainter.size.width / 1.25,
+                      currentPos - textPainter.size.height / 2));
               break;
           }
         } else {
@@ -476,7 +505,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(currentPos - textPainter.size.width / 2, imageHeight * 0.73 - textPainter.size.height / 3));
+              textPainter.paint(
+                  ctx,
+                  Offset(currentPos - textPainter.size.width / 2,
+                      imageHeight * 0.73 - textPainter.size.height / 3));
               break;
 
             case LabelNumberFormatEnum.SCIENTIFIC:
@@ -493,7 +525,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(currentPos - textPainter.size.width / 2, imageHeight * 0.73 - textPainter.size.height / 3));
+              textPainter.paint(
+                  ctx,
+                  Offset(currentPos - textPainter.size.width / 2,
+                      imageHeight * 0.73 - textPainter.size.height / 3));
 
               break;
 
@@ -513,7 +548,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(currentPos - textPainter.size.width / 2, imageHeight * 0.73 - textPainter.size.height / 3));
+              textPainter.paint(
+                  ctx,
+                  Offset(currentPos - textPainter.size.width / 2,
+                      imageHeight * 0.73 - textPainter.size.height / 3));
               break;
           }
         }
@@ -524,7 +562,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
       }
 
       // Draw tickmark every minor tickmark spacing
-      if (maxNoOfMinorTicks % 2 == 0 && majorTickCounter == maxNoOfMinorTicks / 2) {
+      if (maxNoOfMinorTicks % 2 == 0 &&
+          majorTickCounter == maxNoOfMinorTicks / 2) {
         drawLinearTicks(
           ctx,
           mediumTickStart,
@@ -609,7 +648,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
     }
     if (gaugeType == GaugeTypeEnum.TYPE1) {
       //double darker = backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET || backgroundColor == BackgroundColorEnum.STAINLESS || backgroundColor == BackgroundColorEnum.BRUSHED_STAINLESS || backgroundColor == BackgroundColorEnum.TURNED ? 0.3 : 0;
-      double darker = backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET ? 0.3 : 0;
+      double darker = backgroundColor == BackgroundColorEnum.CARBON ||
+              backgroundColor == BackgroundColorEnum.PUNCHED_SHEET
+          ? 0.3
+          : 0;
       ui.Gradient valueBackgroundTrackGradient = ui.Gradient.linear(
         Offset(valueBackgroundStartX, valueBackgroundStartY),
         Offset(valueBackgroundStopX, valueBackgroundStopY),
@@ -624,7 +666,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
 
       if (vertical) {
         Path path = Path();
-        path.addRect(Rect.fromLTWH(imageWidth * 0.435714, top, imageWidth * 0.142857, fullSize));
+        path.addRect(Rect.fromLTWH(
+            imageWidth * 0.435714, top, imageWidth * 0.142857, fullSize));
         path.close();
         ctx.drawPath(
             path,
@@ -633,7 +676,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
               ..style = ui.PaintingStyle.fill);
       } else {
         Path path = Path();
-        path.addRect(Rect.fromLTWH(imageWidth * 0.142857, imageHeight * 0.435714, fullSize, imageHeight * 0.142857));
+        path.addRect(Rect.fromLTWH(imageWidth * 0.142857,
+            imageHeight * 0.435714, fullSize, imageHeight * 0.142857));
         path.close();
         ctx.drawPath(
             path,
@@ -671,7 +715,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
       // ctx.fillStyle = valueBorderGradient
       if (vertical) {
         Path path = Path();
-        path.addRect(Rect.fromLTWH(imageWidth * 0.435714, top, imageWidth * 0.007142, fullSize));
+        path.addRect(Rect.fromLTWH(
+            imageWidth * 0.435714, top, imageWidth * 0.007142, fullSize));
         path.close();
         ctx.drawPath(
             path,
@@ -680,7 +725,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
               ..style = ui.PaintingStyle.fill);
 
         path = Path();
-        path.addRect(Rect.fromLTWH(imageWidth * 0.571428, top, imageWidth * 0.007142, fullSize));
+        path.addRect(Rect.fromLTWH(
+            imageWidth * 0.571428, top, imageWidth * 0.007142, fullSize));
         path.close();
         ctx.drawPath(
             path,
@@ -689,7 +735,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
               ..style = ui.PaintingStyle.fill);
       } else {
         Path path = Path();
-        path.addRect(Rect.fromLTWH(imageWidth * 0.142857, imageHeight * 0.435714, fullSize, imageHeight * 0.007142));
+        path.addRect(Rect.fromLTWH(imageWidth * 0.142857,
+            imageHeight * 0.435714, fullSize, imageHeight * 0.007142));
         path.close();
         ctx.drawPath(
             path,
@@ -698,7 +745,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
               ..style = ui.PaintingStyle.fill);
 
         path = Path();
-        path.addRect(Rect.fromLTWH(imageWidth * 0.142857, imageHeight * 0.571428, fullSize, imageHeight * 0.007142));
+        path.addRect(Rect.fromLTWH(imageWidth * 0.142857,
+            imageHeight * 0.571428, fullSize, imageHeight * 0.007142));
         path.close();
         ctx.drawPath(
             path,
@@ -752,7 +800,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
             : imageWidth * 0.05;
     if (vertical) {
       Path path = Path();
-      path.addRect(Rect.fromLTWH(valueStartX, valueTop, valueStopX - valueStartX, valueSize + thermoTweak));
+      path.addRect(Rect.fromLTWH(valueStartX, valueTop,
+          valueStopX - valueStartX, valueSize + thermoTweak));
       path.close();
       ctx.drawPath(
           path,
@@ -761,7 +810,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
             ..style = ui.PaintingStyle.fill);
     } else {
       Path path = Path();
-      path.addRect(Rect.fromLTWH(valueTop - thermoTweak, valueStartY, valueSize + thermoTweak, valueStopY - valueStartY));
+      path.addRect(Rect.fromLTWH(valueTop - thermoTweak, valueStartY,
+          valueSize + thermoTweak, valueStopY - valueStartY));
       path.close();
       ctx.drawPath(
           path,
@@ -798,7 +848,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
 
       if (vertical) {
         Path path = Path();
-        path.addRect(Rect.fromLTWH(valueForegroundStartX, valueTop, valueForegroundStopX, valueSize));
+        path.addRect(Rect.fromLTWH(
+            valueForegroundStartX, valueTop, valueForegroundStopX, valueSize));
         path.close();
         ctx.drawPath(
             path,
@@ -807,7 +858,8 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
               ..style = ui.PaintingStyle.fill);
       } else {
         Path path = Path();
-        path.addRect(Rect.fromLTWH(valueTop, valueForegroundStartY, valueSize, valueForegroundStopY - valueForegroundStartY));
+        path.addRect(Rect.fromLTWH(valueTop, valueForegroundStartY, valueSize,
+            valueForegroundStopY - valueForegroundStartY));
         path.close();
         ctx.drawPath(
             path,
@@ -1184,10 +1236,16 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
 
   // **************   Initialization  ********************
   void init(dynamic parameters) {
-    bool drawFrame2 = parameters['frame'] == null ? false : parameters['frame'] as bool;
-    bool drawBackground2 = parameters['background'] == null ? false : parameters['background'] as bool;
-    bool drawLed = parameters['led'] == null ? false : parameters['led'] as bool;
-    bool drawForeground2 = parameters['foreground'] == null ? false : parameters['foreground'] as bool;
+    bool drawFrame2 =
+        parameters['frame'] == null ? false : parameters['frame'] as bool;
+    bool drawBackground2 = parameters['background'] == null
+        ? false
+        : parameters['background'] as bool;
+    bool drawLed =
+        parameters['led'] == null ? false : parameters['led'] as bool;
+    bool drawForeground2 = parameters['foreground'] == null
+        ? false
+        : parameters['foreground'] as bool;
 
     double yOffset;
     double yRange;
@@ -1237,11 +1295,13 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
     if (minMeasuredValueVisible) {
       if (vertical) {
         minMeasuredValueCtx.drawPicture(
-          createMeasuredValueImage(minMaxIndSize, ColorEnum.BLUE.dark, false, vertical),
+          createMeasuredValueImage(
+              minMaxIndSize, ColorEnum.BLUE.dark, false, vertical),
         );
       } else {
         minMeasuredValueCtx.drawPicture(
-          createMeasuredValueImage(minMaxIndSize, ColorEnum.BLUE.dark, false, vertical),
+          createMeasuredValueImage(
+              minMaxIndSize, ColorEnum.BLUE.dark, false, vertical),
         );
       }
     }
@@ -1250,11 +1310,13 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
     if (maxMeasuredValueVisible) {
       if (vertical) {
         maxMeasuredValueCtx.drawPicture(
-          createMeasuredValueImage(minMaxIndSize, ColorEnum.RED.medium, false, vertical),
+          createMeasuredValueImage(
+              minMaxIndSize, ColorEnum.RED.medium, false, vertical),
         );
       } else {
         maxMeasuredValueCtx.drawPicture(
-          createMeasuredValueImage(minMaxIndSize, ColorEnum.RED.medium, false, vertical),
+          createMeasuredValueImage(
+              minMaxIndSize, ColorEnum.RED.medium, false, vertical),
         );
       }
     }
@@ -1301,14 +1363,24 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
         // Vertical orientation
         yOffset = gaugeType == GaugeTypeEnum.TYPE1 ? 0.856796 : 0.7475;
         yRange = yOffset - 0.12864;
-        valuePos = imageHeight * yOffset - (imageHeight * yRange * (threshold - minValue)) / (maxValue - minValue);
-        backgroundContext.translate(imageWidth * 0.365, valuePos - minMaxIndSize / 2);
+        valuePos = imageHeight * yOffset -
+            (imageHeight * yRange * (threshold - minValue)) /
+                (maxValue - minValue);
+        backgroundContext.translate(
+            imageWidth * 0.365, valuePos - minMaxIndSize / 2);
       } else {
         // Horizontal orientation
         yOffset = gaugeType == GaugeTypeEnum.TYPE1 ? 0.871012 : 0.82;
-        yRange = yOffset - (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857);
-        valuePos = (imageWidth * yRange * (threshold - minValue)) / (maxValue - minValue);
-        backgroundContext.translate(imageWidth * (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857) - minMaxIndSize / 2 + valuePos, imageHeight * 0.58);
+        yRange =
+            yOffset - (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857);
+        valuePos = (imageWidth * yRange * (threshold - minValue)) /
+            (maxValue - minValue);
+        backgroundContext.translate(
+            imageWidth *
+                    (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857) -
+                minMaxIndSize / 2 +
+                valuePos,
+            imageHeight * 0.58);
       }
       backgroundContext.drawPicture(createThresholdImage(vertical));
       backgroundContext.restore();
@@ -1317,14 +1389,18 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
     // Create lcd background if selected in background buffer (backgroundBuffer)
     if (drawBackground2 && lcdVisible) {
       if (vertical) {
-        ui.Picture picture = createLcdBackgroundImage(imageWidth * 0.571428, imageHeight * 0.055, lcdColor);
+        ui.Picture picture = createLcdBackgroundImage(
+            imageWidth * 0.571428, imageHeight * 0.055, lcdColor);
         backgroundContext.save();
-        backgroundContext.translate((imageWidth - imageWidth * 0.571428) / 2, imageHeight * 0.88);
+        backgroundContext.translate(
+            (imageWidth - imageWidth * 0.571428) / 2, imageHeight * 0.88);
         backgroundContext.drawPicture(picture);
-        backgroundContext.translate(-(imageWidth - imageWidth * 0.571428) / 2, -imageHeight * 0.88);
+        backgroundContext.translate(
+            -(imageWidth - imageWidth * 0.571428) / 2, -imageHeight * 0.88);
         backgroundContext.restore();
       } else {
-        ui.Picture picture = createLcdBackgroundImage(imageWidth * 0.18, imageHeight * 0.15, lcdColor);
+        ui.Picture picture = createLcdBackgroundImage(
+            imageWidth * 0.18, imageHeight * 0.15, lcdColor);
         backgroundContext.save();
         backgroundContext.translate(imageWidth * 0.695, imageHeight * 0.22);
         backgroundContext.drawPicture(picture);
@@ -1376,7 +1452,9 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw led
     if (ledVisible) {
-      picture = ledOn ? ledBufferOnRecorder.endRecording() : ledBufferOffRecorder.endRecording();
+      picture = ledOn
+          ? ledBufferOnRecorder.endRecording()
+          : ledBufferOffRecorder.endRecording();
       canvas.save();
       canvas.translate(ledPosX, ledPosY);
       canvas.drawPicture(picture);
@@ -1394,14 +1472,21 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
       if (vertical) {
         yOffset = gaugeType == GaugeTypeEnum.TYPE1 ? 0.856796 : 0.7475;
         yRange = yOffset - 0.12864;
-        valuePos = imageHeight * yOffset - (imageHeight * yRange * (minMeasuredValue - minValue)) / (maxValue - minValue);
+        valuePos = imageHeight * yOffset -
+            (imageHeight * yRange * (minMeasuredValue - minValue)) /
+                (maxValue - minValue);
         minMaxX = imageWidth * 0.34 - minMaxIndSize;
         minMaxY = valuePos - minMaxIndSize / 2;
       } else {
         yOffset = gaugeType == GaugeTypeEnum.TYPE1 ? 0.871012 : 0.82;
-        yRange = yOffset - (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857);
-        valuePos = (imageWidth * yRange * (minMeasuredValue - minValue)) / (maxValue - minValue);
-        minMaxX = imageWidth * (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857) - minMaxIndSize / 2 + valuePos;
+        yRange =
+            yOffset - (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857);
+        valuePos = (imageWidth * yRange * (minMeasuredValue - minValue)) /
+            (maxValue - minValue);
+        minMaxX = imageWidth *
+                (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857) -
+            minMaxIndSize / 2 +
+            valuePos;
         minMaxY = imageHeight * 0.65;
       }
       canvas.save();
@@ -1417,14 +1502,21 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
       if (vertical) {
         yOffset = gaugeType == GaugeTypeEnum.TYPE1 ? 0.856796 : 0.7475;
         yRange = yOffset - 0.12864;
-        valuePos = imageHeight * yOffset - (imageHeight * yRange * (maxMeasuredValue - minValue)) / (maxValue - minValue);
+        valuePos = imageHeight * yOffset -
+            (imageHeight * yRange * (maxMeasuredValue - minValue)) /
+                (maxValue - minValue);
         minMaxX = imageWidth * 0.34 - minMaxIndSize;
         minMaxY = valuePos - minMaxIndSize / 2;
       } else {
         yOffset = gaugeType == GaugeTypeEnum.TYPE1 ? 0.877012 : 0.82;
-        yRange = yOffset - (gaugeType == GaugeTypeEnum.TYPE1 ? 0.14857 : 0.19857);
-        valuePos = (imageWidth * yRange * (maxMeasuredValue - minValue)) / (maxValue - minValue);
-        minMaxX = imageWidth * (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857) - minMaxIndSize / 2 + valuePos;
+        yRange =
+            yOffset - (gaugeType == GaugeTypeEnum.TYPE1 ? 0.14857 : 0.19857);
+        valuePos = (imageWidth * yRange * (maxMeasuredValue - minValue)) /
+            (maxValue - minValue);
+        minMaxX = imageWidth *
+                (gaugeType == GaugeTypeEnum.TYPE1 ? 0.142857 : 0.19857) -
+            minMaxIndSize / 2 +
+            valuePos;
         minMaxY = imageHeight * 0.65;
       }
       canvas.save();

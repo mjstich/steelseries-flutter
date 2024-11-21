@@ -10,10 +10,13 @@ import 'drawFrame.dart';
 import 'tools.dart';
 
 void drawHorizon(Canvas canvas, Size canvasSize, Parameters parameters) {
-  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
-  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  double size =
+      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  FrameDesignEnum frameDesign =
+      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
+  ForegroundTypeEnum foregroundType =
+      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
   ColorEnum pointerColor = parameters.pointerColorWithDefault(ColorEnum.WHITE);
   double roll = parameters.rollWithDefault(0);
@@ -100,8 +103,15 @@ void drawHorizon(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imgWidth * 0.375,
           );
-          textPainter.paint(ctx, Offset((imgWidth - imgWidth * 0.2) / 2 - 8 - textPainter.size.width, y - textPainter.size.height / 2));
-          textPainter.paint(ctx, Offset(imgWidth - (imgWidth - imgWidth * 0.2) / 2 + 8, y - textPainter.size.height / 2));
+          textPainter.paint(
+              ctx,
+              Offset(
+                  (imgWidth - imgWidth * 0.2) / 2 - 8 - textPainter.size.width,
+                  y - textPainter.size.height / 2));
+          textPainter.paint(
+              ctx,
+              Offset(imgWidth - (imgWidth - imgWidth * 0.2) / 2 + 8,
+                  y - textPainter.size.height / 2));
 
           Path path = Path();
           path.moveTo((imgWidth - imgWidth * 0.2) / 2, y);
@@ -162,8 +172,15 @@ void drawHorizon(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imgWidth * 0.375,
           );
-          textPainter.paint(ctx, Offset((imgWidth - imgWidth * 0.2) / 2 - 8 - textPainter.size.width, y - textPainter.size.height / 2));
-          textPainter.paint(ctx, Offset(imgWidth - (imgWidth - imgWidth * 0.2) / 2 + 8, y - textPainter.size.height / 2));
+          textPainter.paint(
+              ctx,
+              Offset(
+                  (imgWidth - imgWidth * 0.2) / 2 - 8 - textPainter.size.width,
+                  y - textPainter.size.height / 2));
+          textPainter.paint(
+              ctx,
+              Offset(imgWidth - (imgWidth - imgWidth * 0.2) / 2 + 8,
+                  y - textPainter.size.height / 2));
           Path path = Path();
           path.moveTo((imgWidth - imgWidth * 0.2) / 2, y);
           path.lineTo(imgWidth - (imgWidth - imgWidth * 0.2) / 2, y);
@@ -447,7 +464,10 @@ void drawHorizon(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Set the clipping area
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: (imageWidth * 0.831775), height: (imageWidth * 0.831775));
+    Rect rect = Rect.fromCenter(
+        center: Offset(centerX, centerY),
+        width: (imageWidth * 0.831775),
+        height: (imageWidth * 0.831775));
     path.addArc(rect, 0, TWO_PI);
     path.close();
     canvas.clipPath(path);
@@ -473,10 +493,12 @@ void drawHorizon(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     double indicatorWidth = size * 0.037383;
     canvas.save();
-    canvas.translate(imageWidth * 0.5 - indicatorWidth / 2, imageWidth * 0.107476);
+    canvas.translate(
+        imageWidth * 0.5 - indicatorWidth / 2, imageWidth * 0.107476);
     picture = indicatorContextRecorder.endRecording();
     canvas.drawPicture(picture);
-    canvas.translate(-(imageWidth * 0.5 - indicatorWidth / 2), -imageWidth * 0.107476);
+    canvas.translate(
+        -(imageWidth * 0.5 - indicatorWidth / 2), -imageWidth * 0.107476);
     canvas.restore();
 
     canvas.restore();

@@ -11,7 +11,8 @@ ui.Image? carbonBuffer() {
   return _carbonBuffer;
 }
 
-Future<ui.Image> carbonBufferInit({double width = 12.0, double height = 12.0}) async {
+Future<ui.Image> carbonBufferInit(
+    {double width = 12.0, double height = 12.0}) async {
   if (_carbonBuffer == null) {
     double imageWidth = width;
     double imageHeight = height;
@@ -47,7 +48,8 @@ Future<ui.Image> carbonBufferInit({double width = 12.0, double height = 12.0}) a
     // RULF
     //canvas.save();
     path = Path();
-    rect = Rect.fromLTWH(imageWidth * 0.083333, 0, imageWidth * 0.333333, imageHeight * 0.416666);
+    rect = Rect.fromLTWH(imageWidth * 0.083333, 0, imageWidth * 0.333333,
+        imageHeight * 0.416666);
     path.addRect(rect);
     path.close();
     //canvas.restore();
@@ -71,7 +73,8 @@ Future<ui.Image> carbonBufferInit({double width = 12.0, double height = 12.0}) a
     // RLRB
     //canvas.save();
     path = Path();
-    rect = Rect.fromLTWH(imageWidth * 0.5, imageHeight * 0.5, imageWidth * 0.5, imageHeight * 0.5);
+    rect = Rect.fromLTWH(imageWidth * 0.5, imageHeight * 0.5, imageWidth * 0.5,
+        imageHeight * 0.5);
     path.addRect(rect);
     path.close();
     //canvas.restore();
@@ -94,7 +97,8 @@ Future<ui.Image> carbonBufferInit({double width = 12.0, double height = 12.0}) a
     // RLRF
     //canvas.save();
     path = Path();
-    rect = Rect.fromLTWH(imageWidth * 0.583333, imageHeight * 0.5, imageWidth * 0.333333, imageHeight * 0.416666);
+    rect = Rect.fromLTWH(imageWidth * 0.583333, imageHeight * 0.5,
+        imageWidth * 0.333333, imageHeight * 0.416666);
     path.addRect(rect);
     path.close();
     //canvas.restore();
@@ -117,7 +121,8 @@ Future<ui.Image> carbonBufferInit({double width = 12.0, double height = 12.0}) a
     // RURB
     //canvas.save();
     path = Path();
-    rect = Rect.fromLTWH(imageWidth * 0.5, 0, imageWidth * 0.5, imageHeight * 0.5);
+    rect =
+        Rect.fromLTWH(imageWidth * 0.5, 0, imageWidth * 0.5, imageHeight * 0.5);
     path.addRect(rect);
     path.close();
     //canvas.restore();
@@ -140,7 +145,8 @@ Future<ui.Image> carbonBufferInit({double width = 12.0, double height = 12.0}) a
     // RURF
     //canvas.save();
     path = Path();
-    rect = Rect.fromLTWH(imageWidth * 0.583333, imageHeight * 0.083333, imageWidth * 0.333333, imageHeight * 0.416666);
+    rect = Rect.fromLTWH(imageWidth * 0.583333, imageHeight * 0.083333,
+        imageWidth * 0.333333, imageHeight * 0.416666);
     path.addRect(rect);
     path.close();
     //canvas.restore();
@@ -163,7 +169,8 @@ Future<ui.Image> carbonBufferInit({double width = 12.0, double height = 12.0}) a
     // RLLB
     //canvas.save();
     path = Path();
-    rect = Rect.fromLTWH(0, imageHeight * 0.5, imageWidth * 0.5, imageHeight * 0.5);
+    rect = Rect.fromLTWH(
+        0, imageHeight * 0.5, imageWidth * 0.5, imageHeight * 0.5);
     path.addRect(rect);
     path.close();
     //canvas.restore();
@@ -186,7 +193,8 @@ Future<ui.Image> carbonBufferInit({double width = 12.0, double height = 12.0}) a
     // RLLF
     //canvas.save();
     path = Path();
-    rect = Rect.fromLTWH(imageWidth * 0.083333, imageHeight * 0.583333, imageWidth * 0.333333, imageHeight * 0.416666);
+    rect = Rect.fromLTWH(imageWidth * 0.083333, imageHeight * 0.583333,
+        imageWidth * 0.333333, imageHeight * 0.416666);
     path.addRect(rect);
     path.close();
     //canvas.restore();

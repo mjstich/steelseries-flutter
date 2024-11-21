@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 Map<String, ui.Picture> measuredValueImageCache = {};
 
-ui.Picture createMeasuredValueImage(double size, Color indicatorColor, bool radial, bool vertical) {
+ui.Picture createMeasuredValueImage(
+    double size, Color indicatorColor, bool radial, bool vertical) {
   //String cacheKey = size.toString() + indicatorColor.toString() + radial.toString() + vertical.toString();
 
   // check if we have already created and cached this buffer, if so return it and exit

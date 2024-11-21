@@ -9,7 +9,8 @@ import 'tools.dart';
 
 Map<String, ui.Picture> linearFrameImageCache = {};
 
-ui.Picture drawLinearFrameImage(FrameDesignEnum frameDesign, double imageWidth, double imageHeight, bool vertical) {
+ui.Picture drawLinearFrameImage(FrameDesignEnum frameDesign, double imageWidth,
+    double imageHeight, bool vertical) {
   double frameWidth;
   double OUTER_FRAME_CORNER_RADIUS;
   double FRAME_MAIN_CORNER_RADIUS;
@@ -18,8 +19,11 @@ ui.Picture drawLinearFrameImage(FrameDesignEnum frameDesign, double imageWidth, 
 
   // check if we have already created and cached this buffer, if not create it
   //if (!linearFrameImageCache.containsKey(cacheKey)) {
-  frameWidth = math.sqrt(imageWidth * imageWidth + imageHeight * imageHeight) * 0.04;
-  frameWidth = math.min(frameWidth, (vertical ? imageWidth : imageHeight) * 0.1).ceilToDouble();
+  frameWidth =
+      math.sqrt(imageWidth * imageWidth + imageHeight * imageHeight) * 0.04;
+  frameWidth = math
+      .min(frameWidth, (vertical ? imageWidth : imageHeight) * 0.1)
+      .ceilToDouble();
 
   // Setup buffer
   var pictureRecorder = ui.PictureRecorder();

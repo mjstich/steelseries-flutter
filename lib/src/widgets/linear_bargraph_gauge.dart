@@ -438,7 +438,8 @@ class LinearBargraphGauge extends StatefulWidget {
   State<LinearBargraphGauge> createState() => _LinearBargraphGaugeState();
 }
 
-class _LinearBargraphGaugeState extends State<LinearBargraphGauge> with TickerProviderStateMixin {
+class _LinearBargraphGaugeState extends State<LinearBargraphGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double? _from;
@@ -460,7 +461,10 @@ class _LinearBargraphGaugeState extends State<LinearBargraphGauge> with TickerPr
 
   @override
   void didUpdateWidget(covariant LinearBargraphGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value || oldWidget.start != widget.start || oldWidget.end != widget.end) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value ||
+        oldWidget.start != widget.start ||
+        oldWidget.end != widget.end) {
       if (oldWidget.start != widget.start || oldWidget.end != widget.end) {
         _from = null;
       } else {
@@ -485,7 +489,9 @@ class _LinearBargraphGaugeState extends State<LinearBargraphGauge> with TickerPr
           milliseconds: widget.animationDuration,
         ),
       );
-      _animation = Tween<double>(begin: _from ?? widget.start, end: widget.value).animate(
+      _animation =
+          Tween<double>(begin: _from ?? widget.start, end: widget.value)
+              .animate(
         CurvedAnimation(
           parent: _animationController!,
           curve: Interval(
@@ -655,7 +661,8 @@ class _LeafLinearBargraphGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderLinearBargraphGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderLinearBargraphGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setStart = start!

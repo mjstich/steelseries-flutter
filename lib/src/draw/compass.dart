@@ -21,18 +21,26 @@ class CompassInit {
 }
 
 void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
-  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
-  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  double size =
+      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  FrameDesignEnum frameDesign =
+      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.foregroundVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.RED);
+  BackgroundColorEnum backgroundColor =
+      parameters.backgroundColorWithDefault(BackgroundColorEnum.RED);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
-  PointerTypeEnum pointerType = parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
+  PointerTypeEnum pointerType =
+      parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
   ColorEnum pointerColor = parameters.pointerColorWithDefault(ColorEnum.RED);
-  KnobTypeEnum knobType = parameters.knobTypeWithDefault(KnobTypeEnum.METAL_KNOB);
-  KnobStyleEnum knobStyle = parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
-  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE2);
+  KnobTypeEnum knobType =
+      parameters.knobTypeWithDefault(KnobTypeEnum.METAL_KNOB);
+  KnobStyleEnum knobStyle =
+      parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
+  ForegroundTypeEnum foregroundType =
+      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE2);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
-  List<String> pointSymbols = parameters.pointerSymbolsWithDefault(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
+  List<String> pointSymbols = parameters
+      .pointerSymbolsWithDefault(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
   bool pointSymbolsVisible = parameters.pointSymbolsVisibleWithDefault(true);
   ui.Image? customLayer = parameters.customLayer;
   bool degreeScale = parameters.degreeScaleWithDefault(true);
@@ -102,7 +110,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: imageWidth,
             );
-            textPainter.paint(canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
+            textPainter.paint(
+                canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
             ctx.translate(-imageWidth * 0.445, 0);
             break;
           case 45:
@@ -121,7 +130,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: imageWidth,
             );
-            textPainter.paint(canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
+            textPainter.paint(
+                canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
             ctx.translate(-imageWidth * 0.34, 0);
             break;
           case 90:
@@ -141,7 +151,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: imageWidth,
             );
-            textPainter.paint(canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
+            textPainter.paint(
+                canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
             ctx.translate(-imageWidth * 0.445, 0);
             break;
           case 135:
@@ -160,7 +171,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: imageWidth,
             );
-            textPainter.paint(canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
+            textPainter.paint(
+                canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
             ctx.translate(-imageWidth * 0.34, 0);
             break;
           case 180:
@@ -179,7 +191,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: imageWidth,
             );
-            textPainter.paint(canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
+            textPainter.paint(
+                canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
             ctx.translate(-imageWidth * 0.445, 0);
             break;
           case 225:
@@ -198,7 +211,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: imageWidth,
             );
-            textPainter.paint(canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
+            textPainter.paint(
+                canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
             ctx.translate(-imageWidth * 0.34, 0);
             break;
           case 270:
@@ -217,7 +231,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: imageWidth,
             );
-            textPainter.paint(canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
+            textPainter.paint(
+                canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
             ctx.translate(-imageWidth * 0.445, 0);
             break;
           case 315:
@@ -236,13 +251,31 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: imageWidth,
             );
-            textPainter.paint(canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
+            textPainter.paint(
+                canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
             ctx.translate(-imageWidth * 0.34, 0);
             break;
         }
         ctx.restore();
 
-        if (roseVisible && (i == 0 || i == 22.5 || i == 45 || i == 67.5 || i == 90 || i == 112.5 || i == 135 || i == 157.5 || i == 180 || i == 202.5 || i == 225 || i == 247.5 || i == 270 || i == 292.5 || i == 315 || i == 337.5 || i == 360)) {
+        if (roseVisible &&
+            (i == 0 ||
+                i == 22.5 ||
+                i == 45 ||
+                i == 67.5 ||
+                i == 90 ||
+                i == 112.5 ||
+                i == 135 ||
+                i == 157.5 ||
+                i == 180 ||
+                i == 202.5 ||
+                i == 225 ||
+                i == 247.5 ||
+                i == 270 ||
+                i == 292.5 ||
+                i == 315 ||
+                i == 337.5 ||
+                i == 360)) {
           // ROSE_LINE
           ctx.save();
           Path path = Path();
@@ -295,7 +328,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: 50,
               );
-              textPainter.paint(canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
+              textPainter.paint(
+                  canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
               ctx.translate(-imageWidth * 0.41, 0);
               break;
             case 90:
@@ -314,7 +348,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: 50,
               );
-              textPainter.paint(canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
+              textPainter.paint(
+                  canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
               ctx.translate(-imageWidth * 0.41, 0);
               break;
             case 180:
@@ -333,7 +368,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: 50,
               );
-              textPainter.paint(canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
+              textPainter.paint(
+                  canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
               ctx.translate(-imageWidth * 0.41, 0);
               break;
             case 270:
@@ -352,7 +388,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: 50,
               );
-              textPainter.paint(canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
+              textPainter.paint(
+                  canvas, Offset(stdFont.fontSize! * fontXOffset, 0));
               ctx.translate(-imageWidth * 0.41, 0);
               break;
             default:
@@ -376,7 +413,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: 50,
               );
-              textPainter.paint(canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
+              textPainter.paint(
+                  canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
               ctx.translate(-imageWidth * 0.39, 0);
           }
         } else {
@@ -402,7 +440,8 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: 50,
           );
-          textPainter.paint(canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
+          textPainter.paint(
+              canvas, Offset(smlFont.fontSize! * smallFontXOffset, 0));
           ctx.translate(-imageWidth * 0.39, 0);
         }
         ctx.restore();
@@ -719,7 +758,10 @@ void drawCompass(Canvas canvas, Size canvasSize, Parameters parameters) {
         OrientationEnum.EAST,
       );
     }
-    return CompassInit(frameImage: frameImage, foregroundImage: foregroundImage, backgroundImage: backgroundImage);
+    return CompassInit(
+        frameImage: frameImage,
+        foregroundImage: foregroundImage,
+        backgroundImage: backgroundImage);
   }
 
   bool repaint() {

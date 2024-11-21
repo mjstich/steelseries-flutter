@@ -13,7 +13,8 @@ class ColorDef {
   final Color lighter;
   final Color veryLight;
 
-  ColorDef(this.veryDark, this.dark, this.medium, this.light, this.lighter, this.veryLight);
+  ColorDef(this.veryDark, this.dark, this.medium, this.light, this.lighter,
+      this.veryLight);
 }
 
 enum BackgroundColorEnum {
@@ -162,7 +163,8 @@ enum BackgroundColorEnum {
   //   'TURNED',
   // );
 
-  const BackgroundColorEnum(this.gradientStart, this.gradientFraction, this.gradientStop, this.labelColor, this.symbolColor, this.name);
+  const BackgroundColorEnum(this.gradientStart, this.gradientFraction,
+      this.gradientStop, this.labelColor, this.symbolColor, this.name);
 
   final Color gradientStart;
   final Color gradientFraction;
@@ -366,7 +368,13 @@ enum LcdColorEnum {
     Color.fromRGBO(0x00, 0x00, 0x00, 1),
   );
 
-  const LcdColorEnum(this.gradientStartColor, this.gradientFraction1Color, this.gradientFraction2Color, this.gradientFraction3Color, this.gradientStopColor, this.textColor);
+  const LcdColorEnum(
+      this.gradientStartColor,
+      this.gradientFraction1Color,
+      this.gradientFraction2Color,
+      this.gradientFraction3Color,
+      this.gradientStopColor,
+      this.textColor);
 
   final Color gradientStartColor;
   final Color gradientFraction1Color;
@@ -377,7 +385,12 @@ enum LcdColorEnum {
 
   @override
   String toString() {
-    return gradientStartColor.toString() + gradientFraction1Color.toString() + gradientFraction2Color.toString() + gradientFraction3Color.toString() + gradientStopColor.toString() + textColor.toString();
+    return gradientStartColor.toString() +
+        gradientFraction1Color.toString() +
+        gradientFraction2Color.toString() +
+        gradientFraction3Color.toString() +
+        gradientStopColor.toString() +
+        textColor.toString();
   }
 }
 
@@ -487,7 +500,8 @@ enum ColorEnum {
     Color.fromRGBO(234, 247, 218, 1),
   );
 
-  const ColorEnum(this.veryDark, this.dark, this.medium, this.light, this.lighter, this.veryLight);
+  const ColorEnum(this.veryDark, this.dark, this.medium, this.light,
+      this.lighter, this.veryLight);
 
   final Color veryDark;
   final Color dark;
@@ -496,7 +510,8 @@ enum ColorEnum {
   final Color lighter;
   final Color veryLight;
 
-  ColorDef toColorDef() => ColorDef(veryDark, dark, medium, light, lighter, veryLight);
+  ColorDef toColorDef() =>
+      ColorDef(veryDark, dark, medium, light, lighter, veryLight);
 }
 
 enum LedColorEnum {
@@ -572,11 +587,24 @@ enum LedColorEnum {
   final Color innerColor2_OFF;
   final Color outerColor_OFF;
 
-  const LedColorEnum(this.innerColor1_ON, this.innerColor2_ON, this.outerColor_ON, this.coronaColor, this.innerColor1_OFF, this.innerColor2_OFF, this.outerColor_OFF);
+  const LedColorEnum(
+      this.innerColor1_ON,
+      this.innerColor2_ON,
+      this.outerColor_ON,
+      this.coronaColor,
+      this.innerColor1_OFF,
+      this.innerColor2_OFF,
+      this.outerColor_OFF);
 
   @override
   String toString() {
-    return innerColor1_ON.toString() + innerColor2_ON.toString() + outerColor_ON.toString() + coronaColor.toString() + innerColor1_OFF.toString() + innerColor2_OFF.toString() + outerColor_OFF.toString();
+    return innerColor1_ON.toString() +
+        innerColor2_ON.toString() +
+        outerColor_ON.toString() +
+        coronaColor.toString() +
+        innerColor1_OFF.toString() +
+        innerColor2_OFF.toString() +
+        outerColor_OFF.toString();
   }
 }
 
@@ -913,7 +941,8 @@ class Parameters {
     return backgroundVisible ?? defaultBackgroundVisible;
   }
 
-  BackgroundColorEnum backgroundColorWithDefault(BackgroundColorEnum defaultBackgroundColor) {
+  BackgroundColorEnum backgroundColorWithDefault(
+      BackgroundColorEnum defaultBackgroundColor) {
     return backgroundColor ?? defaultBackgroundColor;
   }
 
@@ -977,7 +1006,8 @@ class Parameters {
     return useColorLabels ?? defaultUseColorLabels;
   }
 
-  ForegroundTypeEnum foregroundTypeWithDefault(ForegroundTypeEnum defaultForegroundType) {
+  ForegroundTypeEnum foregroundTypeWithDefault(
+      ForegroundTypeEnum defaultForegroundType) {
     return foregroundType ?? defaultForegroundType;
   }
 
@@ -985,7 +1015,8 @@ class Parameters {
     return pointerType ?? defaultPointerType;
   }
 
-  PointerTypeEnum pointerTypeAverageWithDefault(PointerTypeEnum defaultPointerTypeAverage) {
+  PointerTypeEnum pointerTypeAverageWithDefault(
+      PointerTypeEnum defaultPointerTypeAverage) {
     return pointerTypeAverage ?? defaultPointerTypeAverage;
   }
 
@@ -1017,7 +1048,8 @@ class Parameters {
     return pointerColor ?? defaultPointerColor;
   }
 
-  ColorEnum pointerColorAverageWithDefault(ColorEnum defaultPointerColorAverage) {
+  ColorEnum pointerColorAverageWithDefault(
+      ColorEnum defaultPointerColorAverage) {
     return pointerColorAverage ?? defaultPointerColorAverage;
   }
 
@@ -1101,7 +1133,8 @@ class Parameters {
     return maxMeasuredValueVisible ?? defaultMaxMeasuredValueVisible;
   }
 
-  LabelNumberFormatEnum labelNumberFormatWithDefault(LabelNumberFormatEnum defaultLabelNumberFormat) {
+  LabelNumberFormatEnum labelNumberFormatWithDefault(
+      LabelNumberFormatEnum defaultLabelNumberFormat) {
     return labelNumberFormat ?? defaultLabelNumberFormat;
   }
 
@@ -1109,7 +1142,8 @@ class Parameters {
     return orientation ?? defaultOrientation;
   }
 
-  TickLabelOrientationEnum tickLabelOrientationWithDefault(TickLabelOrientationEnum defaultTickLabelOrientation) {
+  TickLabelOrientationEnum tickLabelOrientationWithDefault(
+      TickLabelOrientationEnum defaultTickLabelOrientation) {
     return tickLabelOrientation ?? defaultTickLabelOrientation;
   }
 
@@ -1117,7 +1151,8 @@ class Parameters {
     return trendVisible ?? defaultTrendVisible;
   }
 
-  List<LedColorEnum> trendColorsWithDefault(List<LedColorEnum> defaultTrendColors) {
+  List<LedColorEnum> trendColorsWithDefault(
+      List<LedColorEnum> defaultTrendColors) {
     return trendColors ?? defaultTrendColors;
   }
 
@@ -1125,7 +1160,8 @@ class Parameters {
     return useOdometer ?? defaultUseOdometer;
   }
 
-  OdometerParameters odometerParametersWithDefault(OdometerParameters defaultOdomoterParams) {
+  OdometerParameters odometerParametersWithDefault(
+      OdometerParameters defaultOdomoterParams) {
     return odometerParameters ?? defaultOdomoterParams;
   }
 
@@ -1219,7 +1255,8 @@ class SectionRange {
   final double stop;
   final ColorDef color;
 
-  const SectionRange({required this.start, required this.stop, required this.color});
+  const SectionRange(
+      {required this.start, required this.stop, required this.color});
 }
 
 class ClockParameters {
@@ -1228,7 +1265,8 @@ class ClockParameters {
   final int second;
   final bool? secondPointerVisible;
 
-  const ClockParameters(this.hour, this.minute, this.second, {this.secondPointerVisible});
+  const ClockParameters(this.hour, this.minute, this.second,
+      {this.secondPointerVisible});
 
   int toSeconds() {
     return hour * 3600 + minute * 60 + second;

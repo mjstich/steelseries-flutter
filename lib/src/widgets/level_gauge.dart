@@ -220,7 +220,8 @@ class _LevelGaugeState extends State<LevelGauge> with TickerProviderStateMixin {
 
   @override
   void didUpdateWidget(covariant LevelGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value) {
       _from = oldWidget.value;
       _initializeAnimation();
     }
@@ -331,7 +332,8 @@ class _LeafLevelGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderLevelGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderLevelGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setFrameDesign = frameDesign

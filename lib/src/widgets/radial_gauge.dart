@@ -595,7 +595,8 @@ class RadialGauge extends StatefulWidget {
   State<RadialGauge> createState() => _RadialGaugeState();
 }
 
-class _RadialGaugeState extends State<RadialGauge> with TickerProviderStateMixin {
+class _RadialGaugeState extends State<RadialGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double? _from;
@@ -617,7 +618,10 @@ class _RadialGaugeState extends State<RadialGauge> with TickerProviderStateMixin
 
   @override
   void didUpdateWidget(covariant RadialGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value || oldWidget.start != widget.start || oldWidget.end != widget.end) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value ||
+        oldWidget.start != widget.start ||
+        oldWidget.end != widget.end) {
       if (oldWidget.start != widget.start || oldWidget.end != widget.end) {
         _from = null;
       } else {
@@ -642,7 +646,9 @@ class _RadialGaugeState extends State<RadialGauge> with TickerProviderStateMixin
           milliseconds: widget.animationDuration,
         ),
       );
-      _animation = Tween<double>(begin: _from ?? widget.start, end: widget.value).animate(
+      _animation =
+          Tween<double>(begin: _from ?? widget.start, end: widget.value)
+              .animate(
         CurvedAnimation(
           parent: _animationController!,
           curve: Interval(
@@ -864,7 +870,8 @@ class _LeafRadialGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderRadialGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderRadialGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setStart = start!

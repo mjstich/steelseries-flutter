@@ -15,20 +15,27 @@ import 'tools.dart';
 
 void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
   // parameters
-  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
-  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  double size =
+      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  FrameDesignEnum frameDesign =
+      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.ANTHRACITE);
+  BackgroundColorEnum backgroundColor =
+      parameters.backgroundColorWithDefault(BackgroundColorEnum.ANTHRACITE);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
   String titleString = parameters.titleStringWithDefault('');
   String unitString = parameters.unitStringWithDefault('');
   //bool unitAltPos = parameters.unitAltPositionWithDefault(false);
-  KnobTypeEnum knobType = parameters.knobTypeWithDefault(KnobTypeEnum.METAL_KNOB);
-  KnobStyleEnum knobStyle = parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
+  KnobTypeEnum knobType =
+      parameters.knobTypeWithDefault(KnobTypeEnum.METAL_KNOB);
+  KnobStyleEnum knobStyle =
+      parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
   LcdColorEnum lcdColor = parameters.lcdColorWithDefault(LcdColorEnum.BLACK);
   bool lcdVisible = parameters.lcdVisibleWithDefault(true);
-  FontTypeEnum fontType = parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
-  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE4);
+  FontTypeEnum fontType =
+      parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
+  ForegroundTypeEnum foregroundType =
+      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE4);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
   ui.Image? customLayer = parameters.customLayer;
   //
@@ -92,13 +99,19 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
   void drawLcdText(double value) {
     canvas.save();
 
-    if (lcdColor == LcdColorEnum.STANDARD || lcdColor == LcdColorEnum.STANDARD_GREEN) {
+    if (lcdColor == LcdColorEnum.STANDARD ||
+        lcdColor == LcdColorEnum.STANDARD_GREEN) {
       // mainCtx.shadowColor = 'gray'
       // mainCtx.shadowOffsetX = imageWidth * 0.007
       // mainCtx.shadowOffsetY = imageWidth * 0.007
       // mainCtx.shadowBlur = imageWidth * 0.009
     }
-    TextStyle stdFont = getFont(fontType == FontTypeEnum.LCDMono ? (0.1 * imageWidth).floorToDouble() : (0.075 * imageWidth).floorToDouble(), lcdColor.textColor, fontType: fontType);
+    TextStyle stdFont = getFont(
+        fontType == FontTypeEnum.LCDMono
+            ? (0.1 * imageWidth).floorToDouble()
+            : (0.075 * imageWidth).floorToDouble(),
+        lcdColor.textColor,
+        fontType: fontType);
     var textSpan = TextSpan(
       text: value.round().toString(),
       style: stdFont,
@@ -124,7 +137,8 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
     canvas.restore();
   }
 
-  void drawTickmarksImage(Canvas ctx, double freeAreaAngle, double offset, double minVal, double maxVal, double angleStep) {
+  void drawTickmarksImage(Canvas ctx, double freeAreaAngle, double offset,
+      double minVal, double maxVal, double angleStep) {
     double MEDIUM_STROKE = math.max(imageWidth * 0.012, 2);
     double THIN_STROKE = math.max(imageWidth * 0.007, 1.5);
     double TEXT_DISTANCE = imageWidth * 0.12;
@@ -145,7 +159,8 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
     // ctx.strokeStyle = backgroundColor.labelColor.getRgbaColor()
     // ctx.fillStyle = backgroundColor.labelColor.getRgbaColor()
 
-    TextStyle stdFont = getFont((0.075 * imageWidth).floorToDouble(), lcdColor.textColor);
+    TextStyle stdFont =
+        getFont((0.075 * imageWidth).floorToDouble(), lcdColor.textColor);
 
     alpha = ALPHA_START;
     valueCounter = 0;
@@ -157,7 +172,8 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
       if (counter % 2 == 0) {
         // Draw ticks
         Path path = Path();
-        path.moveTo(centerX + (RADIUS - MED_LENGTH) * sinValue, centerY + (RADIUS - MED_LENGTH) * cosValue);
+        path.moveTo(centerX + (RADIUS - MED_LENGTH) * sinValue,
+            centerY + (RADIUS - MED_LENGTH) * cosValue);
         path.lineTo(centerX + RADIUS * sinValue, centerY + RADIUS * cosValue);
         path.close();
         ctx.drawPath(
@@ -188,8 +204,12 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
             textPainter.paint(
               ctx,
               Offset(
-                centerX + (RADIUS - TEXT_DISTANCE) * sinValue - (0.020 * imageWidth),
-                centerY + (RADIUS - TEXT_DISTANCE) * cosValue - (0.050 * imageWidth),
+                centerX +
+                    (RADIUS - TEXT_DISTANCE) * sinValue -
+                    (0.020 * imageWidth),
+                centerY +
+                    (RADIUS - TEXT_DISTANCE) * cosValue -
+                    (0.050 * imageWidth),
               ),
             );
           }
@@ -198,7 +218,8 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
 
         // Draw ticks
         Path path = Path();
-        path.moveTo(centerX + (RADIUS - MAX_LENGTH) * sinValue, centerY + (RADIUS - MAX_LENGTH) * cosValue);
+        path.moveTo(centerX + (RADIUS - MAX_LENGTH) * sinValue,
+            centerY + (RADIUS - MAX_LENGTH) * cosValue);
         path.lineTo(centerX + RADIUS * sinValue, centerY + RADIUS * cosValue);
         path.close();
         ctx.drawPath(
@@ -552,11 +573,13 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (drawBackground2 && backgroundVisible) {
       // Create background in background buffer (backgroundBuffer)
-      var backgroundPicture = drawBackground(backgroundColor, centerX, centerY, imageWidth, imageHeight);
+      var backgroundPicture = drawBackground(
+          backgroundColor, centerX, centerY, imageWidth, imageHeight);
       backgroundContext.drawPicture(backgroundPicture);
 
       // Create custom layer in background buffer (backgroundBuffer)
-      drawRadialCustomImage(backgroundContext, customLayer, centerX, centerY, imageWidth, imageHeight);
+      drawRadialCustomImage(backgroundContext, customLayer, centerX, centerY,
+          imageWidth, imageHeight);
 
       // Create tickmarks in background buffer (backgroundBuffer)
       drawTickmarksImage(
@@ -590,13 +613,16 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Create lcd background if selected in background buffer (backgroundBuffer)
     if (drawBackground2 && lcdVisible) {
-      ui.Picture lcdBuffer = createLcdBackgroundImage(imageWidth * 0.4, imageHeight * 0.09, lcdColor);
+      ui.Picture lcdBuffer = createLcdBackgroundImage(
+          imageWidth * 0.4, imageHeight * 0.09, lcdColor);
       backgroundContext.save();
-      backgroundContext.translate((imageWidth - imageWidth * 0.4) / 2, imageHeight * 0.56);
+      backgroundContext.translate(
+          (imageWidth - imageWidth * 0.4) / 2, imageHeight * 0.56);
       backgroundContext.drawPicture(
         lcdBuffer,
       );
-      backgroundContext.translate(-(imageWidth - imageWidth * 0.4) / 2, -imageHeight * 0.56);
+      backgroundContext.translate(
+          -(imageWidth - imageWidth * 0.4) / 2, -imageHeight * 0.56);
       backgroundContext.restore();
     }
 
@@ -678,7 +704,8 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw 1000ft pointer
     canvas.translate(centerX, centerY);
-    canvas.rotate((value1000 - minValue) * angleStep1000ft - (value10000 - minValue) * angleStep10000ft);
+    canvas.rotate((value1000 - minValue) * angleStep1000ft -
+        (value10000 - minValue) * angleStep10000ft);
     canvas.translate(-centerX, -centerY);
     ui.Picture pointer1000Picture = pointer1000ContextRecorder.endRecording();
     canvas.drawPicture(pointer1000Picture);
@@ -688,7 +715,8 @@ void drawAltimeter(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw 100ft pointer
     canvas.translate(centerX, centerY);
-    canvas.rotate((value100 - minValue) * angleStep100ft - (value1000 - minValue) * angleStep1000ft);
+    canvas.rotate((value100 - minValue) * angleStep100ft -
+        (value1000 - minValue) * angleStep1000ft);
     canvas.translate(-centerX, -centerY);
     ui.Picture pointer100Picture = pointer100ContextRecorder.endRecording();
     canvas.drawPicture(pointer100Picture);

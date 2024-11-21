@@ -22,9 +22,9 @@ Several fully animated highly configurable gauges and widgets.
 An initalization function should be invoked at the start of your application to create several images used to support several background rendering options.
 
 
-```dart
+````dart
 initBuffers();
-```
+````
 
 The gauges and widgets support a wide array of visualization options with default values for each supported option.  The user is free to provide only the overrides they want to differ from the default values.
 
@@ -32,34 +32,140 @@ The gauges and widgets support a wide array of visualization options with defaul
 
 ### Code
 
-```dart
-RadialGauge(
-  value: 60.2,
-  titleString: 'Pressure',
-  unitString: 'mmHg',
-  frameVisible: true,
-  end: 100,
-  threshold: 60,
-  thresholdVisible: true,
-  gaugeType: GaugeTypeEnum.TYPE4,
-  knobType: KnobTypeEnum.METAL_KNOB,
-  knobStyle: KnobStyleEnum.BLACK,
-  frameDesign: FrameDesignEnum.METAL,
-  ledVisible: true,
-  ledOn: true,
-  userLedVisible: true,
-  userLedOn: true,
-  foregroundVisible: true,
-  foregroundType: ForegroundTypeEnum.TYPE3,
-  fontType: FontTypeEnum.LCDMono,
-  area: [
-    Section(85, 100, Colors.red.shade900.withOpacity(0.4)),
-  ],
-  section: [
-    Section(0, 60, Colors.green.shade600),
-    Section(60, 85, Colors.yellow.shade600),
-    Section(85, 100, Colors.red.shade900),
-  ],
-  tickLabelOrientation: TickLabelOrientationEnum.NORMAL,
-),
-```
+````dart
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Radial Gauges'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.code_outlined),
+            onPressed: () async {
+              //await launch('https://github.com/JulianAssmann/flutter_gauges/tree/master/example/lib/pages/segments_page.dart');
+            },
+          ),
+        ],
+      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: <Widget>[
+          RadialGauge(
+            value: 60.2,
+            titleString: 'Pressure',
+            unitString: 'mmHg',
+            frameVisible: true,
+            end: 100,
+            threshold: 60,
+            thresholdVisible: false,
+            gaugeType: GaugeTypeEnum.TYPE4,
+            knobType: KnobTypeEnum.METAL_KNOB,
+            knobStyle: KnobStyleEnum.BLACK,
+            frameDesign: FrameDesignEnum.METAL,
+            ledVisible: true,
+            ledOn: true,
+            userLedVisible: true,
+            userLedOn: true,
+            foregroundVisible: true,
+            foregroundType: ForegroundTypeEnum.TYPE3,
+            fontType: FontTypeEnum.LCDMono,
+            area: [
+              Section(85, 100, Colors.red.shade900.withOpacity(0.4)),
+            ],
+            section: [
+              Section(0, 60, Colors.green.shade600),
+              Section(60, 85, Colors.yellow.shade600),
+              Section(85, 100, Colors.red.shade900),
+            ],
+            tickLabelOrientation: TickLabelOrientationEnum.NORMAL,
+          ),
+          RadialGauge(
+            value: 20,
+            frameVisible: true,
+            end: 100,
+            threshold: 60,
+            thresholdVisible: false,
+            gaugeType: GaugeTypeEnum.TYPE3,
+            knobType: KnobTypeEnum.METAL_KNOB,
+            knobStyle: KnobStyleEnum.BRASS,
+            frameDesign: FrameDesignEnum.ANTHRACITE,
+            backgroundColor: BackgroundColorEnum.BEIGE,
+            pointerType: PointerTypeEnum.TYPE2,
+            pointerColor: ColorEnum.ORANGE,
+            lcdDecimals: 0,
+            lcdColor: LcdColorEnum.BLUE2,
+            ledVisible: true,
+            ledOn: true,
+            userLedVisible: false,
+            userLedOn: true,
+            foregroundVisible: true,
+            foregroundType: ForegroundTypeEnum.TYPE3,
+            fontType: FontTypeEnum.RobotoMono,
+            area: [
+              Section(0, 60, Colors.green.shade600),
+              Section(60, 85, Colors.yellow.shade600),
+              Section(85, 100, Colors.red.shade900),
+            ],
+            tickLabelOrientation: TickLabelOrientationEnum.NORMAL,
+          ),
+          const RadialGauge(
+            value: 200,
+            frameVisible: true,
+            end: 1000,
+            threshold: 60,
+            thresholdVisible: false,
+            gaugeType: GaugeTypeEnum.TYPE3,
+            knobType: KnobTypeEnum.METAL_KNOB,
+            knobStyle: KnobStyleEnum.BRASS,
+            frameDesign: FrameDesignEnum.GLOSSY_METAL,
+            backgroundColor: BackgroundColorEnum.BEIGE,
+            pointerType: PointerTypeEnum.TYPE13,
+            pointerColor: ColorEnum.GREEN,
+            lcdDecimals: 0,
+            lcdColor: LcdColorEnum.AMBER,
+            ledVisible: true,
+            ledOn: true,
+            userLedVisible: false,
+            userLedOn: true,
+            foregroundVisible: true,
+            foregroundType: ForegroundTypeEnum.TYPE3,
+            fontType: FontTypeEnum.LCDMono,
+            tickLabelOrientation: TickLabelOrientationEnum.HORIZONTAL,
+          ),
+          const RadialGauge(
+            value: 200,
+            frameVisible: true,
+            end: 200,
+            threshold: 60,
+            thresholdVisible: false,
+            titleString: 'Flow',
+            unitString: 'cfm',
+            gaugeType: GaugeTypeEnum.TYPE2,
+            knobType: KnobTypeEnum.METAL_KNOB,
+            knobStyle: KnobStyleEnum.BRASS,
+            frameDesign: FrameDesignEnum.BRASS,
+            backgroundColor: BackgroundColorEnum.BEIGE,
+            pointerType: PointerTypeEnum.TYPE5,
+            pointerColor: ColorEnum.BLUE,
+            lcdDecimals: 0,
+            lcdColor: LcdColorEnum.STANDARD_GREEN,
+            ledVisible: false,
+            ledOn: true,
+            userLedVisible: true,
+            userLedOn: true,
+            userLedColor: LedColorEnum.RED_LED,
+            foregroundVisible: true,
+            foregroundType: ForegroundTypeEnum.TYPE3,
+            fontType: FontTypeEnum.RobotoMono,
+            tickLabelOrientation: TickLabelOrientationEnum.HORIZONTAL,
+          ),
+        ],
+      ),
+    );
+  }
+````
+### Output
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mjstich/steelseries-flutter/main/readme/radial_gauges.png" />
+</div>

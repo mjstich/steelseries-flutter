@@ -12,14 +12,22 @@ import 'drawRadialCustomImage.dart';
 import 'tools.dart';
 
 void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
-  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
-  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  double size =
+      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  FrameDesignEnum frameDesign =
+      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  PointerTypeEnum pointerType = parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
-  ColorEnum pointerColor = parameters.pointerColorWithDefault(pointerType == PointerTypeEnum.TYPE1 ? ColorEnum.GRAY : ColorEnum.BLACK);
-  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(pointerType == PointerTypeEnum.TYPE1 ? BackgroundColorEnum.ANTHRACITE : BackgroundColorEnum.LIGHT_GRAY);
+  PointerTypeEnum pointerType =
+      parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
+  ColorEnum pointerColor = parameters.pointerColorWithDefault(
+      pointerType == PointerTypeEnum.TYPE1 ? ColorEnum.GRAY : ColorEnum.BLACK);
+  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(
+      pointerType == PointerTypeEnum.TYPE1
+          ? BackgroundColorEnum.ANTHRACITE
+          : BackgroundColorEnum.LIGHT_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
-  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
+  ForegroundTypeEnum foregroundType =
+      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
   bool secondPointerVisible = parameters.secondPointerVisibleWithDefault(true);
   ui.Image? customLayer = parameters.customLayer;
@@ -285,7 +293,10 @@ void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
         // circle
         paint.strokeWidth = imageWidth * 0.016;
         path = Path();
-        Rect rect = Rect.fromCenter(center: Offset(centerX, imageWidth * 0.26), width: (imageWidth * 0.085), height: (imageWidth * 0.085));
+        Rect rect = Rect.fromCenter(
+            center: Offset(centerX, imageWidth * 0.26),
+            width: (imageWidth * 0.085),
+            height: (imageWidth * 0.085));
         path.addArc(rect, 0, TWO_PI);
         path.close();
         ctx.drawPath(path, paint);
@@ -330,12 +341,17 @@ void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
   void drawKnob(Canvas ctx) {
     // draw the knob
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(centerX, centerX), width: imageWidth * 0.045 * 2, height: imageWidth * 0.045 * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(centerX, centerX),
+        width: imageWidth * 0.045 * 2,
+        height: imageWidth * 0.045 * 2);
     path.addArc(rect, 0, TWO_PI);
     path.close();
     ui.Gradient grad = ui.Gradient.linear(
-      Offset(centerX - (imageWidth * 0.045) / 2, centerY - (imageWidth * 0.045) / 2),
-      Offset(centerX + (imageWidth * 0.045) / 2, centerY + (imageWidth * 0.045) / 2),
+      Offset(centerX - (imageWidth * 0.045) / 2,
+          centerY - (imageWidth * 0.045) / 2),
+      Offset(centerX + (imageWidth * 0.045) / 2,
+          centerY + (imageWidth * 0.045) / 2),
       [
         colorFromHex('#eef0f2'),
         colorFromHex('#65696d'),
@@ -356,7 +372,10 @@ void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
       case PointerTypeEnum.TYPE2:
         // draw knob
         Path path = Path();
-        Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: (imageWidth * 0.088785), height: (imageWidth * 0.088785));
+        Rect rect = Rect.fromCenter(
+            center: Offset(centerX, centerY),
+            width: (imageWidth * 0.088785),
+            height: (imageWidth * 0.088785));
         path.addArc(rect, 0, TWO_PI);
         path.close();
         ctx.drawPath(
@@ -371,8 +390,10 @@ void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
       default:
         // draw knob
         ui.Gradient grad = ui.Gradient.linear(
-          Offset(centerX - (imageWidth * 0.027) / 2, centerY - (imageWidth * 0.027) / 2),
-          Offset(centerX + (imageWidth * 0.027) / 2, centerY + (imageWidth * 0.027) / 2),
+          Offset(centerX - (imageWidth * 0.027) / 2,
+              centerY - (imageWidth * 0.027) / 2),
+          Offset(centerX + (imageWidth * 0.027) / 2,
+              centerY + (imageWidth * 0.027) / 2),
           [
             colorFromHex('#f3f4f7'),
             colorFromHex('#f3f5f7'),
@@ -384,7 +405,10 @@ void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
           [0, 0.11, 0.12, 0.2, 0.2, 1],
         );
         Path path = Path();
-        Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: imageWidth * 0.027 * 2, height: imageWidth * 0.027 * 2);
+        Rect rect = Rect.fromCenter(
+            center: Offset(centerX, centerY),
+            width: imageWidth * 0.027 * 2,
+            height: imageWidth * 0.027 * 2);
         path.addArc(rect, 0, TWO_PI);
         path.close();
         ctx.drawPath(
@@ -407,10 +431,16 @@ void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
   // **************   Initialization  ********************
   // Draw all static painting code to background
   void init(dynamic parameters) {
-    bool drawFrame2 = parameters['frame'] == null ? false : parameters['frame'] as bool;
-    bool drawBackground2 = parameters['background'] == null ? false : parameters['background'] as bool;
-    bool drawPointers = parameters['pointers'] == null ? false : parameters['pointers'] as bool;
-    bool drawForeground2 = parameters['foreground'] == null ? false : parameters['foreground'] as bool;
+    bool drawFrame2 =
+        parameters['frame'] == null ? false : parameters['frame'] as bool;
+    bool drawBackground2 = parameters['background'] == null
+        ? false
+        : parameters['background'] as bool;
+    bool drawPointers =
+        parameters['pointers'] == null ? false : parameters['pointers'] as bool;
+    bool drawForeground2 = parameters['foreground'] == null
+        ? false
+        : parameters['foreground'] as bool;
 
     if (drawFrame2 && frameVisible) {
       ui.Picture framePicture = drawFrame(
@@ -470,7 +500,12 @@ void drawClock(Canvas canvas, Size canvasSize, Parameters parameters) {
   }
 
   void repaint() {
-    init({'frame': true, 'background': true, 'pointers': true, 'foreground': true});
+    init({
+      'frame': true,
+      'background': true,
+      'pointers': true,
+      'foreground': true
+    });
 
     // Draw frame
     if (frameVisible) {

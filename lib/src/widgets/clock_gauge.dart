@@ -222,7 +222,8 @@ class _ClockGaugeState extends State<ClockGauge> with TickerProviderStateMixin {
 
   @override
   void didUpdateWidget(covariant ClockGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value) {
       _from = oldWidget.value!.toDouble();
 
       _initializeAnimation();
@@ -244,7 +245,8 @@ class _ClockGaugeState extends State<ClockGauge> with TickerProviderStateMixin {
           milliseconds: widget.animationDuration,
         ),
       );
-      _animation = Tween<double>(begin: _from, end: widget.value!.toDouble()).animate(
+      _animation =
+          Tween<double>(begin: _from, end: widget.value!.toDouble()).animate(
         CurvedAnimation(
           parent: _animationController!,
           curve: Interval(
@@ -334,7 +336,8 @@ class _LeafClockGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderClockGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderClockGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setFrameDesign = frameDesign

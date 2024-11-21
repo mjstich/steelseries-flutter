@@ -148,7 +148,8 @@ class OdometerGauge extends StatefulWidget {
   State<OdometerGauge> createState() => _OdometerGaugeState();
 }
 
-class _OdometerGaugeState extends State<OdometerGauge> with TickerProviderStateMixin {
+class _OdometerGaugeState extends State<OdometerGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double? _from = 0;
@@ -170,7 +171,8 @@ class _OdometerGaugeState extends State<OdometerGauge> with TickerProviderStateM
 
   @override
   void didUpdateWidget(covariant OdometerGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value) {
       _from = oldWidget.value;
       _initializeAnimation();
     }
@@ -265,7 +267,8 @@ class _LeafOdometerGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderOdometerGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderOdometerGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setDigits = digits

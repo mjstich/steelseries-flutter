@@ -16,7 +16,8 @@ void drawBattery(Canvas canvas, Size size, Parameters parameters) {
 
   value = math.min(100, value);
 
-  void createBatteryImage(Canvas ctx, double imageWidth, double imageHeight, double value) {
+  void createBatteryImage(
+      Canvas ctx, double imageWidth, double imageHeight, double value) {
     final paint = Paint()
       ..style = PaintingStyle.fill
       ..strokeJoin = StrokeJoin.round
@@ -42,11 +43,16 @@ void drawBattery(Canvas canvas, Size size, Parameters parameters) {
     path.lineTo(imageWidth * 0.925, imageHeight * 0.722222);
 
     path.moveTo(imageWidth * 0.925, imageHeight * 0.722222);
-    path.cubicTo(imageWidth * 0.925, imageHeight * 0.722222, imageWidth * 0.975, imageHeight * 0.722222, imageWidth * 0.975, imageHeight * 0.722222);
-    path.cubicTo(imageWidth, imageHeight * 0.722222, imageWidth, imageHeight * 0.666666, imageWidth, imageHeight * 0.666666);
-    path.cubicTo(imageWidth, imageHeight * 0.666666, imageWidth, imageHeight * 0.333333, imageWidth, imageHeight * 0.333333);
-    path.cubicTo(imageWidth, imageHeight * 0.333333, imageWidth, imageHeight * 0.277777, imageWidth * 0.975, imageHeight * 0.277777);
-    path.cubicTo(imageWidth * 0.975, imageHeight * 0.277777, imageWidth * 0.925, imageHeight * 0.277777, imageWidth * 0.925, imageHeight * 0.6277777);
+    path.cubicTo(imageWidth * 0.925, imageHeight * 0.722222, imageWidth * 0.975,
+        imageHeight * 0.722222, imageWidth * 0.975, imageHeight * 0.722222);
+    path.cubicTo(imageWidth, imageHeight * 0.722222, imageWidth,
+        imageHeight * 0.666666, imageWidth, imageHeight * 0.666666);
+    path.cubicTo(imageWidth, imageHeight * 0.666666, imageWidth,
+        imageHeight * 0.333333, imageWidth, imageHeight * 0.333333);
+    path.cubicTo(imageWidth, imageHeight * 0.333333, imageWidth,
+        imageHeight * 0.277777, imageWidth * 0.975, imageHeight * 0.277777);
+    path.cubicTo(imageWidth * 0.975, imageHeight * 0.277777, imageWidth * 0.925,
+        imageHeight * 0.277777, imageWidth * 0.925, imageHeight * 0.6277777);
     path.lineTo(imageWidth * 0.925, 0);
     path.close();
 
@@ -63,8 +69,10 @@ void drawBattery(Canvas canvas, Size size, Parameters parameters) {
     ctx.drawPath(path, paint);
 
     path = Path();
-    double end = math.max(imageWidth * 0.875 * (value / 100), (imageWidth * 0.01).ceilToDouble());
-    Rect rect = Rect.fromLTWH(imageWidth * 0.025, imageWidth * 0.025, end, imageHeight - imageWidth * 0.050);
+    double end = math.max(
+        imageWidth * 0.875 * (value / 100), (imageWidth * 0.01).ceilToDouble());
+    Rect rect = Rect.fromLTWH(imageWidth * 0.025, imageWidth * 0.025, end,
+        imageHeight - imageWidth * 0.050);
     //Rect rect = Rect.fromLTWH(imageWidth * 0.025, imageWidth * 0.025, end, imageHeight * 0.94);
     path.addRect(rect);
     path.close();
@@ -90,7 +98,8 @@ void drawBattery(Canvas canvas, Size size, Parameters parameters) {
 
     path = Path();
     end = math.max(end - imageWidth * 0.05, 0);
-    rect = Rect.fromLTWH(imageWidth * 0.05, imageWidth * 0.05, end, imageHeight - imageWidth * 0.10);
+    rect = Rect.fromLTWH(imageWidth * 0.05, imageWidth * 0.05, end,
+        imageHeight - imageWidth * 0.10);
     //rect = Rect.fromLTWH(imageWidth * 0.05, imageWidth * 0.05, end, imageHeight * 0.867777);
     path.addRect(rect);
     path.close();
@@ -107,8 +116,10 @@ void drawBattery(Canvas canvas, Size size, Parameters parameters) {
       const Color.fromRGBO(223, 233, 86, 1) // 0xDFE956
     ];
     List<double> LIQUID_GRADIENT_FRACTIONS = [0, 0.4, 1];
-    var liquidDark = GradientWrapper(0, 100, LIQUID_GRADIENT_FRACTIONS, LIQUID_COLORS_DARK);
-    var liquidLight = GradientWrapper(0, 100, LIQUID_GRADIENT_FRACTIONS, LIQUID_COLORS_LIGHT);
+    var liquidDark =
+        GradientWrapper(0, 100, LIQUID_GRADIENT_FRACTIONS, LIQUID_COLORS_DARK);
+    var liquidLight =
+        GradientWrapper(0, 100, LIQUID_GRADIENT_FRACTIONS, LIQUID_COLORS_LIGHT);
 
     grad = ui.Gradient.linear(
       Offset(imageWidth * 0.05, 0),
@@ -130,7 +141,8 @@ void drawBattery(Canvas canvas, Size size, Parameters parameters) {
     ctx.drawPath(path, paint3);
 
     path = Path();
-    rect = Rect.fromLTWH(imageWidth * 0.025, imageWidth * 0.025, imageWidth * 0.875, imageHeight * 0.444444);
+    rect = Rect.fromLTWH(imageWidth * 0.025, imageWidth * 0.025,
+        imageWidth * 0.875, imageHeight * 0.444444);
     path.close();
 
     grad = ui.Gradient.linear(

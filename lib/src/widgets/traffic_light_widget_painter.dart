@@ -54,7 +54,9 @@ class RenderTrafficLightWidget extends RenderBox {
 
   @override
   void performLayout() {
-    double prefHeight = constraints.maxWidth < constraints.maxHeight * 0.352517 ? constraints.maxWidth * 2.836734 : constraints.maxHeight;
+    double prefHeight = constraints.maxWidth < constraints.maxHeight * 0.352517
+        ? constraints.maxWidth * 2.836734
+        : constraints.maxHeight;
     double imageWidth = prefHeight * 0.352517;
     double imageHeight = prefHeight;
     size = Size(imageWidth, imageHeight);

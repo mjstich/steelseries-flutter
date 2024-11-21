@@ -14,7 +14,8 @@ import 'tools.dart';
 
 Map<String, ui.Picture> backgroundCache = {};
 
-ui.Picture drawBackground(BackgroundColorEnum backgroundColor, double centerX, double centerY, double imageWidth, double imageHeight) {
+ui.Picture drawBackground(BackgroundColorEnum backgroundColor, double centerX,
+    double centerY, double imageWidth, double imageHeight) {
   double backgroundOffsetX = (imageWidth * 0.831775) / 2;
   //String cacheKey = imageWidth.toString() + imageHeight.toString() + backgroundColor.name;
 
@@ -26,23 +27,34 @@ ui.Picture drawBackground(BackgroundColorEnum backgroundColor, double centerX, d
 
   // Background ellipse
   Path path = Path();
-  Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: (imageWidth * 0.831775), height: (imageWidth * 0.831775));
+  Rect rect = Rect.fromCenter(
+      center: Offset(centerX, centerY),
+      width: (imageWidth * 0.831775),
+      height: (imageWidth * 0.831775));
   path.addArc(rect, 0, TWO_PI);
   path.close();
 
   // If the backgroundColor is a texture fill it with the texture instead of the gradient
   //if (backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET || backgroundColor == BackgroundColorEnum.BRUSHED_METAL || backgroundColor == BackgroundColorEnum.BRUSHED_STAINLESS) {
-  if (backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET) {
+  if (backgroundColor == BackgroundColorEnum.CARBON ||
+      backgroundColor == BackgroundColorEnum.PUNCHED_SHEET) {
     if (backgroundColor == BackgroundColorEnum.CARBON) {
       var carbonImage = carbonBuffer();
       if (carbonImage != null) {
         canvas.save();
         Path path = Path();
-        Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: backgroundOffsetX * 2, height: backgroundOffsetX * 2);
+        Rect rect = Rect.fromCenter(
+            center: Offset(centerX, centerY),
+            width: backgroundOffsetX * 2,
+            height: backgroundOffsetX * 2);
         path.addArc(rect, 0, TWO_PI);
         path.close();
         canvas.clipPath(path);
-        paintImage(canvas: canvas, rect: Rect.fromLTWH(0, 0, imageWidth, imageHeight), image: carbonImage, repeat: ImageRepeat.repeat);
+        paintImage(
+            canvas: canvas,
+            rect: Rect.fromLTWH(0, 0, imageWidth, imageHeight),
+            image: carbonImage,
+            repeat: ImageRepeat.repeat);
         canvas.restore();
       }
     }
@@ -52,11 +64,18 @@ ui.Picture drawBackground(BackgroundColorEnum backgroundColor, double centerX, d
       if (punchedSheetImage != null) {
         canvas.save();
         Path path = Path();
-        Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: backgroundOffsetX * 2, height: backgroundOffsetX * 2);
+        Rect rect = Rect.fromCenter(
+            center: Offset(centerX, centerY),
+            width: backgroundOffsetX * 2,
+            height: backgroundOffsetX * 2);
         path.addArc(rect, 0, TWO_PI);
         path.close();
         canvas.clipPath(path);
-        paintImage(canvas: canvas, rect: Rect.fromLTWH(0, 0, imageWidth, imageHeight), image: punchedSheetImage, repeat: ImageRepeat.repeat);
+        paintImage(
+            canvas: canvas,
+            rect: Rect.fromLTWH(0, 0, imageWidth, imageHeight),
+            image: punchedSheetImage,
+            repeat: ImageRepeat.repeat);
         canvas.restore();
       }
     }
@@ -76,7 +95,10 @@ ui.Picture drawBackground(BackgroundColorEnum backgroundColor, double centerX, d
       ..shader = grad
       ..style = ui.PaintingStyle.fill;
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: (imageWidth * 0.831775), height: (imageWidth * 0.831775));
+    Rect rect = Rect.fromCenter(
+        center: Offset(centerX, centerY),
+        width: (imageWidth * 0.831775),
+        height: (imageWidth * 0.831775));
     path.addArc(rect, 0, TWO_PI);
     path.close();
     canvas.drawPath(path, paint);
@@ -228,7 +250,10 @@ ui.Picture drawBackground(BackgroundColorEnum backgroundColor, double centerX, d
     ..shader = grad
     ..style = ui.PaintingStyle.fill;
   path = Path();
-  rect = Rect.fromCenter(center: Offset(centerX, centerY), width: backgroundOffsetX * 2, height: backgroundOffsetX * 2);
+  rect = Rect.fromCenter(
+      center: Offset(centerX, centerY),
+      width: backgroundOffsetX * 2,
+      height: backgroundOffsetX * 2);
   path.addArc(rect, 0, TWO_PI);
   path.close();
   canvas.drawPath(path, paint);

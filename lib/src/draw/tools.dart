@@ -189,7 +189,8 @@ class GradientWrapper {
         upperIndex = i;
       }
     }
-    var interpolationFraction = (fraction - lowerLimit) / (upperLimit - lowerLimit);
+    var interpolationFraction =
+        (fraction - lowerLimit) / (upperLimit - lowerLimit);
     return getColorFromFraction(
       colors[lowerIndex],
       colors[upperIndex],
@@ -199,7 +200,8 @@ class GradientWrapper {
     );
   }
 
-  Color getColorFromFraction(Color sourceColor, Color destinationColor, double range, double fraction, bool returnRawData) {
+  Color getColorFromFraction(Color sourceColor, Color destinationColor,
+      double range, double fraction, bool returnRawData) {
     double INT_TO_FLOAT = 1 / 255;
     int sourceRed = sourceColor.red;
     int sourceGreen = sourceColor.green;
@@ -209,7 +211,8 @@ class GradientWrapper {
     int deltaRed = destinationColor.red - sourceRed;
     int deltaGreen = destinationColor.green - sourceGreen;
     int deltaBlue = destinationColor.blue - sourceBlue;
-    double deltaAlpha = destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
+    double deltaAlpha =
+        destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
 
     double fractionRed = (deltaRed / range) * fraction;
     double fractionGreen = (deltaGreen / range) * fraction;
@@ -225,7 +228,11 @@ class GradientWrapper {
     //   //   sourceAlpha + fractionAlpha
     //   // ]
     // } else {
-    return Color.fromRGBO((sourceRed + fractionRed).toInt(), (sourceGreen + fractionGreen).toInt(), (sourceBlue + fractionBlue).toInt(), sourceAlpha + fractionAlpha);
+    return Color.fromRGBO(
+        (sourceRed + fractionRed).toInt(),
+        (sourceGreen + fractionGreen).toInt(),
+        (sourceBlue + fractionBlue).toInt(),
+        sourceAlpha + fractionAlpha);
     //}
   }
 
@@ -286,7 +293,8 @@ class GradientWrapper {
 //   return getColorAt;
 // }
 
-Color getColorFromFraction(Color sourceColor, Color destinationColor, double range, double fraction, bool returnRawData) {
+Color getColorFromFraction(Color sourceColor, Color destinationColor,
+    double range, double fraction, bool returnRawData) {
   double INT_TO_FLOAT = 1 / 255;
   int sourceRed = sourceColor.red;
   int sourceGreen = sourceColor.green;
@@ -296,7 +304,8 @@ Color getColorFromFraction(Color sourceColor, Color destinationColor, double ran
   int deltaRed = destinationColor.red - sourceRed;
   int deltaGreen = destinationColor.green - sourceGreen;
   int deltaBlue = destinationColor.blue - sourceBlue;
-  double deltaAlpha = destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
+  double deltaAlpha =
+      destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
 
   double fractionRed = (deltaRed / range) * fraction;
   double fractionGreen = (deltaGreen / range) * fraction;
@@ -312,11 +321,16 @@ Color getColorFromFraction(Color sourceColor, Color destinationColor, double ran
   //   //   sourceAlpha + fractionAlpha
   //   // ]
   // } else {
-  return Color.fromRGBO((sourceRed + fractionRed).toInt(), (sourceGreen + fractionGreen).toInt(), (sourceBlue + fractionBlue).toInt(), sourceAlpha + fractionAlpha);
+  return Color.fromRGBO(
+      (sourceRed + fractionRed).toInt(),
+      (sourceGreen + fractionGreen).toInt(),
+      (sourceBlue + fractionBlue).toInt(),
+      sourceAlpha + fractionAlpha);
   //}
 }
 
-List<double> getColorFromFractionRaw(Color sourceColor, Color destinationColor, double range, double fraction, bool returnRawData) {
+List<double> getColorFromFractionRaw(Color sourceColor, Color destinationColor,
+    double range, double fraction, bool returnRawData) {
   double INT_TO_FLOAT = 1 / 255;
   int sourceRed = sourceColor.red;
   int sourceGreen = sourceColor.green;
@@ -326,7 +340,8 @@ List<double> getColorFromFractionRaw(Color sourceColor, Color destinationColor, 
   int deltaRed = destinationColor.red - sourceRed;
   int deltaGreen = destinationColor.green - sourceGreen;
   int deltaBlue = destinationColor.blue - sourceBlue;
-  double deltaAlpha = destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
+  double deltaAlpha =
+      destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
 
   double fractionRed = (deltaRed / range) * fraction;
   double fractionGreen = (deltaGreen / range) * fraction;
@@ -335,7 +350,12 @@ List<double> getColorFromFractionRaw(Color sourceColor, Color destinationColor, 
 
   returnRawData = returnRawData || false;
 
-  return [(sourceRed + fractionRed).toDouble(), (sourceGreen + fractionGreen).toDouble(), (sourceBlue + fractionBlue).toDouble(), sourceAlpha + fractionAlpha];
+  return [
+    (sourceRed + fractionRed).toDouble(),
+    (sourceGreen + fractionGreen).toDouble(),
+    (sourceBlue + fractionBlue).toDouble(),
+    sourceAlpha + fractionAlpha
+  ];
 }
 
 double log10(double value) {
@@ -403,7 +423,8 @@ Path roundedRectangle(double x, double y, double w, double h, double radius) {
 
 ColorDef customColorDef(Color color) {
   //const values = getColorValues(color)
-  Color rgbaCol = Color.fromRGBO(color.red, color.green, color.blue, color.opacity);
+  Color rgbaCol =
+      Color.fromRGBO(color.red, color.green, color.blue, color.opacity);
 
   Color VERY_DARK = darker(rgbaCol, 0.32);
   Color DARK = darker(rgbaCol, 0.62);
@@ -431,7 +452,8 @@ List<double> rgbToHsl(double red, double green, double blue) {
     hue = saturation = 0; // achromatic
   } else {
     delta = max - min;
-    saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+    saturation =
+        lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
     if (max == red) {
       hue = (green - blue) / delta + (green < blue ? 6 : 0);
     } else if (max == green) {
@@ -585,7 +607,8 @@ double getShortestAngle(double from, double to) {
   return wrap(to - from, -180, 180);
 }
 
-TextStyle getFont(double fontHeight, Color color, {FontTypeEnum fontType = FontTypeEnum.RobotoMono, FontWeight? fontWeight}) {
+TextStyle getFont(double fontHeight, Color color,
+    {FontTypeEnum fontType = FontTypeEnum.RobotoMono, FontWeight? fontWeight}) {
   if (fontType == FontTypeEnum.LCDMono) {
     return TextStyle(
       fontSize: fontHeight,

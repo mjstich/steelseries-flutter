@@ -9,7 +9,8 @@ import 'tools.dart';
 
 Map<String, ui.Picture> drawFrameCache = {};
 
-ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX, double centerY, double imageWidth, double imageHeight) {
+ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX,
+    double centerY, double imageWidth, double imageHeight) {
   //String cacheKey = imageWidth.toString() + imageHeight.toString() + frameDesign.toString();
 
   // check if we have already created and cached this buffer, if not create it
@@ -29,7 +30,8 @@ ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX, double centerY
 
   // outer gray frame
   Path path = Path();
-  Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: imageWidth, height: imageWidth);
+  Rect rect = Rect.fromCenter(
+      center: Offset(centerX, centerY), width: imageWidth, height: imageWidth);
   path.addArc(rect, 0, TWO_PI);
   path.close();
 
@@ -37,7 +39,10 @@ ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX, double centerY
   canvas.drawPath(path, strokePaint);
 
   path = Path();
-  rect = Rect.fromCenter(center: Offset(centerX, centerY), width: imageWidth * 0.990654, height: imageWidth * 0.990654);
+  rect = Rect.fromCenter(
+      center: Offset(centerX, centerY),
+      width: imageWidth * 0.990654,
+      height: imageWidth * 0.990654);
   path.addArc(rect, 0, TWO_PI);
   path.close();
 
@@ -191,7 +196,10 @@ ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX, double centerY
       canvas.drawPath(path, fillPaint);
 
       path = Path();
-      rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.5 * imageHeight), width: (0.973962 * imageWidth), height: (0.973962 * imageWidth));
+      rect = Rect.fromCenter(
+          center: Offset(0.5 * imageWidth, 0.5 * imageHeight),
+          width: (0.973962 * imageWidth),
+          height: (0.973962 * imageWidth));
       path.addArc(rect, 0, TWO_PI);
       path.close();
 
@@ -212,7 +220,10 @@ ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX, double centerY
       canvas.drawPath(path, fillPaint);
 
       path = Path();
-      rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.5 * imageHeight), width: (0.869158 * imageWidth), height: (0.869158 * imageWidth));
+      rect = Rect.fromCenter(
+          center: Offset(0.5 * imageWidth, 0.5 * imageHeight),
+          width: (0.869158 * imageWidth),
+          height: (0.869158 * imageWidth));
       path.addArc(rect, 0, TWO_PI);
       path.close();
       fillPaint.shader = null;
@@ -220,7 +231,10 @@ ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX, double centerY
       canvas.drawPath(path, fillPaint);
 
       path = Path();
-      rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.5 * imageHeight), width: (0.85 * imageWidth), height: (0.85 * imageWidth));
+      rect = Rect.fromCenter(
+          center: Offset(0.5 * imageWidth, 0.5 * imageHeight),
+          width: (0.85 * imageWidth),
+          height: (0.85 * imageWidth));
       path.addArc(rect, 0, TWO_PI);
       path.close();
       fillPaint.shader = null;
@@ -379,7 +393,10 @@ ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX, double centerY
     ..color = const Color.fromRGBO(191, 191, 191, 1)
     ..style = ui.PaintingStyle.fill;
   path = Path();
-  rect = Rect.fromCenter(center: Offset(centerX, centerY), width: (imageWidth * 0.841121), height: (imageWidth * 0.841121));
+  rect = Rect.fromCenter(
+      center: Offset(centerX, centerY),
+      width: (imageWidth * 0.841121),
+      height: (imageWidth * 0.841121));
   path.addArc(rect, 0, TWO_PI);
   canvas.drawPath(path, paint);
 
@@ -387,7 +404,10 @@ ui.Picture drawFrame(FrameDesignEnum frameDesign, double centerX, double centerY
   paint.blendMode = BlendMode.dstOut;
   // Background ellipse
   path = Path();
-  rect = Rect.fromCenter(center: Offset(centerX, centerY), width: (imageWidth * 0.83), height: (imageWidth * 0.83));
+  rect = Rect.fromCenter(
+      center: Offset(centerX, centerY),
+      width: (imageWidth * 0.83),
+      height: (imageWidth * 0.83));
   path.addArc(rect, 0, TWO_PI);
   canvas.drawPath(path, paint);
 

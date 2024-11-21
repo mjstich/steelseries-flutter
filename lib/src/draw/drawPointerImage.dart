@@ -8,7 +8,8 @@ import 'tools.dart';
 
 Map<String, ui.Picture> pointerImageCache = {};
 
-ui.Picture drawPointerImage(double size, PointerTypeEnum ptrType, ColorDef ptrColor, Color lblColor) {
+ui.Picture drawPointerImage(
+    double size, PointerTypeEnum ptrType, ColorDef ptrColor, Color lblColor) {
   //String cacheKey = size.toString() + ptrType.toString() + ptrColor.light.toString() + ptrColor.medium.toString();
 
   // check if we have already created and cached this buffer, if not create it
@@ -48,7 +49,8 @@ ui.Picture drawPointerImage(double size, PointerTypeEnum ptrType, ColorDef ptrCo
 
     case PointerTypeEnum.TYPE3:
       Path path = Path();
-      Rect rect = Rect.fromLTWH(size * 0.495327, size * 0.130841, size * 0.009345, size * 0.373831);
+      Rect rect = Rect.fromLTWH(
+          size * 0.495327, size * 0.130841, size * 0.009345, size * 0.373831);
       path.addRect(rect);
       path.close();
       Paint paint = Paint()
@@ -619,7 +621,10 @@ ui.Picture drawPointerImage(double size, PointerTypeEnum ptrType, ColorDef ptrCo
 
       // Draw the rings
       path = Path();
-      Rect rect = Rect.fromCenter(center: Offset(size * 0.5, size * 0.5), width: (size * 0.06542), height: (size * 0.06542));
+      Rect rect = Rect.fromCenter(
+          center: Offset(size * 0.5, size * 0.5),
+          width: (size * 0.06542),
+          height: (size * 0.06542));
       path.addArc(rect, 0, TWO_PI);
       path.close();
       double radius = (size * 0.06542) / 2;
@@ -640,7 +645,10 @@ ui.Picture drawPointerImage(double size, PointerTypeEnum ptrType, ColorDef ptrCo
       canvas.drawPath(path, paint);
 
       path = Path();
-      rect = Rect.fromCenter(center: Offset(size * 0.5, size * 0.5), width: (size * 0.046728), height: (size * 0.046728));
+      rect = Rect.fromCenter(
+          center: Offset(size * 0.5, size * 0.5),
+          width: (size * 0.046728),
+          height: (size * 0.046728));
       path.addArc(rect, 0, TWO_PI);
       path.close();
       radius = (size * 0.046728) / 2;

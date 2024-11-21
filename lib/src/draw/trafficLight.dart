@@ -105,29 +105,38 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     ctx.save();
     path = Path();
-    path.moveTo(0.030612 * imageWidth + 0.084183 * imageWidth, 0.010791 * imageHeight);
-    path.lineTo(0.030612 * imageWidth + 0.938775 * imageWidth - 0.084183 * imageWidth, 0.010791 * imageHeight);
+    path.moveTo(
+        0.030612 * imageWidth + 0.084183 * imageWidth, 0.010791 * imageHeight);
+    path.lineTo(
+        0.030612 * imageWidth + 0.938775 * imageWidth - 0.084183 * imageWidth,
+        0.010791 * imageHeight);
     path.quadraticBezierTo(
       0.030612 * imageWidth + 0.938775 * imageWidth,
       0.010791 * imageHeight,
       0.030612 * imageWidth + 0.938775 * imageWidth,
       0.010791 * imageHeight + 0.084183 * imageWidth,
     );
-    path.lineTo(0.030612 * imageWidth + 0.938775 * imageWidth, 0.010791 * imageHeight + 0.978417 * imageHeight - 0.084183 * imageWidth);
+    path.lineTo(
+        0.030612 * imageWidth + 0.938775 * imageWidth,
+        0.010791 * imageHeight +
+            0.978417 * imageHeight -
+            0.084183 * imageWidth);
     path.quadraticBezierTo(
       0.030612 * imageWidth + 0.938775 * imageWidth,
       0.010791 * imageHeight + 0.978417 * imageHeight,
       0.030612 * imageWidth + 0.938775 * imageWidth - 0.084183 * imageWidth,
       0.010791 * imageHeight + 0.978417 * imageHeight,
     );
-    path.lineTo(0.030612 * imageWidth + 0.084183 * imageWidth, 0.010791 * imageHeight + 0.978417 * imageHeight);
+    path.lineTo(0.030612 * imageWidth + 0.084183 * imageWidth,
+        0.010791 * imageHeight + 0.978417 * imageHeight);
     path.quadraticBezierTo(
       0.030612 * imageWidth,
       0.010791 * imageHeight + 0.978417 * imageHeight,
       0.030612 * imageWidth,
       0.010791 * imageHeight + 0.978417 * imageHeight - 0.084183 * imageWidth,
     );
-    path.lineTo(0.030612 * imageWidth, 0.010791 * imageHeight + 0.084183 * imageWidth);
+    path.lineTo(
+        0.030612 * imageWidth, 0.010791 * imageHeight + 0.084183 * imageWidth);
     path.quadraticBezierTo(
       0.030612 * imageWidth,
       0.010791 * imageHeight,
@@ -167,7 +176,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.805755 * imageHeight), width: 0.397959 * imageWidth * 2, height: 0.397959 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.805755 * imageHeight),
+        width: 0.397959 * imageWidth * 2,
+        height: 0.397959 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightGreenFrameFill = ui.Gradient.linear(
@@ -193,7 +205,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1.083333, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.461538 * imageWidth, 0.816546 * imageHeight), width: 0.367346 * imageWidth * 2, height: 0.367346 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.461538 * imageWidth, 0.816546 * imageHeight),
+        width: 0.367346 * imageWidth * 2,
+        height: 0.367346 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightGreenInnerFill = ui.Gradient.linear(
@@ -217,7 +232,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.809352 * imageHeight), width: 0.357142 * imageWidth * 2, height: 0.357142 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.809352 * imageHeight),
+        width: 0.357142 * imageWidth * 2,
+        height: 0.357142 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightGreenEffectFill = ui.Gradient.radial(
@@ -245,7 +263,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.809352 * imageHeight), width: 0.357142 * imageWidth * 2, height: 0.357142 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.809352 * imageHeight),
+        width: 0.357142 * imageWidth * 2,
+        height: 0.357142 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightGreenInnerShadowFill = ui.Gradient.linear(
@@ -273,7 +294,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.809352 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.809352 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient greenOnFill = ui.Gradient.radial(
@@ -361,7 +385,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.809352 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.809352 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient greenOffFill = ui.Gradient.radial(
@@ -387,7 +414,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.809352 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.809352 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient greenOffInnerShadowFill = ui.Gradient.radial(
@@ -421,7 +451,11 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
       path.addArc(rect, 0, TWO_PI);
       path.close();
       ctx.clipPath(path);
-      paintImage(canvas: ctx, rect: rect, image: hatchedImage, repeat: ImageRepeat.repeat);
+      paintImage(
+          canvas: ctx,
+          rect: rect,
+          image: hatchedImage,
+          repeat: ImageRepeat.repeat);
       ctx.restore();
     }
 
@@ -434,7 +468,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.496402 * imageHeight), width: 0.397959 * imageWidth * 2, height: 0.397959 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.496402 * imageHeight),
+        width: 0.397959 * imageWidth * 2,
+        height: 0.397959 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightYellowFrameFill = ui.Gradient.linear(
@@ -460,7 +497,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1.083333, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.461538 * imageWidth, 0.507194 * imageHeight), width: 0.367346 * imageWidth * 2, height: 0.367346 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.461538 * imageWidth, 0.507194 * imageHeight),
+        width: 0.367346 * imageWidth * 2,
+        height: 0.367346 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
     ui.Gradient lightYellowInnerFill = ui.Gradient.linear(
       Offset(0, 0.377697 * imageHeight),
@@ -483,7 +523,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.5 * imageHeight), width: 0.357142 * imageWidth * 2, height: 0.357142 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.5 * imageHeight),
+        width: 0.357142 * imageWidth * 2,
+        height: 0.357142 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
     ui.Gradient lightYellowEffectFill = ui.Gradient.radial(
       Offset(0.5 * imageWidth, 0.5 * imageHeight),
@@ -511,7 +554,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.5 * imageHeight), width: 0.357142 * imageWidth * 2, height: 0.357142 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.5 * imageHeight),
+        width: 0.357142 * imageWidth * 2,
+        height: 0.357142 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightYellowInnerShadowFill = ui.Gradient.linear(
@@ -539,7 +585,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.5 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.5 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient yellowOnFill = ui.Gradient.radial(
@@ -628,7 +677,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.5 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.5 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient yellowOffFill = ui.Gradient.radial(
@@ -654,7 +706,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.5 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.5 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient yellowOffInnerShadowFill = ui.Gradient.radial(
@@ -688,7 +743,11 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
       path.addArc(rect, 0, TWO_PI);
       path.close();
       ctx.clipPath(path);
-      paintImage(canvas: ctx, rect: rect, image: hatchedImage, repeat: ImageRepeat.repeat);
+      paintImage(
+          canvas: ctx,
+          rect: rect,
+          image: hatchedImage,
+          repeat: ImageRepeat.repeat);
       ctx.restore();
     }
 
@@ -702,7 +761,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.18705 * imageHeight), width: 0.397959 * imageWidth * 2, height: 0.397959 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.18705 * imageHeight),
+        width: 0.397959 * imageWidth * 2,
+        height: 0.397959 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightRedFrameFill = ui.Gradient.linear(
@@ -729,7 +791,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1.083333, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.461538 * imageWidth, 0.197841 * imageHeight), width: 0.367346 * imageWidth * 2, height: 0.367346 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.461538 * imageWidth, 0.197841 * imageHeight),
+        width: 0.367346 * imageWidth * 2,
+        height: 0.367346 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightRedInnerFill = ui.Gradient.linear(
@@ -754,7 +819,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.190647 * imageHeight), width: 0.357142 * imageWidth * 2, height: 0.357142 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.190647 * imageHeight),
+        width: 0.357142 * imageWidth * 2,
+        height: 0.357142 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightRedEffectFill = ui.Gradient.radial(
@@ -783,7 +851,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.190647 * imageHeight), width: 0.357142 * imageWidth * 2, height: 0.357142 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.190647 * imageHeight),
+        width: 0.357142 * imageWidth * 2,
+        height: 0.357142 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient lightRedInnerShadowFill = ui.Gradient.linear(
@@ -811,7 +882,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.190647 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.190647 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient redOnFill = ui.Gradient.radial(
@@ -900,7 +974,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.190647 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.190647 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient redOffFill = ui.Gradient.radial(
@@ -926,7 +1003,10 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.save();
     ctx.scale(1, 1);
     path = Path();
-    rect = Rect.fromCenter(center: Offset(0.5 * imageWidth, 0.190647 * imageHeight), width: 0.32653 * imageWidth * 2, height: 0.32653 * imageWidth * 2);
+    rect = Rect.fromCenter(
+        center: Offset(0.5 * imageWidth, 0.190647 * imageHeight),
+        width: 0.32653 * imageWidth * 2,
+        height: 0.32653 * imageWidth * 2);
     path.addArc(rect, 0, TWO_PI);
 
     ui.Gradient redOffInnerShadowFill = ui.Gradient.radial(
@@ -960,7 +1040,11 @@ void drawTrafficlight(Canvas canvas, Size canvasSize, Parameters parameters) {
       path.addArc(rect, 0, TWO_PI);
       path.close();
       ctx.clipPath(path);
-      paintImage(canvas: ctx, rect: rect, image: hatchedImage, repeat: ImageRepeat.repeat);
+      paintImage(
+          canvas: ctx,
+          rect: rect,
+          image: hatchedImage,
+          repeat: ImageRepeat.repeat);
       ctx.restore();
     }
 

@@ -110,7 +110,8 @@ void drawLightbulb(Canvas canvas, Size canvasSize, Parameters parameters) {
     int red = data[0];
     int green = data[1];
     int blue = data[2];
-    List<double> hsl = rgbToHsl(red.toDouble(), green.toDouble(), blue.toDouble());
+    List<double> hsl =
+        rgbToHsl(red.toDouble(), green.toDouble(), blue.toDouble());
 
     ctx.save();
     Path path = Path();

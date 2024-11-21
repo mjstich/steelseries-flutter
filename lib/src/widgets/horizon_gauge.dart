@@ -149,7 +149,8 @@ class HorizonGauge extends StatefulWidget {
   State<HorizonGauge> createState() => _HorizonGaugeState();
 }
 
-class _HorizonGaugeState extends State<HorizonGauge> with TickerProviderStateMixin {
+class _HorizonGaugeState extends State<HorizonGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _rollAnimation;
   Animation<double>? _pitchAnimation;
@@ -173,7 +174,9 @@ class _HorizonGaugeState extends State<HorizonGauge> with TickerProviderStateMix
 
   @override
   void didUpdateWidget(covariant HorizonGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.roll != widget.roll || oldWidget.pitch != widget.pitch) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.roll != widget.roll ||
+        oldWidget.pitch != widget.pitch) {
       _rollFrom = oldWidget.roll!;
       _pitchFrom = oldWidget.pitch!;
 
@@ -196,7 +199,8 @@ class _HorizonGaugeState extends State<HorizonGauge> with TickerProviderStateMix
           milliseconds: widget.animationDuration,
         ),
       );
-      _rollAnimation = Tween<double>(begin: _rollFrom, end: widget.roll).animate(
+      _rollAnimation =
+          Tween<double>(begin: _rollFrom, end: widget.roll).animate(
         CurvedAnimation(
           parent: _animationController!,
           curve: Interval(
@@ -207,7 +211,8 @@ class _HorizonGaugeState extends State<HorizonGauge> with TickerProviderStateMix
         ),
       );
 
-      _pitchAnimation = Tween<double>(begin: _pitchFrom, end: widget.pitch).animate(
+      _pitchAnimation =
+          Tween<double>(begin: _pitchFrom, end: widget.pitch).animate(
         CurvedAnimation(
           parent: _animationController!,
           curve: Interval(
@@ -227,7 +232,8 @@ class _HorizonGaugeState extends State<HorizonGauge> with TickerProviderStateMix
       return AnimatedBuilder(
         animation: _animationController!,
         builder: (context, child) {
-          return _getChild(context, _rollAnimation!.value, _pitchAnimation!.value);
+          return _getChild(
+              context, _rollAnimation!.value, _pitchAnimation!.value);
         },
       );
     } else {
@@ -283,7 +289,8 @@ class _LeafHorizonGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderHorizonGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderHorizonGauge renderObject) {
     renderObject
       ..setRoll = roll!
       ..setPitch = pitch!

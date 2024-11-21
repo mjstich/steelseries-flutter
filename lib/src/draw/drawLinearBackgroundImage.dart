@@ -15,15 +15,21 @@ import 'tools.dart';
 
 Map<String, ui.Picture> linearBackgroundImageCache = {};
 
-ui.Picture drawLinearBackgroundImage(BackgroundColorEnum backgroundColor, double imageWidth, double imageHeight, bool vertical) {
+ui.Picture drawLinearBackgroundImage(BackgroundColorEnum backgroundColor,
+    double imageWidth, double imageHeight, bool vertical) {
   //String cacheKey = imageWidth.toString() + imageHeight.toString() + vertical.toString() + backgroundColor.name;
 
   // check if we have already created and cached this buffer, if not create it
   //if (!linearBackgroundImageCache.containsKey(cacheKey)) {
-  double frameWidth = math.sqrt(imageWidth * imageWidth + imageHeight * imageHeight) * 0.04;
-  frameWidth = math.min(frameWidth, (vertical ? imageWidth : imageHeight) * 0.1).ceilToDouble() - 1;
+  double frameWidth =
+      math.sqrt(imageWidth * imageWidth + imageHeight * imageHeight) * 0.04;
+  frameWidth = math
+          .min(frameWidth, (vertical ? imageWidth : imageHeight) * 0.1)
+          .ceilToDouble() -
+      1;
 
-  double CORNER_RADIUS = ((vertical ? imageWidth : imageHeight) * 0.028571).floorToDouble();
+  double CORNER_RADIUS =
+      ((vertical ? imageWidth : imageHeight) * 0.028571).floorToDouble();
   // Setup buffer
   var pictureRecorder = ui.PictureRecorder();
   var canvas = Canvas(pictureRecorder);
@@ -41,7 +47,8 @@ ui.Picture drawLinearBackgroundImage(BackgroundColorEnum backgroundColor, double
   );
 
   // If the backgroundColor is a texture fill it with the texture instead of the gradient
-  if (backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET)
+  if (backgroundColor == BackgroundColorEnum.CARBON ||
+      backgroundColor == BackgroundColorEnum.PUNCHED_SHEET)
   // backgroundColor == BackgroundColorEnum.STAINLESS ||
   // backgroundColor == BackgroundColorEnum.BRUSHED_METAL ||
   // backgroundColor == BackgroundColorEnum.BRUSHED_STAINLESS ||
@@ -52,11 +59,18 @@ ui.Picture drawLinearBackgroundImage(BackgroundColorEnum backgroundColor, double
       if (carbonImage != null) {
         canvas.save();
         Path path = Path();
-        Rect rect = Rect.fromCenter(center: Offset(imageWidth / 2, imageHeight / 2), width: imageWidth, height: imageHeight);
+        Rect rect = Rect.fromCenter(
+            center: Offset(imageWidth / 2, imageHeight / 2),
+            width: imageWidth,
+            height: imageHeight);
         path.addArc(rect, 0, TWO_PI);
         path.close();
         canvas.clipPath(path);
-        paintImage(canvas: canvas, rect: Rect.fromLTWH(0, 0, imageWidth, imageHeight), image: carbonImage, repeat: ImageRepeat.repeat);
+        paintImage(
+            canvas: canvas,
+            rect: Rect.fromLTWH(0, 0, imageWidth, imageHeight),
+            image: carbonImage,
+            repeat: ImageRepeat.repeat);
         canvas.restore();
       }
     }
@@ -66,11 +80,18 @@ ui.Picture drawLinearBackgroundImage(BackgroundColorEnum backgroundColor, double
       if (punchedSheetImage != null) {
         canvas.save();
         Path path = Path();
-        Rect rect = Rect.fromCenter(center: Offset(imageWidth / 2, imageHeight / 2), width: imageWidth, height: imageHeight);
+        Rect rect = Rect.fromCenter(
+            center: Offset(imageWidth / 2, imageHeight / 2),
+            width: imageWidth,
+            height: imageHeight);
         path.addArc(rect, 0, TWO_PI);
         path.close();
         canvas.clipPath(path);
-        paintImage(canvas: canvas, rect: Rect.fromLTWH(0, 0, imageWidth, imageHeight), image: punchedSheetImage, repeat: ImageRepeat.repeat);
+        paintImage(
+            canvas: canvas,
+            rect: Rect.fromLTWH(0, 0, imageWidth, imageHeight),
+            image: punchedSheetImage,
+            repeat: ImageRepeat.repeat);
         canvas.restore();
       }
     }

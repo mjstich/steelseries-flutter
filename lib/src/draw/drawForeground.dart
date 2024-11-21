@@ -8,7 +8,15 @@ import 'definitions.dart';
 
 Map<String, ui.Picture> foregroundCache = {};
 
-ui.Picture drawForeground(ForegroundTypeEnum foregroundType, double imageWidth, double imageHeight, bool withCenterKnob, KnobTypeEnum knob, KnobStyleEnum style, GaugeTypeEnum gaugeType, OrientationEnum orientation) {
+ui.Picture drawForeground(
+    ForegroundTypeEnum foregroundType,
+    double imageWidth,
+    double imageHeight,
+    bool withCenterKnob,
+    KnobTypeEnum knob,
+    KnobStyleEnum style,
+    GaugeTypeEnum gaugeType,
+    OrientationEnum orientation) {
   double knobSize = (imageHeight * 0.084112).ceilToDouble();
   double knobX = imageWidth * 0.5 - knobSize / 2;
   double knobY = imageHeight * 0.5 - knobSize / 2;

@@ -9,7 +9,8 @@ ui.Image? hatchBuffer() {
   return _hatchBuffer;
 }
 
-Future<ui.Image> hatchBufferInit({double width = 2.0, double height = 2.0}) async {
+Future<ui.Image> hatchBufferInit(
+    {double width = 2.0, double height = 2.0}) async {
   if (_hatchBuffer == null) {
     // Setup buffer
     var pictureRecorder = ui.PictureRecorder();

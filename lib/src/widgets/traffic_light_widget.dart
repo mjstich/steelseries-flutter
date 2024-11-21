@@ -56,7 +56,8 @@ class TrafficLightWidget extends StatefulWidget {
   State<TrafficLightWidget> createState() => _TrafficLightWidgetState();
 }
 
-class _TrafficLightWidgetState extends State<TrafficLightWidget> with TickerProviderStateMixin {
+class _TrafficLightWidgetState extends State<TrafficLightWidget>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return _LeafTrafficLightWidget(
@@ -88,7 +89,8 @@ class _LeafTrafficLightWidget extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderTrafficLightWidget renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderTrafficLightWidget renderObject) {
     renderObject
       ..setRedOn = redOn
       ..setYellowOn = yellowOn

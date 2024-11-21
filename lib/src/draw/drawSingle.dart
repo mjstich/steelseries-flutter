@@ -17,7 +17,8 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
   bool unitStringVisible = parameters.unitStringVisibleWithDefault(false);
   String headerString = parameters.headerStringWithDefault('');
   bool headerStringVisible = parameters.headerStringVisibleWithDefault(false);
-  FontTypeEnum fontType = parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
+  FontTypeEnum fontType =
+      parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
   double value = parameters.valueWithDefault(0);
   String? stringValue = parameters.stringValue;
   List<Section>? section = parameters.section;
@@ -53,14 +54,17 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
     path.close();
     canvas.clipPath(path);
 
-    if ((lcdColor == LcdColorEnum.STANDARD || lcdColor == LcdColorEnum.STANDARD_GREEN) && section == null) {
+    if ((lcdColor == LcdColorEnum.STANDARD ||
+            lcdColor == LcdColorEnum.STANDARD_GREEN) &&
+        section == null) {
       // mainCtx.shadowColor = 'gray'
       // mainCtx.shadowOffsetX = imageHeight * 0.035
       // mainCtx.shadowOffsetY = imageHeight * 0.035
       // mainCtx.shadowBlur = imageHeight * 0.055
     }
 
-    double fontSize = fontType == FontTypeEnum.LCDMono ? lcdFontSize : stdFontSize;
+    double fontSize =
+        fontType == FontTypeEnum.LCDMono ? lcdFontSize : stdFontSize;
 
     if (stringValue == null) {
       // Numeric value
@@ -87,7 +91,12 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
           minWidth: 0,
           maxWidth: imageWidth,
         );
-        textPainter.paint(canvas, Offset(imageWidth - textPainter.size.width - 6, fontSize * 0.40 + (fontType == FontTypeEnum.LCDMono ? headerYOffset : 8)));
+        textPainter.paint(
+            canvas,
+            Offset(
+                imageWidth - textPainter.size.width - 6,
+                fontSize * 0.40 +
+                    (fontType == FontTypeEnum.LCDMono ? headerYOffset : 8)));
         unitXOffset = textPainter.size.width + 10;
       }
 
@@ -106,7 +115,10 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
         minWidth: 0,
         maxWidth: imageWidth,
       );
-      textPainter.paint(canvas, Offset(imageWidth - textPainter.size.width - 6 - unitXOffset, fontSize * 0.09 + headerYOffset));
+      textPainter.paint(
+          canvas,
+          Offset(imageWidth - textPainter.size.width - 6 - unitXOffset,
+              fontSize * 0.09 + headerYOffset));
 
       if (headerStringVisible && headerString.isNotEmpty) {
         TextStyle font = getFont(fontSize * 0.25, color, fontType: fontType);
@@ -123,7 +135,8 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
           minWidth: 0,
           maxWidth: imageWidth,
         );
-        textPainter.paint(canvas, Offset(imageWidth / 2 - textPainter.size.width / 2, 2));
+        textPainter.paint(
+            canvas, Offset(imageWidth / 2 - textPainter.size.width / 2, 2));
       }
     } else {
       // Text value
@@ -141,12 +154,14 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
         minWidth: 0,
         maxWidth: imageWidth,
       );
-      textPainter.paint(canvas, Offset(imageWidth - textPainter.size.width - 6, fontSize * 0.09));
+      textPainter.paint(canvas,
+          Offset(imageWidth - textPainter.size.width - 6, fontSize * 0.09));
     }
     canvas.restore();
   }
 
-  ui.Picture createLcdSectionImage(double width, double height, Color color, LcdColorEnum lcdColor) {
+  ui.Picture createLcdSectionImage(
+      double width, double height, Color color, LcdColorEnum lcdColor) {
     var lcdCtxRecorder = ui.PictureRecorder();
     var lcdCtx = Canvas(lcdCtxRecorder);
 
@@ -181,18 +196,24 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
     lcdCtx.save();
 
     List<int> rgb = getColorValues(color);
-    List<double> hsb = rgbToHsb(rgb[0].toDouble(), rgb[1].toDouble(), rgb[2].toDouble());
+    List<double> hsb =
+        rgbToHsb(rgb[0].toDouble(), rgb[1].toDouble(), rgb[2].toDouble());
 
     List<int> rgbStart = getColorValues(lcdColor.gradientStartColor);
-    List<double> hsbStart = rgbToHsb(rgbStart[0].toDouble(), rgbStart[1].toDouble(), rgbStart[2].toDouble());
+    List<double> hsbStart = rgbToHsb(
+        rgbStart[0].toDouble(), rgbStart[1].toDouble(), rgbStart[2].toDouble());
     List<int> rgbFraction1 = getColorValues(lcdColor.gradientFraction1Color);
-    List<double> hsbFraction1 = rgbToHsb(rgbFraction1[0].toDouble(), rgbFraction1[1].toDouble(), rgbFraction1[2].toDouble());
+    List<double> hsbFraction1 = rgbToHsb(rgbFraction1[0].toDouble(),
+        rgbFraction1[1].toDouble(), rgbFraction1[2].toDouble());
     List<int> rgbFraction2 = getColorValues(lcdColor.gradientFraction2Color);
-    List<double> hsbFraction2 = rgbToHsb(rgbFraction2[0].toDouble(), rgbFraction2[1].toDouble(), rgbFraction2[2].toDouble());
+    List<double> hsbFraction2 = rgbToHsb(rgbFraction2[0].toDouble(),
+        rgbFraction2[1].toDouble(), rgbFraction2[2].toDouble());
     List<int> rgbFraction3 = getColorValues(lcdColor.gradientFraction3Color);
-    List<double> hsbFraction3 = rgbToHsb(rgbFraction3[0].toDouble(), rgbFraction3[1].toDouble(), rgbFraction3[2].toDouble());
+    List<double> hsbFraction3 = rgbToHsb(rgbFraction3[0].toDouble(),
+        rgbFraction3[1].toDouble(), rgbFraction3[2].toDouble());
     List<int> rgbStop = getColorValues(lcdColor.gradientStopColor);
-    List<double> hsbStop = rgbToHsb(rgbStop[0].toDouble(), rgbStop[1].toDouble(), rgbStop[2].toDouble());
+    List<double> hsbStop = rgbToHsb(
+        rgbStop[0].toDouble(), rgbStop[1].toDouble(), rgbStop[2].toDouble());
 
     List<int> startColor = hsbToRgb(hsb[0], hsb[1], hsbStart[2] - 0.31);
     List<int> fraction1Color = hsbToRgb(hsb[0], hsb[1], hsbFraction1[2] - 0.31);
@@ -211,9 +232,12 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
       Offset(0, yF + hF),
       [
         Color.fromRGBO(startColor[0], startColor[1], startColor[2], 1),
-        Color.fromRGBO(fraction1Color[0], fraction1Color[1], fraction1Color[2], 1),
-        Color.fromRGBO(fraction2Color[0], fraction2Color[1], fraction2Color[2], 1),
-        Color.fromRGBO(fraction3Color[0], fraction3Color[1], fraction3Color[2], 1),
+        Color.fromRGBO(
+            fraction1Color[0], fraction1Color[1], fraction1Color[2], 1),
+        Color.fromRGBO(
+            fraction2Color[0], fraction2Color[1], fraction2Color[2], 1),
+        Color.fromRGBO(
+            fraction3Color[0], fraction3Color[1], fraction3Color[2], 1),
         Color.fromRGBO(stopColor[0], stopColor[1], stopColor[2], 1),
       ],
       [0, 0.03, 0.49, 0.5, 1],
@@ -233,9 +257,11 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
 
   Color createSectionForegroundColor(Color sectionColor) {
     List<int> rgbSection = getColorValues(sectionColor);
-    List<double> hsbSection = rgbToHsb(rgbSection[0].toDouble(), rgbSection[1].toDouble(), rgbSection[2].toDouble());
+    List<double> hsbSection = rgbToHsb(rgbSection[0].toDouble(),
+        rgbSection[1].toDouble(), rgbSection[2].toDouble());
     List<int> sectionForegroundRgb = hsbToRgb(hsbSection[0], 0.57, 0.83);
-    return Color.fromRGBO(sectionForegroundRgb[0], sectionForegroundRgb[1], sectionForegroundRgb[2], 1);
+    return Color.fromRGBO(sectionForegroundRgb[0], sectionForegroundRgb[1],
+        sectionForegroundRgb[2], 1);
   }
 
   // **************   Initialization  ********************
@@ -247,9 +273,13 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
     lcdBuffer = createLcdBackgroundImage(width, height, lcdColor);
 
     if (stringValue == null && section != null && section.isNotEmpty) {
-      for (int sectionIndex = 0; sectionIndex < section.length; sectionIndex++) {
-        sectionBuffer.add(createLcdSectionImage(width, height, section[sectionIndex].color, lcdColor));
-        sectionForegroundColor.add(createSectionForegroundColor(section[sectionIndex].color));
+      for (int sectionIndex = 0;
+          sectionIndex < section.length;
+          sectionIndex++) {
+        sectionBuffer.add(createLcdSectionImage(
+            width, height, section[sectionIndex].color, lcdColor));
+        sectionForegroundColor
+            .add(createSectionForegroundColor(section[sectionIndex].color));
       }
     }
   }
@@ -264,8 +294,11 @@ void drawDisplaySingle(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw sections
     if (stringValue == null && section != null && section.isNotEmpty) {
-      for (int sectionIndex = 0; sectionIndex < section.length; sectionIndex++) {
-        if (value >= section[sectionIndex].start && value <= section[sectionIndex].stop) {
+      for (int sectionIndex = 0;
+          sectionIndex < section.length;
+          sectionIndex++) {
+        if (value >= section[sectionIndex].start &&
+            value <= section[sectionIndex].stop) {
           lcdBackgroundBuffer = sectionBuffer[sectionIndex];
           lcdTextColor = sectionForegroundColor[sectionIndex];
           break;

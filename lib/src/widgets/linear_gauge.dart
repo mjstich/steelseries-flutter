@@ -389,7 +389,8 @@ class LinearGauge extends StatefulWidget {
   State<LinearGauge> createState() => _LinearGaugeState();
 }
 
-class _LinearGaugeState extends State<LinearGauge> with TickerProviderStateMixin {
+class _LinearGaugeState extends State<LinearGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double? _from;
@@ -411,7 +412,10 @@ class _LinearGaugeState extends State<LinearGauge> with TickerProviderStateMixin
 
   @override
   void didUpdateWidget(covariant LinearGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value || oldWidget.start != widget.start || oldWidget.end != widget.end) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value ||
+        oldWidget.start != widget.start ||
+        oldWidget.end != widget.end) {
       if (oldWidget.start != widget.start || oldWidget.end != widget.end) {
         _from = null;
       } else {
@@ -436,7 +440,9 @@ class _LinearGaugeState extends State<LinearGauge> with TickerProviderStateMixin
           milliseconds: widget.animationDuration,
         ),
       );
-      _animation = Tween<double>(begin: _from ?? widget.start, end: widget.value).animate(
+      _animation =
+          Tween<double>(begin: _from ?? widget.start, end: widget.value)
+              .animate(
         CurvedAnimation(
           parent: _animationController!,
           curve: Interval(
@@ -590,7 +596,8 @@ class _LeafLinearGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderLinearGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderLinearGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setStart = start!

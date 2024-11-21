@@ -12,16 +12,20 @@ import 'drawRadialCustomImage.dart';
 import 'tools.dart';
 
 void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
-  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.BLACK_METAL);
+  FrameDesignEnum frameDesign =
+      parameters.frameDesignWithDefault(FrameDesignEnum.BLACK_METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.LIGHT_GRAY);
+  BackgroundColorEnum backgroundColor =
+      parameters.backgroundColorWithDefault(BackgroundColorEnum.LIGHT_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
-  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
+  ForegroundTypeEnum foregroundType =
+      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
   ColorEnum pointerColor = parameters.pointerColorWithDefault(ColorEnum.BLACK);
   ui.Image? customLayer = parameters.customLayer;
   double seconds = parameters.seccondsWithDefault(0);
-  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  double size =
+      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
 
   double ANGLE_STEP = 6;
 
@@ -58,7 +62,14 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
   var foregroundContextRecorder = ui.PictureRecorder();
   var foregroundContext = Canvas(foregroundContextRecorder);
 
-  void drawTickmarksImage(Canvas ctx, double width, double range, double text_scale, double text_dist_factor, double x_offset, double y_offset) {
+  void drawTickmarksImage(
+      Canvas ctx,
+      double width,
+      double range,
+      double text_scale,
+      double text_dist_factor,
+      double x_offset,
+      double y_offset) {
     double STD_FONT_SIZE = text_scale * width;
     //double STD_FONT = STD_FONT_SIZE + 'px ' + stdFontName;
     double TEXT_WIDTH = width * 0.25;
@@ -90,7 +101,9 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     alpha = ALPHA_START;
     valueCounter = 0;
-    for (; valueCounter <= range + 1; alpha -= ANGLE_STEPSIZE * 0.1, valueCounter += 0.1) {
+    for (;
+        valueCounter <= range + 1;
+        alpha -= ANGLE_STEPSIZE * 0.1, valueCounter += 0.1) {
       //     ctx.lineWidth = THIN_STROKE
       sinValue = math.sin(alpha);
       cosValue = math.cos(alpha);
@@ -98,8 +111,14 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
       // tickmark every 2 units
       if (counter % 2 == 0) {
         // ctx.lineWidth = THIN_STROKE;
-        innerPoint = [CENTER + (RADIUS - MIN_LENGTH) * sinValue + x_offset, CENTER + (RADIUS - MIN_LENGTH) * cosValue + y_offset];
-        outerPoint = [CENTER + RADIUS * sinValue + x_offset, CENTER + RADIUS * cosValue + y_offset];
+        innerPoint = [
+          CENTER + (RADIUS - MIN_LENGTH) * sinValue + x_offset,
+          CENTER + (RADIUS - MIN_LENGTH) * cosValue + y_offset
+        ];
+        outerPoint = [
+          CENTER + RADIUS * sinValue + x_offset,
+          CENTER + RADIUS * cosValue + y_offset
+        ];
         // Draw ticks
         Path path = Path();
         path.moveTo(innerPoint[0], innerPoint[1]);
@@ -116,8 +135,14 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
       // Different tickmark every 10 units
       if (counter == 10 || counter == 0) {
         double lineWidth = MEDIUM_STROKE;
-        outerPoint = [CENTER + RADIUS * sinValue + x_offset, CENTER + RADIUS * cosValue + y_offset];
-        textPoint = [CENTER + (RADIUS - TEXT_DISTANCE) * sinValue + x_offset, CENTER + (RADIUS - TEXT_DISTANCE) * cosValue + y_offset];
+        outerPoint = [
+          CENTER + RADIUS * sinValue + x_offset,
+          CENTER + RADIUS * cosValue + y_offset
+        ];
+        textPoint = [
+          CENTER + (RADIUS - TEXT_DISTANCE) * sinValue + x_offset,
+          CENTER + (RADIUS - TEXT_DISTANCE) * cosValue + y_offset
+        ];
 
         // Draw text
         if (numberCounter == 5) {
@@ -138,15 +163,24 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(textPoint[0] - textPainter.size.width / 2, textPoint[1] - textPainter.size.height / 2));
+              textPainter.paint(
+                  ctx,
+                  Offset(textPoint[0] - textPainter.size.width / 2,
+                      textPoint[1] - textPainter.size.height / 2));
             }
           }
           lineWidth = THICK_STROKE;
-          innerPoint = [CENTER + (RADIUS - MAX_LENGTH) * sinValue + x_offset, CENTER + (RADIUS - MAX_LENGTH) * cosValue + y_offset];
+          innerPoint = [
+            CENTER + (RADIUS - MAX_LENGTH) * sinValue + x_offset,
+            CENTER + (RADIUS - MAX_LENGTH) * cosValue + y_offset
+          ];
           numberCounter = 0;
         } else {
           lineWidth = MEDIUM_STROKE;
-          innerPoint = [CENTER + (RADIUS - MED_LENGTH) * sinValue + x_offset, CENTER + (RADIUS - MED_LENGTH) * cosValue + y_offset];
+          innerPoint = [
+            CENTER + (RADIUS - MED_LENGTH) * sinValue + x_offset,
+            CENTER + (RADIUS - MED_LENGTH) * cosValue + y_offset
+          ];
         }
 
         // Draw ticks
@@ -274,7 +308,10 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
     // Draw the rings
     path = Path();
     radius = (imageWidth * 0.06542) / 2;
-    Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: radius * 2, height: radius * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(centerX, centerY),
+        width: radius * 2,
+        height: radius * 2);
     path.addArc(rect, 0, TWO_PI);
     path.close();
 
@@ -297,7 +334,10 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     path = Path();
     radius = (imageWidth * 0.046728) / 2;
-    rect = Rect.fromCenter(center: Offset(centerX, centerY), width: radius * 2, height: radius * 2);
+    rect = Rect.fromCenter(
+        center: Offset(centerX, centerY),
+        width: radius * 2,
+        height: radius * 2);
     path.addArc(rect, 0, TWO_PI);
     path.close();
     grad = ui.Gradient.radial(
@@ -425,7 +465,10 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
     // Draw the rings
     path = Path();
     radius = (imageWidth * 0.037383) / 2;
-    Rect rect = Rect.fromCenter(center: Offset(centerX, smallPointerY_Offset + smallPointerSize / 2), width: radius * 2, height: radius * 2);
+    Rect rect = Rect.fromCenter(
+        center: Offset(centerX, smallPointerY_Offset + smallPointerSize / 2),
+        width: radius * 2,
+        height: radius * 2);
     path.addArc(rect, 0, TWO_PI);
     path.close();
     ctx.drawPath(
@@ -436,7 +479,10 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     path = Path();
     radius = (imageWidth * 0.028037) / 2;
-    rect = Rect.fromCenter(center: Offset(centerX, smallPointerY_Offset + smallPointerSize / 2), width: radius * 2, height: radius * 2);
+    rect = Rect.fromCenter(
+        center: Offset(centerX, smallPointerY_Offset + smallPointerSize / 2),
+        width: radius * 2,
+        height: radius * 2);
     path.addArc(rect, 0, TWO_PI);
     path.close();
     ctx.drawPath(
@@ -447,7 +493,10 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     path = Path();
     radius = (imageWidth * 0.018691) / 2;
-    rect = Rect.fromCenter(center: Offset(centerX, smallPointerY_Offset + smallPointerSize / 2), width: radius * 2, height: radius * 2);
+    rect = Rect.fromCenter(
+        center: Offset(centerX, smallPointerY_Offset + smallPointerSize / 2),
+        width: radius * 2,
+        height: radius * 2);
     path.addArc(rect, 0, TWO_PI);
     path.close();
     ctx.drawPath(
@@ -465,10 +514,16 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
   }
 
   void init(dynamic parameters) {
-    bool drawFrame2 = parameters['frame'] == null ? false : parameters['frame'] as bool;
-    bool drawBackground2 = parameters['background'] == null ? false : parameters['background'] as bool;
-    bool drawPointers = parameters['pointers'] == null ? false : parameters['pointers'] as bool;
-    bool drawForeground2 = parameters['foreground'] == null ? false : parameters['foreground'] as bool;
+    bool drawFrame2 =
+        parameters['frame'] == null ? false : parameters['frame'] as bool;
+    bool drawBackground2 = parameters['background'] == null
+        ? false
+        : parameters['background'] as bool;
+    bool drawPointers =
+        parameters['pointers'] == null ? false : parameters['pointers'] as bool;
+    bool drawForeground2 = parameters['foreground'] == null
+        ? false
+        : parameters['foreground'] as bool;
 
     if (drawFrame2 && frameVisible) {
       ui.Picture picture = drawFrame(
@@ -567,8 +622,13 @@ void drawStopwatch(Canvas canvas, Size canvasSize, Parameters parameters) {
     // absolute x, y values when drawing to main context
     //double shadowOffset = imageWidth * 0.006;
 
-    double rotationAngle = (minutePointerAngle + -0.03 * math.sin(minutePointerAngle * RAD_FACTOR)) * RAD_FACTOR;
-    double secRotationAngle = (secondPointerAngle + -0.03 * math.sin(secondPointerAngle * math.pi / 180.0)) * math.pi / 180.0;
+    double rotationAngle = (minutePointerAngle +
+            -0.03 * math.sin(minutePointerAngle * RAD_FACTOR)) *
+        RAD_FACTOR;
+    double secRotationAngle = (secondPointerAngle +
+            -0.03 * math.sin(secondPointerAngle * math.pi / 180.0)) *
+        math.pi /
+        180.0;
 
     // Draw the minute pointer
     // Define rotation center

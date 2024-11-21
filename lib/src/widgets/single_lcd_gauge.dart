@@ -200,7 +200,8 @@ class SingleLCDGauge extends StatefulWidget {
   State<SingleLCDGauge> createState() => _SingleLCDGaugeState();
 }
 
-class _SingleLCDGaugeState extends State<SingleLCDGauge> with TickerProviderStateMixin {
+class _SingleLCDGaugeState extends State<SingleLCDGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double? _from = 0;
@@ -223,7 +224,8 @@ class _SingleLCDGaugeState extends State<SingleLCDGauge> with TickerProviderStat
 
   @override
   void didUpdateWidget(covariant SingleLCDGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.value != widget.value) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.value != widget.value) {
       _from = oldWidget.value;
       _initializeAnimation();
     }
@@ -334,7 +336,8 @@ class _LeafSingleLCDGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderSingleLCDGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderSingleLCDGauge renderObject) {
     renderObject
       ..setValue = value!
       ..setStringValue = stringValue

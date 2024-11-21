@@ -15,20 +15,30 @@ import 'drawRoseImage.dart';
 import 'tools.dart';
 
 void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
-  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
-  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  double size =
+      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  FrameDesignEnum frameDesign =
+      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
+  BackgroundColorEnum backgroundColor =
+      parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
-  PointerTypeEnum pointerTypeLatest = parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
-  PointerTypeEnum pointerTypeAverage = parameters.pointerTypeAverageWithDefault(PointerTypeEnum.TYPE8);
+  PointerTypeEnum pointerTypeLatest =
+      parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
+  PointerTypeEnum pointerTypeAverage =
+      parameters.pointerTypeAverageWithDefault(PointerTypeEnum.TYPE8);
   ColorEnum pointerColor = parameters.pointerColorWithDefault(ColorEnum.RED);
-  ColorEnum pointerColorAverage = parameters.pointerColorAverageWithDefault(ColorEnum.BLUE);
-  KnobTypeEnum knobType = parameters.knobTypeWithDefault(KnobTypeEnum.STANDARD_KNOB);
-  KnobStyleEnum knobStyle = parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
-  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE2);
+  ColorEnum pointerColorAverage =
+      parameters.pointerColorAverageWithDefault(ColorEnum.BLUE);
+  KnobTypeEnum knobType =
+      parameters.knobTypeWithDefault(KnobTypeEnum.STANDARD_KNOB);
+  KnobStyleEnum knobStyle =
+      parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
+  ForegroundTypeEnum foregroundType =
+      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE2);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
-  List<String> pointSymbols = parameters.pointerSymbolsWithDefault(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
+  List<String> pointSymbols = parameters
+      .pointerSymbolsWithDefault(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']);
   bool pointSymbolsVisible = parameters.pointSymbolsVisibleWithDefault(true);
   ui.Image? customLayer = parameters.customLayer;
   bool degreeScale = parameters.degreeScaleWithDefault(true);
@@ -36,10 +46,12 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
   bool roseVisible = parameters.roseVisibleWithDefault(true);
   LcdColorEnum lcdColor = parameters.lcdColorWithDefault(LcdColorEnum.STANDARD);
   bool lcdVisible = parameters.lcdVisibleWithDefault(true);
-  FontTypeEnum fontType = parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
+  FontTypeEnum fontType =
+      parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
   List<Section>? section = parameters.section;
   List<Section>? area = parameters.area;
-  List<String> lcdTitleStrings = parameters.lcdTitleStringsWithDefault(['Latest', 'Average']);
+  List<String> lcdTitleStrings =
+      parameters.lcdTitleStringsWithDefault(['Latest', 'Average']);
   String titleString = parameters.titleStringWithDefault('');
   bool useColorLabels = parameters.useColorLabelsWithDefault(false);
 
@@ -89,7 +101,8 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
   // **************   Image creation  ********************
   void drawLcdText(double value, bool bLatest) {
     canvas.save();
-    double fontYOffset = fontType == FontTypeEnum.LCDMono ? lcdFontHeight * 0.04 : 0;
+    double fontYOffset =
+        fontType == FontTypeEnum.LCDMono ? lcdFontHeight * 0.04 : 0;
 
     // convert value from -180,180 range into 0-360 range
     while (value < -180) {
@@ -124,7 +137,8 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
       }
     }
 
-    if (lcdColor == LcdColorEnum.STANDARD || lcdColor == LcdColorEnum.STANDARD_GREEN) {
+    if (lcdColor == LcdColorEnum.STANDARD ||
+        lcdColor == LcdColorEnum.STANDARD_GREEN) {
       // mainCtx.shadowColor = 'gray'
       // mainCtx.shadowOffsetX = imageWidth * 0.007
       // mainCtx.shadowOffsetY = imageWidth * 0.007
@@ -133,7 +147,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     var textSpan = TextSpan(
       text: '$stringValue\u00B0',
-      style: getFont(fontType == FontTypeEnum.LCDMono ? lcdFontHeight : stdFontHeight, lcdColor.textColor, fontType: fontType),
+      style: getFont(
+          fontType == FontTypeEnum.LCDMono ? lcdFontHeight : stdFontHeight,
+          lcdColor.textColor,
+          fontType: fontType),
     );
     final textPainter = TextPainter(
       text: textSpan,
@@ -144,11 +161,19 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
       minWidth: 0,
       maxWidth: lcdWidth * 1.9,
     );
-    textPainter.paint(canvas, Offset(imageWidth / 2 - textPainter.size.width / 2, (bLatest ? lcdPosY1 : lcdPosY2) + lcdHeight * 0.5 - textPainter.size.height / 2 + fontYOffset));
+    textPainter.paint(
+        canvas,
+        Offset(
+            imageWidth / 2 - textPainter.size.width / 2,
+            (bLatest ? lcdPosY1 : lcdPosY2) +
+                lcdHeight * 0.5 -
+                textPainter.size.height / 2 +
+                fontYOffset));
     canvas.restore();
   }
 
-  void drawAreaSectionImage(Canvas ctx, double start, double stop, Color color, bool filled) {
+  void drawAreaSectionImage(
+      Canvas ctx, double start, double stop, Color color, bool filled) {
     ctx.save();
     double lineWidth = imageWidth * 0.035;
     double startAngle = (angleRange / range) * start;
@@ -158,10 +183,13 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
     Path path = Path();
     if (filled) {
       path.moveTo(0, 0);
-      Rect rect = Rect.fromCircle(center: const Offset(0, 0), radius: imageWidth * 0.365 - lineWidth / 2);
+      Rect rect = Rect.fromCircle(
+          center: const Offset(0, 0),
+          radius: imageWidth * 0.365 - lineWidth / 2);
       path.addArc(rect, startAngle, stopAngle - startAngle);
     } else {
-      Rect rect = Rect.fromCircle(center: const Offset(0, 0), radius: imageWidth * 0.365);
+      Rect rect = Rect.fromCircle(
+          center: const Offset(0, 0), radius: imageWidth * 0.365);
       path.addArc(rect, startAngle, stopAngle - startAngle);
     }
     if (filled) {
@@ -243,7 +271,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: lcdWidth * 0.9,
             );
-            textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+            textPainter.paint(
+                ctx,
+                Offset(
+                    -textPainter.size.width / 2, -textPainter.size.height / 2));
             ctx.translate(-imageWidth * 0.35, 0);
             break;
           case 45: // SE
@@ -263,7 +294,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: lcdWidth * 0.9,
             );
-            textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+            textPainter.paint(
+                ctx,
+                Offset(
+                    -textPainter.size.width / 2, -textPainter.size.height / 2));
             ctx.translate(-imageWidth * 0.29, 0);
             break;
           case 90: // S
@@ -284,7 +318,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
               maxWidth: lcdWidth * 0.9,
             );
 
-            textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+            textPainter.paint(
+                ctx,
+                Offset(
+                    -textPainter.size.width / 2, -textPainter.size.height / 2));
             ctx.translate(-imageWidth * 0.35, 0);
             break;
           case 135: // SW
@@ -304,7 +341,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: lcdWidth * 0.9,
             );
-            textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+            textPainter.paint(
+                ctx,
+                Offset(
+                    -textPainter.size.width / 2, -textPainter.size.height / 2));
             ctx.translate(-imageWidth * 0.29, 0);
             break;
           case 180: // W
@@ -324,7 +364,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: lcdWidth * 0.9,
             );
-            textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+            textPainter.paint(
+                ctx,
+                Offset(
+                    -textPainter.size.width / 2, -textPainter.size.height / 2));
             ctx.translate(-imageWidth * 0.35, 0);
             break;
           case 225: // NW
@@ -345,7 +388,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
               maxWidth: lcdWidth * 0.9,
             );
 
-            textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+            textPainter.paint(
+                ctx,
+                Offset(
+                    -textPainter.size.width / 2, -textPainter.size.height / 2));
             ctx.translate(-imageWidth * 0.29, 0);
             break;
           case 270: // N
@@ -365,7 +411,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: lcdWidth * 0.9,
             );
-            textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+            textPainter.paint(
+                ctx,
+                Offset(
+                    -textPainter.size.width / 2, -textPainter.size.height / 2));
             ctx.translate(-imageWidth * 0.35, 0);
             break;
           case 315: // NE
@@ -385,13 +434,33 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: lcdWidth * 0.9,
             );
-            textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+            textPainter.paint(
+                ctx,
+                Offset(
+                    -textPainter.size.width / 2, -textPainter.size.height / 2));
             ctx.translate(-imageWidth * 0.29, 0);
             break;
         }
         ctx.restore();
 
-        if (roseVisible && (i == 0 || i == 22.5 || i == 45 || i == 67.5 || i == 90 || i == 112.5 || i == 135 || i == 157.5 || i == 180 || i == 202.5 || i == 225 || i == 247.5 || i == 270 || i == 292.5 || i == 315 || i == 337.5 || i == 360)) {
+        if (roseVisible &&
+            (i == 0 ||
+                i == 22.5 ||
+                i == 45 ||
+                i == 67.5 ||
+                i == 90 ||
+                i == 112.5 ||
+                i == 135 ||
+                i == 157.5 ||
+                i == 180 ||
+                i == 202.5 ||
+                i == 225 ||
+                i == 247.5 ||
+                i == 270 ||
+                i == 292.5 ||
+                i == 315 ||
+                i == 337.5 ||
+                i == 360)) {
           // ROSE_LINE
           ctx.save();
           Path path = Path();
@@ -441,7 +510,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+              textPainter.paint(
+                  ctx,
+                  Offset(-textPainter.size.width / 2,
+                      -textPainter.size.height / 2));
               ctx.translate(-CARDINAL_TRANSLATE_X, 0);
               break;
 
@@ -461,7 +533,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+              textPainter.paint(
+                  ctx,
+                  Offset(-textPainter.size.width / 2,
+                      -textPainter.size.height / 2));
               ctx.translate(-CARDINAL_TRANSLATE_X, 0);
               break;
             case 180:
@@ -480,7 +555,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+              textPainter.paint(
+                  ctx,
+                  Offset(-textPainter.size.width / 2,
+                      -textPainter.size.height / 2));
               ctx.translate(-CARDINAL_TRANSLATE_X, 0);
               break;
 
@@ -500,7 +578,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(ctx, Offset(-textPainter.size.width / 2, -textPainter.size.height / 2));
+              textPainter.paint(
+                  ctx,
+                  Offset(-textPainter.size.width / 2,
+                      -textPainter.size.height / 2));
               ctx.translate(-CARDINAL_TRANSLATE_X, 0);
               break;
 
@@ -520,7 +601,8 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
                 double lineWidth = (i + 90) % 5 != 0 ? 1.5 : 1;
                 Path path = Path();
                 path.moveTo(OUTER_POINT, 0);
-                double to = (i + 90) % 10 != 0 ? MINOR_INNER_POINT : MAJOR_INNER_POINT;
+                double to =
+                    (i + 90) % 10 != 0 ? MINOR_INNER_POINT : MAJOR_INNER_POINT;
                 path.lineTo(to, 0);
                 path.close();
                 ctx.drawPath(
@@ -573,7 +655,8 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
             double lineWidth = (i + 90) % 5 != 0 ? 1.5 : 1;
             Path path = Path();
             path.moveTo(OUTER_POINT, 0);
-            double to = (i + 90) % 10 != 0 ? MINOR_INNER_POINT : MAJOR_INNER_POINT;
+            double to =
+                (i + 90) % 10 != 0 ? MINOR_INNER_POINT : MAJOR_INNER_POINT;
             path.lineTo(to, 0);
             path.close();
             ctx.drawPath(
@@ -631,7 +714,9 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
 
   void drawLcdTitles(Canvas ctx) {
     if (lcdTitleStrings.isNotEmpty) {
-      TextStyle font = getFont(0.04 * imageWidth, useColorLabels ? pointerColor.medium : backgroundColor.labelColor, fontWeight: ui.FontWeight.bold);
+      TextStyle font = getFont(0.04 * imageWidth,
+          useColorLabels ? pointerColor.medium : backgroundColor.labelColor,
+          fontWeight: ui.FontWeight.bold);
       var textSpan = TextSpan(
         text: lcdTitleStrings[0],
         style: font,
@@ -646,8 +731,16 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
         maxWidth: imageWidth * 0.3,
       );
 
-      textPainter.paint(ctx, Offset(imageWidth / 2 - textPainter.size.width / 2, imageHeight * 0.29 - textPainter.size.height / 2));
-      font = getFont(0.04 * imageWidth, useColorLabels ? pointerColorAverage.medium : backgroundColor.labelColor, fontWeight: ui.FontWeight.bold);
+      textPainter.paint(
+          ctx,
+          Offset(imageWidth / 2 - textPainter.size.width / 2,
+              imageHeight * 0.29 - textPainter.size.height / 2));
+      font = getFont(
+          0.04 * imageWidth,
+          useColorLabels
+              ? pointerColorAverage.medium
+              : backgroundColor.labelColor,
+          fontWeight: ui.FontWeight.bold);
       textSpan = TextSpan(
         text: lcdTitleStrings[1],
         style: font,
@@ -661,10 +754,14 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
         minWidth: 0,
         maxWidth: imageWidth * 0.3,
       );
-      textPainter.paint(ctx, Offset(imageWidth / 2 - textPainter.size.width / 2, imageHeight * 0.71 - textPainter.size.height / 2));
+      textPainter.paint(
+          ctx,
+          Offset(imageWidth / 2 - textPainter.size.width / 2,
+              imageHeight * 0.71 - textPainter.size.height / 2));
 
       if (titleString.isNotEmpty) {
-        font = getFont(0.0467 * imageWidth, backgroundColor.labelColor, fontWeight: ui.FontWeight.bold);
+        font = getFont(0.0467 * imageWidth, backgroundColor.labelColor,
+            fontWeight: ui.FontWeight.bold);
         textSpan = TextSpan(
           text: titleString,
           style: font,
@@ -678,7 +775,10 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
           minWidth: 0,
           maxWidth: imageWidth * 0.3,
         );
-        textPainter.paint(ctx, Offset(imageWidth / 2 - textPainter.size.width / 2, imageHeight * 0.5 - textPainter.size.height / 2));
+        textPainter.paint(
+            ctx,
+            Offset(imageWidth / 2 - textPainter.size.width / 2,
+                imageHeight * 0.5 - textPainter.size.height / 2));
       }
     }
   }
@@ -687,9 +787,14 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
   // Draw all static painting code to background
 
   void init(dynamic parameters) {
-    bool drawBackground2 = parameters['background'] == null ? false : parameters['background'] as bool;
-    bool drawPointer = parameters['pointer'] == null ? false : parameters['pointer'] as bool;
-    bool drawForeground2 = parameters['foreground'] == null ? false : parameters['foreground'] as bool;
+    bool drawBackground2 = parameters['background'] == null
+        ? false
+        : parameters['background'] as bool;
+    bool drawPointer =
+        parameters['pointer'] == null ? false : parameters['pointer'] as bool;
+    bool drawForeground2 = parameters['foreground'] == null
+        ? false
+        : parameters['foreground'] as bool;
 
     if (drawBackground2 && frameVisible) {
       ui.Picture picture = drawFrame(
@@ -769,7 +874,8 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Create lcd background if selected in background buffer (backgroundBuffer)
     if (drawBackground2 && lcdVisible) {
-      ui.Picture lcdBuffer = createLcdBackgroundImage(lcdWidth, lcdHeight, lcdColor);
+      ui.Picture lcdBuffer =
+          createLcdBackgroundImage(lcdWidth, lcdHeight, lcdColor);
       backgroundContext.save();
       backgroundContext.translate(lcdPosX, lcdPosY1);
       backgroundContext.drawPicture(lcdBuffer);
@@ -803,7 +909,8 @@ void drawWindDirection(Canvas canvas, Size canvasSize, Parameters parameters) {
     }
 
     if (drawForeground2 && foregroundVisible) {
-      bool knobVisible = !(pointerTypeLatest == PointerTypeEnum.TYPE15 || pointerTypeLatest == PointerTypeEnum.TYPE16);
+      bool knobVisible = !(pointerTypeLatest == PointerTypeEnum.TYPE15 ||
+          pointerTypeLatest == PointerTypeEnum.TYPE16);
       ui.Picture picture = drawForeground(
         foregroundType,
         imageWidth,

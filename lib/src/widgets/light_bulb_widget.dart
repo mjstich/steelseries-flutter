@@ -44,7 +44,8 @@ class LightBulbWidget extends StatefulWidget {
   State<LightBulbWidget> createState() => _LightBulbWidgetState();
 }
 
-class _LightBulbWidgetState extends State<LightBulbWidget> with TickerProviderStateMixin {
+class _LightBulbWidgetState extends State<LightBulbWidget>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return _LeafLightBulbWidget(
@@ -72,7 +73,8 @@ class _LeafLightBulbWidget extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderLightBulbWidget renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderLightBulbWidget renderObject) {
     renderObject
       ..setGlowColor = glowColor
       ..setLightOn = lightOn;

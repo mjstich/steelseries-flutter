@@ -11,10 +11,14 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
   double height = parameters.heightWithDefault(50);
   int digits = parameters.digitsWithDefault(6);
   int decimals = parameters.decimalsWithDefault(1);
-  Color decimalBackColor = parameters.decimalBackColorDefault(colorFromHex('#F0F0F0'));
-  Color decimalForeColor = parameters.decimalForeColorDefault(colorFromHex('#F01010'));
-  Color valueBackColor = parameters.valueBackColorDefault(colorFromHex('#050505'));
-  Color valueForeColor = parameters.valueForeColorDefault(colorFromHex('#F8F8F8'));
+  Color decimalBackColor =
+      parameters.decimalBackColorDefault(colorFromHex('#F0F0F0'));
+  Color decimalForeColor =
+      parameters.decimalForeColorDefault(colorFromHex('#F01010'));
+  Color valueBackColor =
+      parameters.valueBackColorDefault(colorFromHex('#050505'));
+  Color valueForeColor =
+      parameters.valueForeColorDefault(colorFromHex('#F8F8F8'));
   //double wobbleFactor = parameters.wobbleFactorWithDefault(0);
   //
   //let ctx
@@ -96,7 +100,8 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
     for (int i = decimals + digits - 1; i >= 0; i--) {
       int num = 0;
       try {
-        int? val = int.tryParse(numbString.substring(numbString.length - i - 1, numbString.length - i));
+        int? val = int.tryParse(numbString.substring(
+            numbString.length - i - 1, numbString.length - i));
         if (val != null) {
           num = val;
         }
@@ -119,7 +124,8 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
           maxWidth: digitWidth,
         );
         Path path = Path();
-        Rect rect = Rect.fromLTWH(digitWidth * ((decimals + digits) - i - 1), 0, digitWidth, height);
+        Rect rect = Rect.fromLTWH(
+            digitWidth * ((decimals + digits) - i - 1), 0, digitWidth, height);
         path.addRect(rect);
         path.close();
         backgroundContext.drawPath(
@@ -136,7 +142,10 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
               ..color = colorFromHex('#202020')
               ..strokeWidth = 1
               ..style = ui.PaintingStyle.stroke);
-        textPainter.paint(backgroundContext, Offset(digitWidth * ((decimals + digits) - i - 1) + 4, -height * .1));
+        textPainter.paint(
+            backgroundContext,
+            Offset(
+                digitWidth * ((decimals + digits) - i - 1) + 4, -height * .1));
       } else {
         TextStyle stdFont = getFont(digitHeight, valueForeColor);
         var textSpan = TextSpan(
@@ -154,7 +163,8 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
           maxWidth: digitWidth,
         );
         Path path = Path();
-        Rect rect = Rect.fromLTWH(digitWidth * ((decimals + digits) - i - 1), 0, digitWidth, height);
+        Rect rect = Rect.fromLTWH(
+            digitWidth * ((decimals + digits) - i - 1), 0, digitWidth, height);
         path.addRect(rect);
         path.close();
         backgroundContext.drawPath(
@@ -171,7 +181,10 @@ void drawOdometer(Canvas canvas, OdometerParameters parameters) {
               ..color = colorFromHex('#f0f0f0')
               ..strokeWidth = 1
               ..style = ui.PaintingStyle.stroke);
-        textPainter.paint(backgroundContext, Offset(digitWidth * ((decimals + digits) - i - 1) + 4, -height * .1));
+        textPainter.paint(
+            backgroundContext,
+            Offset(
+                digitWidth * ((decimals + digits) - i - 1) + 4, -height * .1));
       }
     }
   }

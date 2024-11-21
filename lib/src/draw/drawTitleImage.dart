@@ -22,7 +22,8 @@ void drawTitleImage(
   ctx.save();
 
   if (radial) {
-    TextStyle stdFont = getFont((0.046728 * imageWidth), backgroundColor.labelColor);
+    TextStyle stdFont =
+        getFont((0.046728 * imageWidth), backgroundColor.labelColor);
     var textSpan = TextSpan(
       text: titleString,
       style: stdFont,
@@ -36,7 +37,8 @@ void drawTitleImage(
       minWidth: 0,
       maxWidth: imageWidth * 0.3,
     );
-    textPainter.paint(ctx, Offset(imageWidth / 2 - textPainter.width / 2, imageHeight * 0.3));
+    textPainter.paint(
+        ctx, Offset(imageWidth / 2 - textPainter.width / 2, imageHeight * 0.3));
     textSpan = TextSpan(
       text: unitString,
       style: stdFont,
@@ -50,11 +52,14 @@ void drawTitleImage(
       minWidth: 0,
       maxWidth: imageWidth * 0.3,
     );
-    textPainter.paint(ctx, Offset(imageWidth / 2 - textPainter.width / 2, imageHeight * 0.38));
+    textPainter.paint(ctx,
+        Offset(imageWidth / 2 - textPainter.width / 2, imageHeight * 0.38));
   } else {
     // linear
     if (vertical) {
-      TextStyle stdFont = getFont((0.1 * imageWidth), backgroundColor.labelColor, fontWeight: ui.FontWeight.bold);
+      TextStyle stdFont = getFont(
+          (0.1 * imageWidth), backgroundColor.labelColor,
+          fontWeight: ui.FontWeight.bold);
       ctx.save();
       ctx.translate(0.711428 * imageWidth, 0.1375 * imageHeight);
       ctx.rotate(1.570796);
@@ -73,9 +78,16 @@ void drawTitleImage(
         minWidth: 0,
         maxWidth: imageWidth,
       );
-      textPainter.paint(ctx, Offset(0, unitString.isEmpty ? -textPainter.size.height / 2 : -textPainter.size.height));
+      textPainter.paint(
+          ctx,
+          Offset(
+              0,
+              unitString.isEmpty
+                  ? -textPainter.size.height / 2
+                  : -textPainter.size.height));
 
-      stdFont = getFont((0.071428 * imageWidth), backgroundColor.labelColor, fontWeight: ui.FontWeight.bold);
+      stdFont = getFont((0.071428 * imageWidth), backgroundColor.labelColor,
+          fontWeight: ui.FontWeight.bold);
       textSpan = TextSpan(
         text: unitString,
         style: stdFont,
@@ -94,7 +106,9 @@ void drawTitleImage(
       ctx.restore();
     } else {
       double xOffset = gaugeType == GaugeTypeEnum.TYPE1 ? 0 : 15;
-      TextStyle stdFont = getFont((0.035 * imageWidth), backgroundColor.labelColor, fontWeight: ui.FontWeight.bold);
+      TextStyle stdFont = getFont(
+          (0.035 * imageWidth), backgroundColor.labelColor,
+          fontWeight: ui.FontWeight.bold);
 
       ctx.save();
       ctx.translate(imageWidth * 0.15 + xOffset, imageHeight * 0.30);
@@ -111,8 +125,15 @@ void drawTitleImage(
         minWidth: 0,
         maxWidth: imageWidth,
       );
-      textPainter.paint(ctx, Offset(0, unitString.isEmpty ? -textPainter.size.height / 2 : -textPainter.size.height));
-      stdFont = getFont((0.025 * imageWidth), backgroundColor.labelColor, fontWeight: ui.FontWeight.bold);
+      textPainter.paint(
+          ctx,
+          Offset(
+              0,
+              unitString.isEmpty
+                  ? -textPainter.size.height / 2
+                  : -textPainter.size.height));
+      stdFont = getFont((0.025 * imageWidth), backgroundColor.labelColor,
+          fontWeight: ui.FontWeight.bold);
 
       textSpan = TextSpan(
         text: unitString,

@@ -22,7 +22,10 @@ void drawRadialCustomImage(
     ctx.save();
     // Set the clipping area
     Path path = Path();
-    Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: (imageWidth * 0.831775), height: (imageWidth * 0.831775));
+    Rect rect = Rect.fromCenter(
+        center: Offset(centerX, centerY),
+        width: (imageWidth * 0.831775),
+        height: (imageWidth * 0.831775));
     path.addArc(rect, 0, TWO_PI);
     path.close();
     ctx.clipPath(path);

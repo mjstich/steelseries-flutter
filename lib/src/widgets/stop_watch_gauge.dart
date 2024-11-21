@@ -176,7 +176,8 @@ class StopwatchGauge extends StatefulWidget {
   State<StopwatchGauge> createState() => _StopwatchGaugeState();
 }
 
-class _StopwatchGaugeState extends State<StopwatchGauge> with TickerProviderStateMixin {
+class _StopwatchGaugeState extends State<StopwatchGauge>
+    with TickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _animation;
   double _from = 0;
@@ -198,7 +199,8 @@ class _StopwatchGaugeState extends State<StopwatchGauge> with TickerProviderStat
 
   @override
   void didUpdateWidget(covariant StopwatchGauge oldWidget) {
-    if (oldWidget.enableAnimation != widget.enableAnimation || oldWidget.seconds != widget.seconds) {
+    if (oldWidget.enableAnimation != widget.enableAnimation ||
+        oldWidget.seconds != widget.seconds) {
       _from = oldWidget.seconds!;
 
       _initializeAnimation();
@@ -302,7 +304,8 @@ class _LeafStopwatchGauge extends LeafRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant RenderStopwatchGauge renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant RenderStopwatchGauge renderObject) {
     renderObject
       ..setSeconds = seconds!
       ..setFrameDesign = frameDesign
