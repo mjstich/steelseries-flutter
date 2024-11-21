@@ -66,13 +66,7 @@ topics:
   - animation
   - gauge
   - gauges
-  - lcd
-  - led
   - stopwatch
-  - wind indicator
-  - level
-  - horizon
-  - steelseries
 
 screenshots:
   - description: The steelseries_flutter package thumbnail.
