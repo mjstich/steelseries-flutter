@@ -22,32 +22,25 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
   List<Section>? section = parameters.section;
   bool useSectionColors = parameters.useSectionColorsWithDefault(false);
   bool niceScale = parameters.niceScaleWithDefault(true);
-  double threshold =
-      parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
+  double threshold = parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
   String titleString = parameters.titleStringWithDefault('');
   String unitString = parameters.unitStringWithDefault('');
-  FrameDesignEnum frameDesign =
-      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor =
-      parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
+  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
   ColorEnum valueColor = parameters.valueColorWithDefault(ColorEnum.RED);
   LcdColorEnum lcdColor = parameters.lcdColorWithDefault(LcdColorEnum.STANDARD);
   bool lcdVisible = parameters.lcdVisibleWithDefault(true);
   int lcdDecimals = parameters.lcdDecimalsWithDefault(1);
-  FontTypeEnum fontType =
-      parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
+  FontTypeEnum fontType = parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
   LedColorEnum ledColor = parameters.ledColorWithDefault(LedColorEnum.RED_LED);
   bool ledVisible = parameters.ledVisibleWithDefault(false);
   bool ledOn = parameters.ledOnWithDefault(false);
   bool thresholdVisible = parameters.thresholdVisibleWithDefault(true);
-  bool minMeasuredValueVisible =
-      parameters.minMeasuredValueVisibleWithDefault(false);
-  bool maxMeasuredValueVisible =
-      parameters.maxMeasuredValueVisibleWithDefault(false);
-  LabelNumberFormatEnum labelNumberFormat =
-      parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
+  bool minMeasuredValueVisible = parameters.minMeasuredValueVisibleWithDefault(false);
+  bool maxMeasuredValueVisible = parameters.maxMeasuredValueVisibleWithDefault(false);
+  LabelNumberFormatEnum labelNumberFormat = parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
   GradientWrapper? valueGradient = parameters.valueGradient;
   bool useValueGradient = parameters.useValueGradientWithDefault(false);
@@ -104,10 +97,8 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
         niceRange / (maxNoOfMajorTicks - 1),
         true,
       );
-      niceMinValue =
-          (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
-      niceMaxValue =
-          (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
+      niceMinValue = (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
+      niceMaxValue = (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
       minorTickSpacing = calcNiceNumber(
         majorTickSpacing / (maxNoOfMinorTicks - 1),
         true,
@@ -208,8 +199,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
   void drawLcdText(Canvas ctx, double value, bool vertical) {
     ctx.save();
 
-    if (lcdColor == LcdColorEnum.STANDARD ||
-        lcdColor == LcdColorEnum.STANDARD_GREEN) {
+    if (lcdColor == LcdColorEnum.STANDARD || lcdColor == LcdColorEnum.STANDARD_GREEN) {
       // ctx.shadowColor = 'gray'
       // if (vertical) {
       //   ctx.shadowOffsetX = imageHeight * 0.003
@@ -225,10 +215,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     double lcdTextX;
     double lcdTextY;
     double lcdTextWidth;
-    TextStyle font = getFont(
-        fontType == FontTypeEnum.LCDMono ? lcdFontSize : stdFontSize,
-        lcdColor.textColor,
-        fontType: fontType);
+    TextStyle font = getFont(fontType == FontTypeEnum.LCDMono ? lcdFontSize : stdFontSize, lcdColor.textColor, fontType: fontType);
 
     if (vertical) {
       lcdTextWidth = imageWidth * 0.571428;
@@ -255,13 +242,11 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       //lcdTextX = (imageWidth - imageWidth * 0.571428) / 2 + imageWidth * 0.571428 - 2;
       lcdTextX = (imageWidth - imageWidth * 0.571428) / 2;
       //lcdTextY = imageHeight * 0.875;
-      lcdTextY =
-          imageHeight * 0.88 + imageHeight * 0.055 / 2 - textPainter.height / 2;
+      lcdTextY = imageHeight * 0.88 + imageHeight * 0.055 / 2 - textPainter.height / 2;
     } else {
       lcdTextX = imageWidth * 0.695 - 5;
       //lcdTextY = imageHeight * 0.225 - (fontType == FontTypeEnum.LCDMono ? 2 : 0);
-      lcdTextY =
-          imageHeight * 0.22 + imageHeight * 0.15 / 2 - textPainter.height / 2;
+      lcdTextY = imageHeight * 0.22 + imageHeight * 0.15 / 2 - textPainter.height / 2;
     }
 
     textPainter.paint(ctx, Offset(lcdTextX, lcdTextY));
@@ -353,8 +338,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     }
   }
 
-  void drawTickmarksImage(
-      Canvas ctx, LabelNumberFormatEnum labelNumberFormat, bool vertical) {
+  void drawTickmarksImage(Canvas ctx, LabelNumberFormatEnum labelNumberFormat, bool vertical) {
     ctx.save();
 
     double TEXT_WIDTH = imageWidth * 0.3;
@@ -411,13 +395,10 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     double labelCounter = minValue;
     tickCounter = 0;
-    for (;
-        labelCounter <= maxValue;
-        labelCounter += minorTickSpacing, tickCounter += minorTickSpacing) {
+    for (; labelCounter <= maxValue; labelCounter += minorTickSpacing, tickCounter += minorTickSpacing) {
       // Calculate the bounds of the scaling
       if (vertical) {
-        currentPos =
-            scaleBoundsY + scaleBoundsH - tickCounter * tickSpaceScaling;
+        currentPos = scaleBoundsY + scaleBoundsH - tickCounter * tickSpaceScaling;
       } else {
         currentPos = scaleBoundsX + tickCounter * tickSpaceScaling;
       }
@@ -456,10 +437,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(
-                  ctx,
-                  Offset(imageWidth * 0.28 - textPainter.size.width / 1.25,
-                      currentPos - textPainter.size.height / 2));
+              textPainter.paint(ctx, Offset(imageWidth * 0.28 - textPainter.size.width / 1.25, currentPos - textPainter.size.height / 2));
               break;
 
             case LabelNumberFormatEnum.SCIENTIFIC:
@@ -476,15 +454,10 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(
-                  ctx,
-                  Offset(imageWidth * 0.28 - textPainter.size.width / 1.25,
-                      currentPos - textPainter.size.height / 2));
+              textPainter.paint(ctx, Offset(imageWidth * 0.28 - textPainter.size.width / 1.25, currentPos - textPainter.size.height / 2));
               break;
 
             case LabelNumberFormatEnum.STANDARD:
-            /* falls through */
-            default:
               var textSpan = TextSpan(
                 text: valueCounter.toStringAsFixed(0),
                 style: stdFont,
@@ -498,10 +471,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(
-                  ctx,
-                  Offset(imageWidth * 0.28 - textPainter.size.width / 1.25,
-                      currentPos - textPainter.size.height / 2));
+              textPainter.paint(ctx, Offset(imageWidth * 0.28 - textPainter.size.width / 1.25, currentPos - textPainter.size.height / 2));
               break;
           }
         } else {
@@ -521,10 +491,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(
-                  ctx,
-                  Offset(currentPos - textPainter.size.width / 2,
-                      imageHeight * 0.73 - textPainter.size.height / 3));
+              textPainter.paint(ctx, Offset(currentPos - textPainter.size.width / 2, imageHeight * 0.73 - textPainter.size.height / 3));
               break;
 
             case LabelNumberFormatEnum.SCIENTIFIC:
@@ -541,16 +508,11 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(
-                  ctx,
-                  Offset(currentPos - textPainter.size.width / 2,
-                      imageHeight * 0.73 - textPainter.size.height / 3));
+              textPainter.paint(ctx, Offset(currentPos - textPainter.size.width / 2, imageHeight * 0.73 - textPainter.size.height / 3));
 
               break;
 
             case LabelNumberFormatEnum.STANDARD:
-            /* falls through */
-            default:
               var textSpan = TextSpan(
                 text: valueCounter.toStringAsFixed(0),
                 style: stdFont,
@@ -564,10 +526,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
                 minWidth: 0,
                 maxWidth: TEXT_WIDTH,
               );
-              textPainter.paint(
-                  ctx,
-                  Offset(currentPos - textPainter.size.width / 2,
-                      imageHeight * 0.73 - textPainter.size.height / 3));
+              textPainter.paint(ctx, Offset(currentPos - textPainter.size.width / 2, imageHeight * 0.73 - textPainter.size.height / 3));
               break;
           }
         }
@@ -578,8 +537,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       }
 
       // Draw tickmark every minor tickmark spacing
-      if (maxNoOfMinorTicks % 2 == 0 &&
-          majorTickCounter == maxNoOfMinorTicks / 2) {
+      if (maxNoOfMinorTicks % 2 == 0 && majorTickCounter == maxNoOfMinorTicks / 2) {
         drawLinearTicks(
           ctx,
           mediumTickStart,
@@ -634,8 +592,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.restore();
   }
 
-  void drawActiveLed(
-      Canvas ctx, ColorDef ledColor, double width, double height) {
+  void drawActiveLed(Canvas ctx, ColorDef ledColor, double width, double height) {
     ctx.save();
     Path path = Path();
     path.addRect(Rect.fromLTWH(0, 0, width, height));
@@ -669,8 +626,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.restore();
   }
 
-  void drawValue(Canvas ctx, double imageWidth, double imageHeight,
-      ui.Picture inActiveLedPicture) {
+  void drawValue(Canvas ctx, double imageWidth, double imageHeight, ui.Picture inActiveLedPicture) {
     double top; // position of max value
     double bottom; // position of min value
     Color labelColor = backgroundColor.labelColor;
@@ -709,10 +665,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     }
 
     //double darker = backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET || backgroundColor == BackgroundColorEnum.STAINLESS || backgroundColor == BackgroundColorEnum.BRUSHED_STAINLESS || backgroundColor == BackgroundColorEnum.TURNED ? 0.3 : 0;
-    double darker = backgroundColor == BackgroundColorEnum.CARBON ||
-            backgroundColor == BackgroundColorEnum.PUNCHED_SHEET
-        ? 0.3
-        : 0;
+    double darker = backgroundColor == BackgroundColorEnum.CARBON || backgroundColor == BackgroundColorEnum.PUNCHED_SHEET ? 0.3 : 0;
 
     ui.Gradient valueBackgroundTrackGradient = ui.Gradient.linear(
       Offset(valueBackgroundStartX, valueBackgroundStartY),
@@ -728,8 +681,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (vertical) {
       Path path = Path();
-      path.addRect(Rect.fromLTWH(
-          imageWidth * 0.435714, top, imageWidth * 0.15, fullSize * 1.014));
+      path.addRect(Rect.fromLTWH(imageWidth * 0.435714, top, imageWidth * 0.15, fullSize * 1.014));
       path.close();
       ctx.drawPath(
           path,
@@ -738,8 +690,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
             ..style = ui.PaintingStyle.fill);
     } else {
       Path path = Path();
-      path.addRect(Rect.fromLTWH(valueBackgroundStartX, valueBackgroundStartY,
-          fullSize * 1.035, imageHeight * 0.152857));
+      path.addRect(Rect.fromLTWH(valueBackgroundStartX, valueBackgroundStartY, fullSize * 1.035, imageHeight * 0.152857));
       path.close();
       ctx.drawPath(
           path,
@@ -776,8 +727,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (vertical) {
       Path path = Path();
-      path.addRect(Rect.fromLTWH(
-          imageWidth * 0.435714, top, imageWidth * 0.007142, fullSize * 1.014));
+      path.addRect(Rect.fromLTWH(imageWidth * 0.435714, top, imageWidth * 0.007142, fullSize * 1.014));
       path.close();
       ctx.drawPath(
           path,
@@ -785,8 +735,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
             ..shader = valueBorderGradient
             ..style = ui.PaintingStyle.fill);
       path = Path();
-      path.addRect(Rect.fromLTWH(
-          imageWidth * 0.571428, top, imageWidth * 0.007142, fullSize * 1.014));
+      path.addRect(Rect.fromLTWH(imageWidth * 0.571428, top, imageWidth * 0.007142, fullSize * 1.014));
       path.close();
       ctx.drawPath(
           path,
@@ -795,8 +744,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
             ..style = ui.PaintingStyle.fill);
     } else {
       Path path = Path();
-      path.addRect(Rect.fromLTWH(imageWidth * 0.13, imageHeight * 0.435714,
-          fullSize * 1.035, imageHeight * 0.007142));
+      path.addRect(Rect.fromLTWH(imageWidth * 0.13, imageHeight * 0.435714, fullSize * 1.035, imageHeight * 0.007142));
       path.close();
       ctx.drawPath(
           path,
@@ -804,8 +752,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
             ..shader = valueBorderGradient
             ..style = ui.PaintingStyle.fill);
       path = Path();
-      path.addRect(Rect.fromLTWH(imageWidth * 0.13, imageHeight * 0.571428,
-          fullSize * 1.035, imageHeight * 0.007142));
+      path.addRect(Rect.fromLTWH(imageWidth * 0.13, imageHeight * 0.571428, fullSize * 1.035, imageHeight * 0.007142));
       path.close();
       ctx.drawPath(
           path,
@@ -860,16 +807,14 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
         // Use a gradient for value colors?
         if (isGradientVisible) {
           // Convert pixel back to value
-          currentValue =
-              minValue + (translateY / fullSize) * (maxValue - minValue);
+          currentValue = minValue + (translateY / fullSize) * (maxValue - minValue);
           gradRange = valueGradient!.end - valueGradient.start;
           fraction = (currentValue - minValue) / gradRange;
           fraction = math.max(math.min(fraction, 1), 0);
           activeLedColor = customColorDef(valueGradient.getColorAt(fraction));
         } else if (isSectionsVisible) {
           for (int i = 0; i < sectionPixels.length; i++) {
-            if (translateY >= sectionPixels[i].start &&
-                translateY < sectionPixels[i].stop) {
+            if (translateY >= sectionPixels[i].start && translateY < sectionPixels[i].stop) {
               activeLedColor = sectionPixels[i].color;
               break;
             }
@@ -891,8 +836,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
             activeLedHeight = imageHeight * 0.121428;
           }
 
-          drawActiveLed(activeLedContext, activeLedColor, activeLedWidth,
-              activeLedHeight);
+          drawActiveLed(activeLedContext, activeLedColor, activeLedWidth, activeLedHeight);
           lastActiveLedColor = activeLedColor;
           activeLedPicture = null;
         }
@@ -908,9 +852,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     } else {
       // Draw the inactive leds
       inactiveLeds = fullSize;
-      for (translateX = -(ledW / 2);
-          translateX <= inactiveLeds;
-          translateX += ledW + 1) {
+      for (translateX = -(ledW / 2); translateX <= inactiveLeds; translateX += ledW + 1) {
         ctx.translate(translateX, 0);
         ctx.translate(ledX, ledY);
         ctx.drawPicture(inActiveLedPicture);
@@ -919,23 +861,19 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       }
       // Draw the active leds in dependence on the current value
       activeLeds = ((value - minValue) / (maxValue - minValue)) * fullSize;
-      for (translateX = -(ledW / 2);
-          translateX <= activeLeds;
-          translateX += ledW + 1) {
+      for (translateX = -(ledW / 2); translateX <= activeLeds; translateX += ledW + 1) {
         // check for LED color
         activeLedColor = valueColor.toColorDef();
         if (isGradientVisible) {
           // Convert pixel back to value
-          currentValue =
-              minValue + (translateX / fullSize) * (maxValue - minValue);
+          currentValue = minValue + (translateX / fullSize) * (maxValue - minValue);
           gradRange = valueGradient!.end - valueGradient.start;
           fraction = (currentValue - minValue) / gradRange;
           fraction = math.max(math.min(fraction, 1), 0);
           activeLedColor = customColorDef(valueGradient.getColorAt(fraction));
         } else if (isSectionsVisible) {
           for (int i = 0; i < sectionPixels.length; i++) {
-            if (translateX >= sectionPixels[i].start &&
-                translateX < sectionPixels[i].stop) {
+            if (translateX >= sectionPixels[i].start && translateX < sectionPixels[i].stop) {
               activeLedColor = sectionPixels[i].color;
               break;
             }
@@ -957,8 +895,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
             activeLedHeight = imageHeight * 0.121428;
           }
 
-          drawActiveLed(activeLedContext, activeLedColor, activeLedWidth,
-              activeLedHeight);
+          drawActiveLed(activeLedContext, activeLedColor, activeLedWidth, activeLedHeight);
           lastActiveLedColor = activeLedColor;
           activeLedPicture = null;
         }
@@ -976,19 +913,11 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
   // **************   Initialization  ********************
   void init(dynamic parameters) {
-    bool drawFrame2 =
-        parameters['frame'] == null ? false : parameters['frame'] as bool;
-    bool drawBackground2 = parameters['background'] == null
-        ? false
-        : parameters['background'] as bool;
-    bool drawLed =
-        parameters['led'] == null ? false : parameters['led'] as bool;
-    bool drawForeground2 = parameters['foreground'] == null
-        ? false
-        : parameters['foreground'] as bool;
-    bool drawBargraphLed = parameters['bargraphled'] == null
-        ? false
-        : parameters['bargraphled'] as bool;
+    bool drawFrame2 = parameters['frame'] == null ? false : parameters['frame'] as bool;
+    bool drawBackground2 = parameters['background'] == null ? false : parameters['background'] as bool;
+    bool drawLed = parameters['led'] == null ? false : parameters['led'] as bool;
+    bool drawForeground2 = parameters['foreground'] == null ? false : parameters['foreground'] as bool;
+    bool drawBargraphLed = parameters['bargraphled'] == null ? false : parameters['bargraphled'] as bool;
 
     // Calculate the current min and max values and the range
     calculate();
@@ -1039,13 +968,11 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     if (minMeasuredValueVisible) {
       if (vertical) {
         minMeasuredValueCtx.drawPicture(
-          createMeasuredValueImage(
-              minMaxIndSize, ColorEnum.BLUE.dark, false, vertical),
+          createMeasuredValueImage(minMaxIndSize, ColorEnum.BLUE.dark, false, vertical),
         );
       } else {
         minMeasuredValueCtx.drawPicture(
-          createMeasuredValueImage(
-              minMaxIndSize, ColorEnum.BLUE.dark, false, vertical),
+          createMeasuredValueImage(minMaxIndSize, ColorEnum.BLUE.dark, false, vertical),
         );
       }
     }
@@ -1054,13 +981,11 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     if (maxMeasuredValueVisible) {
       if (vertical) {
         maxMeasuredValueCtx.drawPicture(
-          createMeasuredValueImage(
-              minMaxIndSize, ColorEnum.RED.medium, false, vertical),
+          createMeasuredValueImage(minMaxIndSize, ColorEnum.RED.medium, false, vertical),
         );
       } else {
         maxMeasuredValueCtx.drawPicture(
-          createMeasuredValueImage(
-              minMaxIndSize, ColorEnum.RED.medium, false, vertical),
+          createMeasuredValueImage(minMaxIndSize, ColorEnum.RED.medium, false, vertical),
         );
       }
     }
@@ -1076,19 +1001,12 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
         backgroundContext.save();
         if (vertical) {
           // Vertical orientation
-          valuePos = imageHeight * 0.856796 -
-              (imageHeight * 0.728155 * (threshold - minValue)) /
-                  (maxValue - minValue);
-          backgroundContext.translate(
-              imageWidth * 0.365, valuePos - minMaxIndSize / 2);
+          valuePos = imageHeight * 0.856796 - (imageHeight * 0.728155 * (threshold - minValue)) / (maxValue - minValue);
+          backgroundContext.translate(imageWidth * 0.365, valuePos - minMaxIndSize / 2);
         } else {
           // Horizontal orientation
-          valuePos = ((imageWidth * 0.856796 - imageWidth * 0.12864) *
-                  (threshold - minValue)) /
-              (maxValue - minValue);
-          backgroundContext.translate(
-              imageWidth * 0.142857 - minMaxIndSize / 2 + valuePos,
-              imageHeight * 0.58);
+          valuePos = ((imageWidth * 0.856796 - imageWidth * 0.12864) * (threshold - minValue)) / (maxValue - minValue);
+          backgroundContext.translate(imageWidth * 0.142857 - minMaxIndSize / 2 + valuePos, imageHeight * 0.58);
         }
         ui.Picture picture = createThresholdImage(vertical);
         backgroundContext.drawPicture(picture);
@@ -1128,16 +1046,12 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     // Create lcd background if selected in background buffer (backgroundBuffer)
     if (drawBackground2 && lcdVisible) {
       if (vertical) {
-        ui.Picture picture = createLcdBackgroundImage(
-            imageWidth * 0.571428, imageHeight * 0.055, lcdColor);
-        backgroundContext.translate(
-            (imageWidth - imageWidth * 0.571428) / 2, imageHeight * 0.88);
+        ui.Picture picture = createLcdBackgroundImage(imageWidth * 0.571428, imageHeight * 0.055, lcdColor);
+        backgroundContext.translate((imageWidth - imageWidth * 0.571428) / 2, imageHeight * 0.88);
         backgroundContext.drawPicture(picture);
-        backgroundContext.translate(
-            -(imageWidth - imageWidth * 0.571428) / 2, -imageHeight * 0.88);
+        backgroundContext.translate(-(imageWidth - imageWidth * 0.571428) / 2, -imageHeight * 0.88);
       } else {
-        ui.Picture picture = createLcdBackgroundImage(
-            imageWidth * 0.18, imageHeight * 0.15, lcdColor);
+        ui.Picture picture = createLcdBackgroundImage(imageWidth * 0.18, imageHeight * 0.15, lcdColor);
         backgroundContext.translate(imageWidth * 0.695, imageHeight * 0.22);
         backgroundContext.drawPicture(picture);
         backgroundContext.translate(-imageWidth * 0.695, -imageHeight * 0.22);
@@ -1147,15 +1061,11 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     // Draw leds of bargraph
     if (drawBargraphLed) {
       if (vertical) {
-        drawInActiveLed(
-            inActiveLedContext, imageWidth * 0.121428, imageHeight * 0.012135);
-        drawActiveLed(activeLedContext, valueColor.toColorDef(),
-            imageWidth * 0.121428, imageHeight * 0.012135);
+        drawInActiveLed(inActiveLedContext, imageWidth * 0.121428, imageHeight * 0.012135);
+        drawActiveLed(activeLedContext, valueColor.toColorDef(), imageWidth * 0.121428, imageHeight * 0.012135);
       } else {
-        drawInActiveLed(
-            inActiveLedContext, imageWidth * 0.012135, imageHeight * 0.121428);
-        drawActiveLed(activeLedContext, valueColor.toColorDef(),
-            imageWidth * 0.012135, imageHeight * 0.121428);
+        drawInActiveLed(inActiveLedContext, imageWidth * 0.012135, imageHeight * 0.121428);
+        drawActiveLed(activeLedContext, valueColor.toColorDef(), imageWidth * 0.012135, imageHeight * 0.121428);
       }
     }
 
@@ -1186,14 +1096,8 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       do {
         sectionIndex--;
         sectionPixels.add(SectionRange(
-          start: ((section[sectionIndex].start + minValue.abs()) /
-                      (maxValue - minValue)) *
-                  fullSize -
-              ledWidth2,
-          stop: ((section[sectionIndex].stop + minValue.abs()) /
-                      (maxValue - minValue)) *
-                  fullSize -
-              ledWidth2,
+          start: ((section[sectionIndex].start + minValue.abs()) / (maxValue - minValue)) * fullSize - ledWidth2,
+          stop: ((section[sectionIndex].stop + minValue.abs()) / (maxValue - minValue)) * fullSize - ledWidth2,
           color: customColorDef(section[sectionIndex].color),
         ));
       } while (sectionIndex > 0);
@@ -1249,9 +1153,7 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw led
     if (ledVisible) {
-      ui.Picture picture = ledOn
-          ? ledBufferOnRecorder.endRecording()
-          : ledBufferOffRecorder.endRecording();
+      ui.Picture picture = ledOn ? ledBufferOnRecorder.endRecording() : ledBufferOffRecorder.endRecording();
       canvas.save();
       canvas.translate(ledPosX, ledPosY);
       canvas.drawPicture(picture);
@@ -1265,15 +1167,11 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     // Draw min measured value indicator
     if (minMeasuredValueVisible) {
       if (vertical) {
-        valuePos = imageHeight * 0.856796 -
-            (imageHeight * 0.728155 * (minMeasuredValue - minValue)) /
-                (maxValue - minValue);
+        valuePos = imageHeight * 0.856796 - (imageHeight * 0.728155 * (minMeasuredValue - minValue)) / (maxValue - minValue);
         minMaxX = imageWidth * 0.34 - minMaxIndSize;
         minMaxY = valuePos - minMaxIndSize / 2;
       } else {
-        valuePos = ((imageWidth * 0.856796 - imageWidth * 0.12864) *
-                (minMeasuredValue - minValue)) /
-            (maxValue - minValue);
+        valuePos = ((imageWidth * 0.856796 - imageWidth * 0.12864) * (minMeasuredValue - minValue)) / (maxValue - minValue);
         minMaxX = imageWidth * 0.142857 - minMaxIndSize / 2 + valuePos;
         minMaxY = imageHeight * 0.65;
       }
@@ -1286,15 +1184,11 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     // Draw max measured value indicator
     if (maxMeasuredValueVisible) {
       if (vertical) {
-        valuePos = imageHeight * 0.856796 -
-            (imageHeight * 0.728155 * (maxMeasuredValue - minValue)) /
-                (maxValue - minValue);
+        valuePos = imageHeight * 0.856796 - (imageHeight * 0.728155 * (maxMeasuredValue - minValue)) / (maxValue - minValue);
         minMaxX = imageWidth * 0.34 - minMaxIndSize;
         minMaxY = valuePos - minMaxIndSize / 2;
       } else {
-        valuePos = ((imageWidth * 0.856796 - imageWidth * 0.12864) *
-                (maxMeasuredValue - minValue)) /
-            (maxValue - minValue);
+        valuePos = ((imageWidth * 0.856796 - imageWidth * 0.12864) * (maxMeasuredValue - minValue)) / (maxValue - minValue);
         minMaxX = imageWidth * 0.142857 - minMaxIndSize / 2 + valuePos;
         minMaxY = imageHeight * 0.65;
       }

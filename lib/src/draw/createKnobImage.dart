@@ -9,8 +9,7 @@ import 'tools.dart';
 
 Map<String, ui.Picture> knobImageCache = {};
 
-ui.Picture createKnobImage(
-    double size, KnobTypeEnum knob, KnobStyleEnum style) {
+ui.Picture createKnobImage(double size, KnobTypeEnum knob, KnobStyleEnum style) {
   double maxPostCenterX = size / 2;
   double maxPostCenterY = size / 2;
 
@@ -119,8 +118,6 @@ ui.Picture createKnobImage(
           break;
 
         case KnobStyleEnum.SILVER:
-        /* falls through */
-        default:
           gradColors.add(const Color.fromRGBO(204, 204, 204, 1));
           gradColors.add(const Color.fromRGBO(87, 92, 98, 1));
           break;
@@ -347,10 +344,7 @@ ui.Picture createKnobImage(
         [0, 0.46, 1],
       );
       paint.shader = grad;
-      Rect rect = Rect.fromCenter(
-          center: Offset(maxPostCenterX, maxPostCenterY),
-          width: size,
-          height: size);
+      Rect rect = Rect.fromCenter(center: Offset(maxPostCenterX, maxPostCenterY), width: size, height: size);
       Path path = Path();
       path.addArc(rect, 0, TWO_PI);
       path.close();
@@ -371,8 +365,6 @@ ui.Picture createKnobImage(
           break;
 
         case KnobStyleEnum.SILVER:
-        /* falls through */
-        default:
           gradColors.add(const Color.fromRGBO(215, 215, 215, 1));
           gradColors.add(const Color.fromRGBO(116, 116, 116, 1));
           gradColors.add(const Color.fromRGBO(215, 215, 215, 1));
@@ -386,10 +378,7 @@ ui.Picture createKnobImage(
       );
       paint.shader = grad;
       path = Path();
-      rect = Rect.fromCenter(
-          center: Offset(maxPostCenterX, maxPostCenterY),
-          width: (size * 0.77),
-          height: (size * 0.77));
+      rect = Rect.fromCenter(center: Offset(maxPostCenterX, maxPostCenterY), width: (size * 0.77), height: (size * 0.77));
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);
@@ -411,10 +400,7 @@ ui.Picture createKnobImage(
       );
       paint.shader = grad;
       path = Path();
-      rect = Rect.fromCenter(
-          center: Offset(maxPostCenterX, maxPostCenterY),
-          width: (size * 0.77),
-          height: (size * 0.77));
+      rect = Rect.fromCenter(center: Offset(maxPostCenterX, maxPostCenterY), width: (size * 0.77), height: (size * 0.77));
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);

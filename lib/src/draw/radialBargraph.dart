@@ -16,55 +16,41 @@ import 'drawTitleImage.dart';
 import 'tools.dart';
 
 void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
-  GaugeTypeEnum gaugeType =
-      parameters.gaugeTypeWithDefault(GaugeTypeEnum.TYPE4);
-  double size =
-      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  GaugeTypeEnum gaugeType = parameters.gaugeTypeWithDefault(GaugeTypeEnum.TYPE4);
+  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
   double minValue = parameters.minValueWithDefault(0);
   double maxValue = parameters.maxValueWithDefault(100);
   bool niceScale = parameters.niceScaleWithDefault(true);
-  double threshold =
-      parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
+  double threshold = parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
   List<Section>? section = parameters.section;
   bool useSectionColors = parameters.useSectionColorsWithDefault(false);
   String titleString = parameters.titleStringWithDefault('');
   String unitString = parameters.unitStringWithDefault('');
-  FrameDesignEnum frameDesign =
-      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor =
-      parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
+  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
   ColorEnum valueColor = parameters.valueColorWithDefault(ColorEnum.RED);
   LcdColorEnum lcdColor = parameters.lcdColorWithDefault(LcdColorEnum.STANDARD);
   bool lcdVisible = parameters.lcdVisibleWithDefault(true);
   int lcdDecimals = parameters.lcdDecimalsWithDefault(1);
-  FontTypeEnum fontType =
-      parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
-  int fractionalScaleDecimals =
-      parameters.fractionalScaleDecimalsWithDefault(1);
+  FontTypeEnum fontType = parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
+  int fractionalScaleDecimals = parameters.fractionalScaleDecimalsWithDefault(1);
   ui.Image? customLayer = parameters.customLayer;
   LedColorEnum ledColor = parameters.ledColorWithDefault(LedColorEnum.RED_LED);
   bool ledVisible = parameters.ledVisibleWithDefault(false);
   bool ledOn = parameters.ledOnWithDefault(false);
-  LedColorEnum userLedColor =
-      parameters.userLedColorWithDefault(LedColorEnum.GREEN_LED);
+  LedColorEnum userLedColor = parameters.userLedColorWithDefault(LedColorEnum.GREEN_LED);
   bool userLedVisible = parameters.userLedVisibleWithDefault(false);
   bool userLedOn = parameters.userLedOnWithDefault(false);
-  LabelNumberFormatEnum labelNumberFormat =
-      parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
-  ForegroundTypeEnum foregroundType =
-      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
+  LabelNumberFormatEnum labelNumberFormat = parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
+  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
   GradientWrapper? valueGradient = parameters.valueGradient;
   bool useValueGradient = parameters.useValueGradientWithDefault(false);
-  TickLabelOrientationEnum tickLabelOrientation = parameters
-      .tickLabelOrientationWithDefault(gaugeType == GaugeTypeEnum.TYPE1
-          ? TickLabelOrientationEnum.TANGENT
-          : TickLabelOrientationEnum.NORMAL);
+  TickLabelOrientationEnum tickLabelOrientation = parameters.tickLabelOrientationWithDefault(gaugeType == GaugeTypeEnum.TYPE1 ? TickLabelOrientationEnum.TANGENT : TickLabelOrientationEnum.NORMAL);
   bool trendVisible = parameters.trendVisibleWithDefault(false);
-  List<LedColorEnum> trendColors = parameters.trendColorsWithDefault(
-      [LedColorEnum.RED_LED, LedColorEnum.GREEN_LED, LedColorEnum.CYAN_LED]);
+  List<LedColorEnum> trendColors = parameters.trendColorsWithDefault([LedColorEnum.RED_LED, LedColorEnum.GREEN_LED, LedColorEnum.CYAN_LED]);
 
   double value = parameters.value ?? minValue;
 
@@ -112,15 +98,10 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
   //double LED_POS_X = imageWidth * 0.453271;
   double LED_POS_X = imageWidth * 0.53;
   double LED_POS_Y = imageHeight * 0.61;
-  double USER_LED_POS_X = gaugeType == GaugeTypeEnum.TYPE3
-      ? 0.7 * imageWidth
-      : centerX - LED_SIZE / 2;
-  double USER_LED_POS_Y = gaugeType == GaugeTypeEnum.TYPE3
-      ? 0.61 * imageHeight
-      : 0.75 * imageHeight;
+  double USER_LED_POS_X = gaugeType == GaugeTypeEnum.TYPE3 ? 0.7 * imageWidth : centerX - LED_SIZE / 2;
+  double USER_LED_POS_Y = gaugeType == GaugeTypeEnum.TYPE3 ? 0.61 * imageHeight : 0.75 * imageHeight;
 
-  TrendStateEnum trendIndicator =
-      parameters.trendStateWithDefault(TrendStateEnum.OFF);
+  TrendStateEnum trendIndicator = parameters.trendStateWithDefault(TrendStateEnum.OFF);
   double trendSize = size * 0.06;
   double trendPosX = size * 0.38;
   double trendPosY = size * 0.57;
@@ -225,14 +206,10 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
   void calculate() {
     if (niceScale) {
       niceRange = calcNiceNumber(maxValue - minValue, false);
-      majorTickSpacing =
-          calcNiceNumber(niceRange / (maxNoOfMajorTicks - 1), true);
-      niceMinValue =
-          (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
-      niceMaxValue =
-          (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
-      minorTickSpacing =
-          calcNiceNumber(majorTickSpacing / (maxNoOfMinorTicks - 1), true);
+      majorTickSpacing = calcNiceNumber(niceRange / (maxNoOfMajorTicks - 1), true);
+      niceMinValue = (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
+      niceMaxValue = (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
+      minorTickSpacing = calcNiceNumber(majorTickSpacing / (maxNoOfMinorTicks - 1), true);
       minValue = niceMinValue;
       maxValue = niceMaxValue;
       range = maxValue - minValue;
@@ -243,10 +220,8 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       range = niceRange;
       // minorTickSpacing = 1;
       // majorTickSpacing = 10;
-      majorTickSpacing =
-          calcNiceNumber(niceRange / (maxNoOfMajorTicks - 1), true);
-      minorTickSpacing =
-          calcNiceNumber(majorTickSpacing / (maxNoOfMinorTicks - 1), true);
+      majorTickSpacing = calcNiceNumber(niceRange / (maxNoOfMajorTicks - 1), true);
+      minorTickSpacing = calcNiceNumber(majorTickSpacing / (maxNoOfMinorTicks - 1), true);
     }
     // Make sure values are still in range
     value = value < minValue
@@ -314,10 +289,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.translate(centerX, centerY);
     ctx.rotate(rotationOffset - 4 * RAD_FACTOR);
     ctx.translate(-centerX, -centerY);
-    Rect rect = Rect.fromCenter(
-        center: Offset(centerX, centerY),
-        width: imageWidth * 0.35514 * 2,
-        height: imageWidth * 0.35514 * 2);
+    Rect rect = Rect.fromCenter(center: Offset(centerX, centerY), width: imageWidth * 0.35514 * 2, height: imageWidth * 0.35514 * 2);
     path.addArc(rect, 0, angleRange + 8 * RAD_FACTOR);
     ui.Gradient grad = ui.Gradient.linear(
       Offset(0, 0.107476 * imageHeight),
@@ -346,10 +318,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     ctx.translate(centerX, centerY);
     ctx.rotate(rotationOffset - 4 * RAD_FACTOR);
     ctx.translate(-centerX, -centerY);
-    rect = Rect.fromCenter(
-        center: Offset(centerX, centerY),
-        width: imageWidth * 0.35514 * 2,
-        height: imageWidth * 0.35514 * 2);
+    rect = Rect.fromCenter(center: Offset(centerX, centerY), width: imageWidth * 0.35514 * 2, height: imageWidth * 0.35514 * 2);
     path.addArc(rect, 0, angleRange + 8 * RAD_FACTOR);
 
     grad = ui.Gradient.linear(
@@ -394,8 +363,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       ctx.rotate(angle * RAD_FACTOR + bargraphOffset);
       ctx.translate(-centerX, -centerY);
       Path path = Path();
-      Rect rect = Rect.fromLTWH(imageWidth * 0.116822, imageWidth * 0.485981,
-          imageWidth * 0.060747, imageWidth * 0.023364);
+      Rect rect = Rect.fromLTWH(imageWidth * 0.116822, imageWidth * 0.485981, imageWidth * 0.060747, imageWidth * 0.023364);
       path.addRect(rect);
       path.close();
       ctx.drawPath(
@@ -448,17 +416,13 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
     // ctx.strokeStyle = lcdColor.textColor
     // ctx.fillStyle = lcdColor.textColor
 
-    if (lcdColor == LcdColorEnum.STANDARD ||
-        lcdColor == LcdColorEnum.STANDARD_GREEN) {
+    if (lcdColor == LcdColorEnum.STANDARD || lcdColor == LcdColorEnum.STANDARD_GREEN) {
       // ctx.shadowColor = 'gray'
       // ctx.shadowOffsetX = imageWidth * 0.007
       // ctx.shadowOffsetY = imageWidth * 0.007
       // ctx.shadowBlur = imageWidth * 0.007
     }
-    TextStyle font = getFont(
-        fontType == FontTypeEnum.LCDMono ? lcdFontHeight : lcdFontHeight * 0.8,
-        lcdColor.textColor,
-        fontType: fontType);
+    TextStyle font = getFont(fontType == FontTypeEnum.LCDMono ? lcdFontHeight : lcdFontHeight * 0.8, lcdColor.textColor, fontType: fontType);
 
     var textSpan = TextSpan(
       text: value.toStringAsFixed(lcdDecimals),
@@ -475,13 +439,8 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       maxWidth: lcdWidth * 0.8,
     );
     //Offset offset = Offset(lcdWidth - lcdWidth * 0.05, centerY - lcdHeight * 1.8 + lcdFontHeight * 0.38);
-    Offset offset = Offset(
-        centerX - textPainter.size.width / 2,
-        centerY -
-            lcdHeight / 2 +
-            ((lcdHeight - textPainter.size.height) / 2 + lcdPosYAdjust));
-    Rect rect = Rect.fromLTWH(offset.dx - 3, offset.dy,
-        textPainter.size.width + 10, textPainter.size.height);
+    Offset offset = Offset(centerX - textPainter.size.width / 2, centerY - lcdHeight / 2 + ((lcdHeight - textPainter.size.height) / 2 + lcdPosYAdjust));
+    Rect rect = Rect.fromLTWH(offset.dx - 3, offset.dy, textPainter.size.width + 10, textPainter.size.height);
 
     ui.Gradient foregroundGrad = ui.Gradient.linear(
       rect.topLeft,
@@ -533,8 +492,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       fontSize = fontSize * 0.75;
     }
 
-    if (tickLabelOrientation == TickLabelOrientationEnum.HORIZONTAL ||
-        tickLabelOrientation == TickLabelOrientationEnum.TANGENT) {
+    if (tickLabelOrientation == TickLabelOrientationEnum.HORIZONTAL || tickLabelOrientation == TickLabelOrientationEnum.TANGENT) {
       TEXT_TRANSLATE_X = imageWidth * 0.26;
       if (maxValue > 999) {
         fontSize *= 0.7;
@@ -543,9 +501,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     final TextStyle stdFont = getFont(fontSize, backgroundColor.labelColor);
 
-    for (double i = minValue;
-        double.parse(i.toStringAsFixed(2)) <= MAX_VALUE_ROUNDED;
-        i += minorTickSpacing) {
+    for (double i = minValue; double.parse(i.toStringAsFixed(2)) <= MAX_VALUE_ROUNDED; i += minorTickSpacing) {
       textRotationAngle = rotationStep + HALF_PI;
       majorTickCounter++;
       // Draw major tickmarks
@@ -566,8 +522,6 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
             break;
 
           case TickLabelOrientationEnum.NORMAL:
-          /* falls through */
-          default:
             textRotationAngle = HALF_PI;
             break;
         }
@@ -588,10 +542,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH,
             );
-            textPainter.paint(
-                ctx,
-                Offset(-textPainter.width / 2,
-                    -textPainter.height / 1.4 + textYOffset));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4 + textYOffset));
             break;
 
           case LabelNumberFormatEnum.SCIENTIFIC:
@@ -608,15 +559,10 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH,
             );
-            textPainter.paint(
-                ctx,
-                Offset(-textPainter.width / 2,
-                    -textPainter.height / 1.4 + textYOffset));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4 + textYOffset));
             break;
 
           case LabelNumberFormatEnum.STANDARD:
-          /* falls through */
-          default:
             var textSpan = TextSpan(
               text: valueCounter.toStringAsFixed(0),
               style: stdFont,
@@ -630,10 +576,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH,
             );
-            textPainter.paint(
-                ctx,
-                Offset(-textPainter.width / 2,
-                    -textPainter.height / 1.4 + textYOffset));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4 + textYOffset));
             break;
         }
         ctx.translate(-TEXT_TRANSLATE_X, 0);
@@ -656,22 +599,13 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
   //* ******************************** Private methods *********************************
   // Draw all static painting code to background
   void init(dynamic parameters) {
-    bool drawFrame2 =
-        parameters['frame'] == null ? false : parameters['frame'] as bool;
-    bool drawBackground2 = parameters['background'] == null
-        ? false
-        : parameters['background'] as bool;
-    bool drawLed =
-        parameters['led'] == null ? false : parameters['led'] as bool;
-    bool drawUserLed =
-        parameters['userLed'] == null ? false : parameters['userLed'] as bool;
-    bool drawForeground2 = parameters['foreground'] == null
-        ? false
-        : parameters['foreground'] as bool;
-    bool drawTrend =
-        parameters['trend'] == null ? false : parameters['trend'] as bool;
-    bool drawValue =
-        parameters['value'] == null ? false : parameters['value'] as bool;
+    bool drawFrame2 = parameters['frame'] == null ? false : parameters['frame'] as bool;
+    bool drawBackground2 = parameters['background'] == null ? false : parameters['background'] as bool;
+    bool drawLed = parameters['led'] == null ? false : parameters['led'] as bool;
+    bool drawUserLed = parameters['userLed'] == null ? false : parameters['userLed'] as bool;
+    bool drawForeground2 = parameters['foreground'] == null ? false : parameters['foreground'] as bool;
+    bool drawTrend = parameters['trend'] == null ? false : parameters['trend'] as bool;
+    bool drawValue = parameters['value'] == null ? false : parameters['value'] as bool;
 
     calculate();
 
@@ -711,25 +645,21 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (drawLed) {
       // Draw LED ON in ledBuffer_ON
-      ui.Picture ledOnPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 1, ledColor);
+      ui.Picture ledOnPicture = createLedImage((size * 0.093457).ceilToDouble(), 1, ledColor);
       ledContextOn.drawPicture(ledOnPicture);
 
       // Draw LED OFF in ledBuffer_OFF
-      ui.Picture ledOffPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 0, ledColor);
+      ui.Picture ledOffPicture = createLedImage((size * 0.093457).ceilToDouble(), 0, ledColor);
       ledContextOff.drawPicture(ledOffPicture);
     }
 
     if (drawUserLed) {
       // Draw user LED ON in userLedBuffer_ON
-      ui.Picture userLedOnPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 1, userLedColor);
+      ui.Picture userLedOnPicture = createLedImage((size * 0.093457).ceilToDouble(), 1, userLedColor);
       userLedContextOn.drawPicture(userLedOnPicture);
 
       // Draw user LED OFF in userLedBuffer_OFF
-      ui.Picture userLedOffPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 0, userLedColor);
+      ui.Picture userLedOffPicture = createLedImage((size * 0.093457).ceilToDouble(), 0, userLedColor);
       userLedContextOff.drawPicture(userLedOffPicture);
     }
 
@@ -777,12 +707,8 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
         sectionIndex--;
         sectionAngles.add(
           SectionRange(
-            start: ((section[sectionIndex].start + minValue.abs()) /
-                    (maxValue - minValue)) *
-                degAngleRange,
-            stop: ((section[sectionIndex].stop + minValue.abs()) /
-                    (maxValue - minValue)) *
-                degAngleRange,
+            start: ((section[sectionIndex].start + minValue.abs()) / (maxValue - minValue)) * degAngleRange,
+            stop: ((section[sectionIndex].stop + minValue.abs()) / (maxValue - minValue)) * degAngleRange,
             color: customColorDef(
               section[sectionIndex].color,
             ),
@@ -845,8 +771,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
   }
 
   void repaint() {
-    double activeLedAngle =
-        ((value - minValue) / (maxValue - minValue)) * degAngleRange;
+    double activeLedAngle = ((value - minValue) / (maxValue - minValue)) * degAngleRange;
     ColorDef activeLedColor;
     ColorDef lastActiveLedColor = valueColor.toColorDef();
     //   let angle
@@ -884,16 +809,14 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       // Use a gradient for value colors?
       if (isGradientVisible) {
         // Convert angle back to value
-        double currentValue =
-            minValue + (angle / degAngleRange) * (maxValue - minValue);
+        double currentValue = minValue + (angle / degAngleRange) * (maxValue - minValue);
         double gradRange = valueGradient!.getEnd() - valueGradient.getStart();
         double fraction = (currentValue - minValue) / gradRange;
         fraction = math.max(math.min(fraction, 1), 0);
         activeLedColor = customColorDef(valueGradient.getColorAt(fraction));
       } else if (isSectionsVisible) {
         for (int i = 0; i < sectionAngles.length; i++) {
-          if (angle >= sectionAngles[i].start &&
-              angle < sectionAngles[i].stop) {
+          if (angle >= sectionAngles[i].start && angle < sectionAngles[i].stop) {
             activeLedColor = sectionAngles[i].color;
             break;
           }
@@ -928,9 +851,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw led
     if (ledVisible) {
-      picture = ledOn
-          ? ledBufferOnRecorder.endRecording()
-          : ledBufferOffRecorder.endRecording();
+      picture = ledOn ? ledBufferOnRecorder.endRecording() : ledBufferOffRecorder.endRecording();
       canvas.save();
       canvas.translate(LED_POS_X, LED_POS_Y);
       canvas.drawPicture(picture);
@@ -940,9 +861,7 @@ void drawRadialBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw user led
     if (userLedVisible) {
-      picture = userLedOn
-          ? userLedBufferOnRecorder.endRecording()
-          : userLedBufferOffRecorder.endRecording();
+      picture = userLedOn ? userLedBufferOnRecorder.endRecording() : userLedBufferOffRecorder.endRecording();
       canvas.save();
       canvas.translate(USER_LED_POS_X, USER_LED_POS_Y);
       canvas.drawPicture(picture);

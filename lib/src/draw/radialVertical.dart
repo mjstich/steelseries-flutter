@@ -15,45 +15,33 @@ import 'drawPointerImage.dart';
 import 'tools.dart';
 
 void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
-  OrientationEnum orientation =
-      parameters.orientationWithDefault(OrientationEnum.NORTH);
-  double size =
-      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  OrientationEnum orientation = parameters.orientationWithDefault(OrientationEnum.NORTH);
+  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
   double minValue = parameters.minValueWithDefault(0);
   double maxValue = parameters.maxValueWithDefault(100);
   bool niceScale = parameters.niceScaleWithDefault(true);
-  double threshold =
-      parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
+  double threshold = parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
   List<Section>? section = parameters.section;
   List<Section>? area = parameters.area;
   String titleString = parameters.titleStringWithDefault('');
   String unitString = parameters.unitStringWithDefault('');
-  FrameDesignEnum frameDesign =
-      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor =
-      parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
+  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
-  PointerTypeEnum pointerType =
-      parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
+  PointerTypeEnum pointerType = parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
   ColorEnum pointerColor = parameters.pointerColorWithDefault(ColorEnum.RED);
-  KnobTypeEnum knobType =
-      parameters.knobTypeWithDefault(KnobTypeEnum.STANDARD_KNOB);
-  KnobStyleEnum knobStyle =
-      parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
+  KnobTypeEnum knobType = parameters.knobTypeWithDefault(KnobTypeEnum.STANDARD_KNOB);
+  KnobStyleEnum knobStyle = parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
   LedColorEnum ledColor = parameters.ledColorWithDefault(LedColorEnum.RED_LED);
   bool ledVisible = parameters.ledVisibleWithDefault(false);
   bool ledOn = parameters.ledOnWithDefault(false);
   bool thresholdVisible = parameters.thresholdVisibleWithDefault(true);
-  bool minMeasuredValueVisible =
-      parameters.minMeasuredValueVisibleWithDefault(false);
-  bool maxMeasuredValueVisible =
-      parameters.maxMeasuredValueVisibleWithDefault(false);
-  ForegroundTypeEnum foregroundType =
-      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
+  bool minMeasuredValueVisible = parameters.minMeasuredValueVisibleWithDefault(false);
+  bool maxMeasuredValueVisible = parameters.maxMeasuredValueVisibleWithDefault(false);
+  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
-  LabelNumberFormatEnum labelNumberFormat =
-      parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
+  LabelNumberFormatEnum labelNumberFormat = parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
 
   GaugeTypeEnum gaugeType = GaugeTypeEnum.TYPE5;
 
@@ -102,10 +90,8 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
         niceRange / (maxNoOfMajorTicks - 1),
         true,
       );
-      niceMinValue =
-          (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
-      niceMaxValue =
-          (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
+      niceMinValue = (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
+      niceMaxValue = (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
       minorTickSpacing = calcNiceNumber(
         majorTickSpacing / (maxNoOfMinorTicks - 1),
         true,
@@ -192,10 +178,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
       ctx.save();
       if (orientation == OrientationEnum.WEST) {
         // Min post
-        ui.Picture knobImage = createKnobImage(
-            (imageHeight * 0.037383).ceilToDouble(),
-            KnobTypeEnum.STANDARD_KNOB,
-            knobStyle);
+        ui.Picture knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
         ctx.save();
         ctx.translate(imageWidth * 0.44, imageHeight * 0.8);
         ctx.drawPicture(knobImage);
@@ -203,8 +186,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
         ctx.restore();
 
         // Max post
-        knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(),
-            KnobTypeEnum.STANDARD_KNOB, knobStyle);
+        knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
         ctx.save();
         ctx.translate(imageWidth * 0.44, imageHeight * 0.16);
         ctx.drawPicture(knobImage);
@@ -212,10 +194,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
         ctx.restore();
       } else if (orientation == OrientationEnum.EAST) {
         // Min post
-        ui.Picture knobImage = createKnobImage(
-            (imageHeight * 0.037383).ceilToDouble(),
-            KnobTypeEnum.STANDARD_KNOB,
-            knobStyle);
+        ui.Picture knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
         ctx.save();
         ctx.translate(imageWidth * 0.52, imageHeight * 0.8);
         ctx.drawPicture(knobImage);
@@ -223,8 +202,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
         ctx.restore();
 
         // Max post
-        knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(),
-            KnobTypeEnum.STANDARD_KNOB, knobStyle);
+        knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
         ctx.save();
         ctx.translate(imageWidth * 0.52, imageHeight * 0.16);
         ctx.drawPicture(knobImage);
@@ -232,21 +210,15 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
         ctx.restore();
       } else {
         // Min post
-        ui.Picture knobImage = createKnobImage(
-            (imageHeight * 0.037383).ceilToDouble(),
-            KnobTypeEnum.STANDARD_KNOB,
-            knobStyle);
+        ui.Picture knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
         ctx.save();
-        ctx.translate(
-            imageWidth * 0.2 - imageHeight * 0.037383, imageHeight * 0.446666);
+        ctx.translate(imageWidth * 0.2 - imageHeight * 0.037383, imageHeight * 0.446666);
         ctx.drawPicture(knobImage);
-        ctx.translate(-(imageWidth * 0.2 - imageHeight * 0.037383),
-            -imageHeight * 0.446666);
+        ctx.translate(-(imageWidth * 0.2 - imageHeight * 0.037383), -imageHeight * 0.446666);
         ctx.restore();
 
         // Max post
-        knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(),
-            KnobTypeEnum.STANDARD_KNOB, knobStyle);
+        knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
         ctx.save();
         ctx.translate(imageWidth * 0.8, imageHeight * 0.446666);
         ctx.drawPicture(knobImage);
@@ -300,8 +272,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
     return thresholdCtxtRecorder.endRecording();
   }
 
-  void drawAreaSectionImage(
-      Canvas ctx, double start, double stop, Color color, bool filled) {
+  void drawAreaSectionImage(Canvas ctx, double start, double stop, Color color, bool filled) {
     ctx.save();
     double lineWidth = imageWidth * 0.035;
     Paint strokePaint = Paint()
@@ -312,8 +283,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
       ..color = color
       ..strokeWidth = lineWidth
       ..style = ui.PaintingStyle.fill;
-    double startAngle =
-        (angleRange / range) * start - (angleRange / range) * minValue;
+    double startAngle = (angleRange / range) * start - (angleRange / range) * minValue;
     double stopAngle = startAngle + (stop - start) / (range / angleRange);
     ctx.translate(centerX, centerY);
     ctx.rotate(rotationOffset);
@@ -321,15 +291,13 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
     if (filled) {
       path.moveTo(0, 0);
       double width = (imageWidth * 0.365 - lineWidth / 2) * 2;
-      Rect rect = Rect.fromCenter(
-          center: const Offset(0, 0), width: width, height: width);
+      Rect rect = Rect.fromCenter(center: const Offset(0, 0), width: width, height: width);
       path.addArc(rect, startAngle, (stopAngle - startAngle));
       path.lineTo(0, 0);
       path.close();
     } else {
       double width = (imageWidth * 0.365) * 2;
-      Rect rect = Rect.fromCenter(
-          center: const Offset(0, 0), width: width, height: width);
+      Rect rect = Rect.fromCenter(center: const Offset(0, 0), width: width, height: width);
       path.addArc(rect, startAngle, (stopAngle - startAngle));
       //ctx.arc(0, 0, imageWidth * 0.365, startAngle, stopAngle, false)
     }
@@ -354,8 +322,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     //ctx.font = 0.046728 * imageWidth + 'px ' + stdFontName
 
-    final TextStyle stdFont =
-        getFont(0.046728 * imageWidth, backgroundColor.labelColor);
+    final TextStyle stdFont = getFont(0.046728 * imageWidth, backgroundColor.labelColor);
     var textSpan = TextSpan(
       text: titleString,
       style: stdFont,
@@ -369,8 +336,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
       minWidth: 0,
       maxWidth: imageWidth * 0.3,
     );
-    textPainter.paint(
-        ctx, Offset((imageWidth - textPainter.width) / 2, imageHeight * 0.41));
+    textPainter.paint(ctx, Offset((imageWidth - textPainter.width) / 2, imageHeight * 0.41));
     textSpan = TextSpan(
       text: unitString,
       style: stdFont,
@@ -384,8 +350,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
       minWidth: 0,
       maxWidth: imageWidth * 0.3,
     );
-    textPainter.paint(
-        ctx, Offset((imageWidth - textPainter.width) / 2, imageHeight * 0.48));
+    textPainter.paint(ctx, Offset((imageWidth - textPainter.width) / 2, imageHeight * 0.48));
     ctx.restore();
   }
 
@@ -405,9 +370,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     double fontSize = (imageWidth * 0.040).ceilToDouble();
 
-    if (maxValue > 999 ||
-        labelNumberFormat == LabelNumberFormatEnum.FRACTIONAL ||
-        labelNumberFormat == LabelNumberFormatEnum.SCIENTIFIC) {
+    if (maxValue > 999 || labelNumberFormat == LabelNumberFormatEnum.FRACTIONAL || labelNumberFormat == LabelNumberFormatEnum.SCIENTIFIC) {
       fontSize = fontSize * 0.8;
     }
 
@@ -430,9 +393,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
     double HALF_MAX_NO_OF_MINOR_TICKS = maxNoOfMinorTicks / 2;
     double MAX_VALUE_ROUNDED = double.parse(maxValue.toStringAsFixed(2));
 
-    for (double i = minValue;
-        double.parse(i.toStringAsFixed(2)) <= MAX_VALUE_ROUNDED;
-        i += minorTickSpacing) {
+    for (double i = minValue; double.parse(i.toStringAsFixed(2)) <= MAX_VALUE_ROUNDED; i += minorTickSpacing) {
       textRotationAngle = rotationStep + HALF_PI;
       majorTickCounter++;
       // Draw major tickmarks
@@ -465,8 +426,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH * 2,
             );
-            textPainter.paint(
-                ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4));
             break;
 
           case LabelNumberFormatEnum.SCIENTIFIC:
@@ -483,13 +443,10 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH,
             );
-            textPainter.paint(
-                ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4));
             break;
 
           case LabelNumberFormatEnum.STANDARD:
-          /* falls through */
-          default:
             var textSpan = TextSpan(
               text: valueCounter.toStringAsFixed(0),
               style: stdFont,
@@ -503,8 +460,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH,
             );
-            textPainter.paint(
-                ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4));
             break;
         }
         ctx.translate(-TEXT_TRANSLATE_X, 0);
@@ -517,8 +473,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
       }
 
       // Draw tickmark every minor tickmark spacing
-      if (maxNoOfMinorTicks % 2 == 0 &&
-          majorTickCounter == HALF_MAX_NO_OF_MINOR_TICKS) {
+      if (maxNoOfMinorTicks % 2 == 0 && majorTickCounter == HALF_MAX_NO_OF_MINOR_TICKS) {
         Path path = Path();
         path.moveTo(OUTER_POINT, 0);
         path.lineTo(MED_INNER_POINT, 0);
@@ -551,18 +506,11 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
   // **************   Initialization  ********************
   // Draw all static painting code to background
   void init(dynamic parameters) {
-    bool drawFrame2 =
-        parameters['frame'] == null ? false : parameters['frame'] as bool;
-    bool drawBackground2 = parameters['background'] == null
-        ? false
-        : parameters['background'] as bool;
-    bool drawLed =
-        parameters['led'] == null ? false : parameters['led'] as bool;
-    bool drawPointer =
-        parameters['pointer'] == null ? false : parameters['pointer'] as bool;
-    bool drawForeground2 = parameters['foreground'] == null
-        ? false
-        : parameters['foreground'] as bool;
+    bool drawFrame2 = parameters['frame'] == null ? false : parameters['frame'] as bool;
+    bool drawBackground2 = parameters['background'] == null ? false : parameters['background'] as bool;
+    bool drawLed = parameters['led'] == null ? false : parameters['led'] as bool;
+    bool drawPointer = parameters['pointer'] == null ? false : parameters['pointer'] as bool;
+    bool drawForeground2 = parameters['foreground'] == null ? false : parameters['foreground'] as bool;
 
     // Calculate the current min and max values and the range
     calculate();
@@ -594,13 +542,11 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
     //   // Draw LED ON in ledBuffer_ON
     if (drawLed) {
       // Draw LED ON in ledBuffer_ON
-      ui.Picture ledOnPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 1, ledColor);
+      ui.Picture ledOnPicture = createLedImage((size * 0.093457).ceilToDouble(), 1, ledColor);
       ledContextOn.drawPicture(ledOnPicture);
 
       // Draw LED OFF in ledBuffer_OFF
-      ui.Picture ledOffPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 0, ledColor);
+      ui.Picture ledOffPicture = createLedImage((size * 0.093457).ceilToDouble(), 0, ledColor);
       ledContextOff.drawPicture(ledOffPicture);
     }
 
@@ -706,8 +652,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
         backgroundContext.translate(-centerX, -centerX);
       }
       backgroundContext.translate(centerX, centerY);
-      backgroundContext.rotate(
-          rotationOffset + (threshold - minValue) * angleStep + HALF_PI);
+      backgroundContext.rotate(rotationOffset + (threshold - minValue) * angleStep + HALF_PI);
       backgroundContext.translate(-centerX, -centerY);
       ui.Picture picture = createThresholdImage();
       backgroundContext.translate(imageWidth * 0.475, imageHeight * 0.32);
@@ -729,8 +674,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Create foreground in foreground buffer (foregroundBuffer)
     if (drawForeground2 && foregroundVisible) {
-      bool knobVisible = !(pointerType == PointerTypeEnum.TYPE15 ||
-          pointerType == PointerTypeEnum.TYPE16);
+      bool knobVisible = !(pointerType == PointerTypeEnum.TYPE15 || pointerType == PointerTypeEnum.TYPE16);
       ui.Picture picture = drawForeground(
         foregroundType,
         imageWidth,
@@ -739,9 +683,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
         knobType,
         knobStyle,
         gaugeType,
-        orientation == OrientationEnum.NORTH
-            ? OrientationEnum.SOUTH
-            : orientation,
+        orientation == OrientationEnum.NORTH ? OrientationEnum.SOUTH : orientation,
       );
       foregroundContext.drawPicture(picture);
     }
@@ -770,9 +712,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw led
     if (ledVisible) {
-      picture = ledOn
-          ? ledBufferOnRecorder.endRecording()
-          : ledBufferOffRecorder.endRecording();
+      picture = ledOn ? ledBufferOnRecorder.endRecording() : ledBufferOffRecorder.endRecording();
       canvas.save();
       canvas.translate(ledPosX, ledPosY);
       canvas.drawPicture(picture);
@@ -796,8 +736,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
       picture = minMeasuredValueBufferRecorder.endRecording();
       canvas.save();
       canvas.translate(centerX, centerY);
-      canvas.rotate(
-          rotationOffset + HALF_PI + (minMeasuredValue - minValue) * angleStep);
+      canvas.rotate(rotationOffset + HALF_PI + (minMeasuredValue - minValue) * angleStep);
       canvas.translate(-centerX, -centerY);
       canvas.translate(imageWidth * 0.4865, imageHeight * 0.27);
       canvas.drawPicture(picture);
@@ -810,8 +749,7 @@ void drawRadialVertical(Canvas canvas, Size canvasSize, Parameters parameters) {
       picture = maxMeasuredValueBufferRecorder.endRecording();
       canvas.save();
       canvas.translate(centerX, centerY);
-      canvas.rotate(
-          rotationOffset + HALF_PI + (maxMeasuredValue - minValue) * angleStep);
+      canvas.rotate(rotationOffset + HALF_PI + (maxMeasuredValue - minValue) * angleStep);
       canvas.translate(-centerX, -centerY);
       canvas.translate(imageWidth * 0.4865, imageHeight * 0.27);
       canvas.drawPicture(picture);

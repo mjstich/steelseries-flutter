@@ -20,67 +20,47 @@ import 'odometer.dart';
 import 'tools.dart';
 
 void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
-  GaugeTypeEnum gaugeType =
-      parameters.gaugeTypeWithDefault(GaugeTypeEnum.TYPE4);
-  double size =
-      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  GaugeTypeEnum gaugeType = parameters.gaugeTypeWithDefault(GaugeTypeEnum.TYPE4);
+  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
   double minValue = parameters.minValueWithDefault(0);
   double maxValue = parameters.maxValueWithDefault(100);
   bool niceScale = parameters.niceScaleWithDefault(true);
-  double threshold =
-      parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
+  double threshold = parameters.thresholdWithDefault((maxValue - minValue) / 2 + minValue);
   bool thresholdVisible = parameters.thresholdVisibleWithDefault(true);
   List<Section>? section = parameters.section;
   List<Section>? area = parameters.area;
   String titleString = parameters.titleStringWithDefault('');
   String unitString = parameters.unitStringWithDefault('');
-  FrameDesignEnum frameDesign =
-      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor =
-      parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
+  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
-  PointerTypeEnum pointerType =
-      parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
+  PointerTypeEnum pointerType = parameters.pointerTypeWithDefault(PointerTypeEnum.TYPE1);
   ColorEnum pointerColor = parameters.pointerColorWithDefault(ColorEnum.RED);
-  KnobTypeEnum knobType =
-      parameters.knobTypeWithDefault(KnobTypeEnum.STANDARD_KNOB);
-  KnobStyleEnum knobStyle =
-      parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
+  KnobTypeEnum knobType = parameters.knobTypeWithDefault(KnobTypeEnum.STANDARD_KNOB);
+  KnobStyleEnum knobStyle = parameters.knobStyleWithDefault(KnobStyleEnum.SILVER);
   LcdColorEnum lcdColor = parameters.lcdColorWithDefault(LcdColorEnum.STANDARD);
   bool lcdVisible = parameters.lcdVisibleWithDefault(true);
   int lcdDecimals = parameters.lcdDecimalsWithDefault(1);
-  FontTypeEnum fontType =
-      parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
-  int fractionalScaleDecimals =
-      parameters.fractionalScaleDecimalsWithDefault(1);
+  FontTypeEnum fontType = parameters.fontTypeWithDefault(FontTypeEnum.RobotoMono);
+  int fractionalScaleDecimals = parameters.fractionalScaleDecimalsWithDefault(1);
   LedColorEnum ledColor = parameters.ledColorWithDefault(LedColorEnum.RED_LED);
   bool ledVisible = parameters.ledVisibleWithDefault(false);
   bool ledOn = parameters.ledOnWithDefault(false);
-  LedColorEnum userLedColor =
-      parameters.userLedColorWithDefault(LedColorEnum.GREEN_LED);
+  LedColorEnum userLedColor = parameters.userLedColorWithDefault(LedColorEnum.GREEN_LED);
   bool userLedVisible = parameters.userLedVisibleWithDefault(false);
   bool userLedOn = parameters.userLedOnWithDefault(false);
-  bool minMeasuredValueVisible =
-      parameters.minMeasuredValueVisibleWithDefault(false);
-  bool maxMeasuredValueVisible =
-      parameters.maxMeasuredValueVisibleWithDefault(false);
-  ForegroundTypeEnum foregroundType =
-      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
+  bool minMeasuredValueVisible = parameters.minMeasuredValueVisibleWithDefault(false);
+  bool maxMeasuredValueVisible = parameters.maxMeasuredValueVisibleWithDefault(false);
+  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
-  LabelNumberFormatEnum labelNumberFormat =
-      parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
+  LabelNumberFormatEnum labelNumberFormat = parameters.labelNumberFormatWithDefault(LabelNumberFormatEnum.STANDARD);
   ui.Image? customLayer = parameters.customLayer;
-  TickLabelOrientationEnum tickLabelOrientation = parameters
-      .tickLabelOrientationWithDefault(gaugeType == GaugeTypeEnum.TYPE1
-          ? TickLabelOrientationEnum.TANGENT
-          : TickLabelOrientationEnum.NORMAL);
+  TickLabelOrientationEnum tickLabelOrientation = parameters.tickLabelOrientationWithDefault(gaugeType == GaugeTypeEnum.TYPE1 ? TickLabelOrientationEnum.TANGENT : TickLabelOrientationEnum.NORMAL);
   bool trendVisible = parameters.trendVisibleWithDefault(false);
-  List<LedColorEnum> trendColors = parameters.trendColorsWithDefault(
-      [LedColorEnum.RED_LED, LedColorEnum.GREEN_LED, LedColorEnum.CYAN_LED]);
+  List<LedColorEnum> trendColors = parameters.trendColorsWithDefault([LedColorEnum.RED_LED, LedColorEnum.GREEN_LED, LedColorEnum.CYAN_LED]);
   bool useOdometer = parameters.useOdometerWithDefault(false);
-  OdometerParameters odometerParams =
-      parameters.odometerParametersWithDefault(OdometerParameters());
+  OdometerParameters odometerParams = parameters.odometerParametersWithDefault(OdometerParameters());
 
   double value = parameters.value ?? minValue;
 
@@ -88,8 +68,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
   double minMeasuredValue = parameters.minMeasuredValueWithDefault(minValue);
   double maxMeasuredValue = parameters.maxMeasuredValueWithDefault(maxValue);
 
-  TrendStateEnum trendIndicator =
-      parameters.trendStateWithDefault(TrendStateEnum.OFF);
+  TrendStateEnum trendIndicator = parameters.trendStateWithDefault(TrendStateEnum.OFF);
   double trendSize = size * 0.06;
   double trendPosX = size * 0.29;
   double trendPosY = size * 0.36;
@@ -112,12 +91,8 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
   double ledSize = size * 0.093457;
   double ledPosX = 0.6 * imageWidth;
   double ledPosY = 0.4 * imageHeight;
-  double userLedPosX = gaugeType == GaugeTypeEnum.TYPE3
-      ? 0.6 * imageWidth
-      : centerX - ledSize / 2;
-  double userLedPosY = gaugeType == GaugeTypeEnum.TYPE3
-      ? 0.72 * imageHeight
-      : 0.75 * imageHeight;
+  double userLedPosX = gaugeType == GaugeTypeEnum.TYPE3 ? 0.6 * imageWidth : centerX - ledSize / 2;
+  double userLedPosY = gaugeType == GaugeTypeEnum.TYPE3 ? 0.72 * imageHeight : 0.75 * imageHeight;
   double lcdFontHeight = (imageWidth / 10).floorToDouble();
   double lcdHeight = imageHeight * 0.13;
   double lcdWidth = imageWidth * 0.4;
@@ -144,14 +119,10 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
   void calculate() {
     if (niceScale) {
       niceRange = calcNiceNumber(maxValue - minValue, false);
-      majorTickSpacing =
-          calcNiceNumber(niceRange / (maxNoOfMajorTicks - 1), true);
-      niceMinValue =
-          (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
-      niceMaxValue =
-          (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
-      minorTickSpacing =
-          calcNiceNumber(majorTickSpacing / (maxNoOfMinorTicks - 1), true);
+      majorTickSpacing = calcNiceNumber(niceRange / (maxNoOfMajorTicks - 1), true);
+      niceMinValue = (minValue / majorTickSpacing).floorToDouble() * majorTickSpacing;
+      niceMaxValue = (maxValue / majorTickSpacing).ceilToDouble() * majorTickSpacing;
+      minorTickSpacing = calcNiceNumber(majorTickSpacing / (maxNoOfMinorTicks - 1), true);
       minValue = niceMinValue;
       maxValue = niceMaxValue;
       range = maxValue - minValue;
@@ -160,10 +131,8 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
       niceMinValue = minValue;
       niceMaxValue = maxValue;
       range = niceRange;
-      majorTickSpacing =
-          calcNiceNumber(niceRange / (maxNoOfMajorTicks - 1), true);
-      minorTickSpacing =
-          calcNiceNumber(majorTickSpacing / (maxNoOfMinorTicks - 1), true);
+      majorTickSpacing = calcNiceNumber(niceRange / (maxNoOfMajorTicks - 1), true);
+      minorTickSpacing = calcNiceNumber(majorTickSpacing / (maxNoOfMinorTicks - 1), true);
     }
     // Make sure values are still in range
     value = value < minValue
@@ -287,17 +256,13 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
     // ctx.strokeStyle = lcdColor.textColor
     // ctx.fillStyle = lcdColor.textColor
 
-    if (lcdColor == LcdColorEnum.STANDARD ||
-        lcdColor == LcdColorEnum.STANDARD_GREEN) {
+    if (lcdColor == LcdColorEnum.STANDARD || lcdColor == LcdColorEnum.STANDARD_GREEN) {
       // ctx.shadowColor = 'gray'
       // ctx.shadowOffsetX = imageWidth * 0.007
       // ctx.shadowOffsetY = imageWidth * 0.007
       // ctx.shadowBlur = imageWidth * 0.007
     }
-    TextStyle font = getFont(
-        fontType == FontTypeEnum.LCDMono ? lcdFontHeight : lcdFontHeight * 0.8,
-        lcdColor.textColor,
-        fontType: fontType);
+    TextStyle font = getFont(fontType == FontTypeEnum.LCDMono ? lcdFontHeight : lcdFontHeight * 0.8, lcdColor.textColor, fontType: fontType);
     var textSpan = TextSpan(
       text: value.toStringAsFixed(lcdDecimals),
       style: font,
@@ -312,8 +277,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
       minWidth: lcdWidth * 0.8,
       maxWidth: lcdWidth * 0.8,
     );
-    Offset offset = Offset(centerX - textPainter.size.width / 2,
-        lcdPosY + lcdHeight / 2 - textPainter.height / 2);
+    Offset offset = Offset(centerX - textPainter.size.width / 2, lcdPosY + lcdHeight / 2 - textPainter.height / 2);
     // Rect rect = Rect.fromLTWH(offset.dx - 3, offset.dy, textPainter.size.width + 10, textPainter.size.height);
 
     // ui.Gradient foregroundGrad = ui.Gradient.linear(
@@ -363,10 +327,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (gaugeType == GaugeTypeEnum.TYPE1) {
       // Draw max center top post
-      ui.Picture knobImage = createKnobImage(
-          (imageHeight * 0.037383).ceilToDouble(),
-          KnobTypeEnum.STANDARD_KNOB,
-          knobStyle);
+      ui.Picture knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
       ctx.translate(imageWidth * 0.523364, imageHeight * 0.130841);
       ctx.drawPicture(knobImage);
       ctx.translate(-imageWidth * 0.523364, -imageHeight * 0.130841);
@@ -374,10 +335,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (gaugeType == GaugeTypeEnum.TYPE1 || gaugeType == GaugeTypeEnum.TYPE2) {
       // Draw min left post
-      ui.Picture knobImage = createKnobImage(
-          (imageHeight * 0.037383).ceilToDouble(),
-          KnobTypeEnum.STANDARD_KNOB,
-          knobStyle);
+      ui.Picture knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
       ctx.translate(imageWidth * 0.130841, imageHeight * 0.514018);
       ctx.drawPicture(knobImage);
       ctx.translate(-imageWidth * 0.130841, -imageHeight * 0.514018);
@@ -385,10 +343,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (gaugeType == GaugeTypeEnum.TYPE2 || gaugeType == GaugeTypeEnum.TYPE3) {
       // Draw max right post
-      ui.Picture knobImage = createKnobImage(
-          (imageHeight * 0.037383).ceilToDouble(),
-          KnobTypeEnum.STANDARD_KNOB,
-          knobStyle);
+      ui.Picture knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
       ctx.translate(imageWidth * 0.831775, imageHeight * 0.514018);
       ctx.drawPicture(knobImage);
       ctx.translate(-imageWidth * 0.831775, -imageHeight * 0.514018);
@@ -396,10 +351,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (gaugeType == GaugeTypeEnum.TYPE3) {
       // Draw min center bottom post
-      ui.Picture knobImage = createKnobImage(
-          (imageHeight * 0.037383).ceilToDouble(),
-          KnobTypeEnum.STANDARD_KNOB,
-          knobStyle);
+      ui.Picture knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
       ctx.translate(imageWidth * 0.523364, imageHeight * 0.831775);
       ctx.drawPicture(knobImage);
       ctx.translate(-imageWidth * 0.523364, -imageHeight * 0.831775);
@@ -407,17 +359,13 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (gaugeType == GaugeTypeEnum.TYPE4) {
       // Min post
-      ui.Picture knobImage = createKnobImage(
-          (imageHeight * 0.037383).ceilToDouble(),
-          KnobTypeEnum.STANDARD_KNOB,
-          knobStyle);
+      ui.Picture knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
       ctx.translate(imageWidth * 0.336448, imageHeight * 0.803738);
       ctx.drawPicture(knobImage);
       ctx.translate(-imageWidth * 0.336448, -imageHeight * 0.803738);
 
       // Max post
-      knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(),
-          KnobTypeEnum.STANDARD_KNOB, knobStyle);
+      knobImage = createKnobImage((imageHeight * 0.037383).ceilToDouble(), KnobTypeEnum.STANDARD_KNOB, knobStyle);
       ctx.translate(imageWidth * 0.626168, imageHeight * 0.803738);
       ctx.drawPicture(knobImage);
       ctx.translate(-imageWidth * 0.626168, -imageHeight * 0.803738);
@@ -469,8 +417,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
     return thresholdCtxtRecorder.endRecording();
   }
 
-  void drawAreaSectionImage(
-      Canvas ctx, double start, double stop, Color color, bool filled) {
+  void drawAreaSectionImage(Canvas ctx, double start, double stop, Color color, bool filled) {
     if (start < minValue) {
       start = minValue;
     } else if (start > maxValue) {
@@ -494,8 +441,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
       ..color = color
       ..strokeWidth = lineWidth
       ..style = ui.PaintingStyle.fill;
-    double startAngle =
-        (angleRange / range) * start - (angleRange / range) * minValue;
+    double startAngle = (angleRange / range) * start - (angleRange / range) * minValue;
     double stopAngle = startAngle + (stop - start) / (range / angleRange);
     ctx.translate(centerX, centerY);
     ctx.rotate(rotationOffset);
@@ -503,15 +449,13 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
     if (filled) {
       path.moveTo(0, 0);
       double width = (imageWidth * 0.365 - lineWidth / 2) * 2;
-      Rect rect = Rect.fromCenter(
-          center: const Offset(0, 0), width: width, height: width);
+      Rect rect = Rect.fromCenter(center: const Offset(0, 0), width: width, height: width);
       path.addArc(rect, startAngle, (stopAngle - startAngle));
       path.lineTo(0, 0);
       path.close();
     } else {
       double width = (imageWidth * 0.365) * 2;
-      Rect rect = Rect.fromCenter(
-          center: const Offset(0, 0), width: width, height: width);
+      Rect rect = Rect.fromCenter(center: const Offset(0, 0), width: width, height: width);
       path.addArc(rect, startAngle, (stopAngle - startAngle));
       //ctx.arc(0, 0, imageWidth * 0.365, startAngle, stopAngle, false)
     }
@@ -560,20 +504,16 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
       localFontSize = fontSize * 0.75;
     }
 
-    if (tickLabelOrientation == TickLabelOrientationEnum.HORIZONTAL ||
-        tickLabelOrientation == TickLabelOrientationEnum.TANGENT) {
+    if (tickLabelOrientation == TickLabelOrientationEnum.HORIZONTAL || tickLabelOrientation == TickLabelOrientationEnum.TANGENT) {
       TEXT_TRANSLATE_X = imageWidth * 0.26;
       if (maxValue > 999) {
         fontSize *= 0.7;
       }
     }
 
-    final TextStyle stdFont =
-        getFont(localFontSize, backgroundColor.labelColor);
+    final TextStyle stdFont = getFont(localFontSize, backgroundColor.labelColor);
 
-    for (double i = minValue;
-        double.parse(i.toStringAsFixed(2)) <= MAX_VALUE_ROUNDED;
-        i += minorTickSpacing) {
+    for (double i = minValue; double.parse(i.toStringAsFixed(2)) <= MAX_VALUE_ROUNDED; i += minorTickSpacing) {
       textRotationAngle = rotationStep + HALF_PI;
       majorTickCounter++;
       // Draw major tickmarks
@@ -604,8 +544,6 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
             break;
 
           case TickLabelOrientationEnum.NORMAL:
-          /* falls through */
-          default:
             textRotationAngle = HALF_PI;
             break;
         }
@@ -626,10 +564,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH,
             );
-            textPainter.paint(
-                ctx,
-                Offset(-textPainter.width / 2,
-                    -textPainter.height / 1.4 + textYOffset));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4 + textYOffset));
             break;
 
           case LabelNumberFormatEnum.SCIENTIFIC:
@@ -646,15 +581,10 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH,
             );
-            textPainter.paint(
-                ctx,
-                Offset(-textPainter.width / 2,
-                    -textPainter.height / 1.4 + textYOffset));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4 + textYOffset));
             break;
 
           case LabelNumberFormatEnum.STANDARD:
-          /* falls through */
-          default:
             var textSpan = TextSpan(
               text: valueCounter.toStringAsFixed(0),
               style: stdFont,
@@ -668,10 +598,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
               minWidth: 0,
               maxWidth: TEXT_WIDTH,
             );
-            textPainter.paint(
-                ctx,
-                Offset(-textPainter.width / 2,
-                    -textPainter.height / 1.4 + textYOffset));
+            textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 1.4 + textYOffset));
             break;
         }
         ctx.translate(-TEXT_TRANSLATE_X, 0);
@@ -685,8 +612,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
       }
 
       // Draw tickmark every minor tickmark spacing
-      if (maxNoOfMinorTicks % 2 == 0 &&
-          majorTickCounter == HALF_MAX_NO_OF_MINOR_TICKS) {
+      if (maxNoOfMinorTicks % 2 == 0 && majorTickCounter == HALF_MAX_NO_OF_MINOR_TICKS) {
         Path path = Path();
         path.moveTo(OUTER_POINT, 0);
         path.lineTo(MED_INNER_POINT, 0);
@@ -721,24 +647,14 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
   // **************   Initialization  ********************
   // Draw all static painting code to background
   void init(dynamic parameters) {
-    bool drawFrame2 =
-        parameters['frame'] == null ? false : parameters['frame'] as bool;
-    bool drawBackground2 = parameters['background'] == null
-        ? false
-        : parameters['background'] as bool;
-    bool drawLed =
-        parameters['led'] == null ? false : parameters['led'] as bool;
-    bool drawUserLed =
-        parameters['userLed'] == null ? false : parameters['userLed'] as bool;
-    bool drawPointer =
-        parameters['pointer'] == null ? false : parameters['pointer'] as bool;
-    bool drawForeground2 = parameters['foreground'] == null
-        ? false
-        : parameters['foreground'] as bool;
-    bool drawTrend =
-        parameters['trend'] == null ? false : parameters['trend'] as bool;
-    bool drawOdo =
-        parameters['odo'] == null ? false : parameters['odo'] as bool;
+    bool drawFrame2 = parameters['frame'] == null ? false : parameters['frame'] as bool;
+    bool drawBackground2 = parameters['background'] == null ? false : parameters['background'] as bool;
+    bool drawLed = parameters['led'] == null ? false : parameters['led'] as bool;
+    bool drawUserLed = parameters['userLed'] == null ? false : parameters['userLed'] as bool;
+    bool drawPointer = parameters['pointer'] == null ? false : parameters['pointer'] as bool;
+    bool drawForeground2 = parameters['foreground'] == null ? false : parameters['foreground'] as bool;
+    bool drawTrend = parameters['trend'] == null ? false : parameters['trend'] as bool;
+    bool drawOdo = parameters['odo'] == null ? false : parameters['odo'] as bool;
 
     //   initialized = true
 
@@ -781,25 +697,21 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     if (drawLed) {
       // Draw LED ON in ledBuffer_ON
-      ui.Picture ledOnPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 1, ledColor);
+      ui.Picture ledOnPicture = createLedImage((size * 0.093457).ceilToDouble(), 1, ledColor);
       ledContextOn.drawPicture(ledOnPicture);
 
       // Draw LED OFF in ledBuffer_OFF
-      ui.Picture ledOffPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 0, ledColor);
+      ui.Picture ledOffPicture = createLedImage((size * 0.093457).ceilToDouble(), 0, ledColor);
       ledContextOff.drawPicture(ledOffPicture);
     }
 
     if (drawUserLed) {
       // Draw user LED ON in userLedBuffer_ON
-      ui.Picture userLedOnPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 1, userLedColor);
+      ui.Picture userLedOnPicture = createLedImage((size * 0.093457).ceilToDouble(), 1, userLedColor);
       userLedContextOn.drawPicture(userLedOnPicture);
 
       // Draw user LED OFF in userLedBuffer_OFF
-      ui.Picture userLedOffPicture =
-          createLedImage((size * 0.093457).ceilToDouble(), 0, userLedColor);
+      ui.Picture userLedOffPicture = createLedImage((size * 0.093457).ceilToDouble(), 0, userLedColor);
       userLedContextOff.drawPicture(userLedOffPicture);
     }
 
@@ -922,9 +834,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
         //   font: odometerParams.font,
         //   value: value
         // })
-        odoPosX = (imageWidth -
-                odometerWidth(size * 0.075, params.digits!, params.decimals!)) /
-            2;
+        odoPosX = (imageWidth - odometerWidth(size * 0.075, params.digits!, params.decimals!)) / 2;
       } else if (!useOdometer) {
         var lcdBuffer = createLcdBackgroundImage(lcdWidth, lcdHeight, lcdColor);
         backgroundContext.save();
@@ -948,8 +858,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Create foreground in foreground buffer (foregroundBuffer)
     if (drawForeground2 && foregroundVisible) {
-      bool knobVisible = !(pointerType == PointerTypeEnum.TYPE15 ||
-          pointerType == PointerTypeEnum.TYPE16);
+      bool knobVisible = !(pointerType == PointerTypeEnum.TYPE15 || pointerType == PointerTypeEnum.TYPE16);
       ui.Picture foregroundPicture = drawForeground(
         foregroundType,
         imageWidth,
@@ -1028,9 +937,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw led
     if (ledVisible) {
-      picture = ledOn
-          ? ledBufferOnRecorder.endRecording()
-          : ledBufferOffRecorder.endRecording();
+      picture = ledOn ? ledBufferOnRecorder.endRecording() : ledBufferOffRecorder.endRecording();
       canvas.save();
       canvas.translate(ledPosX, ledPosY);
       canvas.drawPicture(picture);
@@ -1040,9 +947,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     // Draw user led
     if (userLedVisible) {
-      picture = userLedOn
-          ? userLedBufferOnRecorder.endRecording()
-          : userLedBufferOffRecorder.endRecording();
+      picture = userLedOn ? userLedBufferOnRecorder.endRecording() : userLedBufferOffRecorder.endRecording();
       canvas.save();
       canvas.translate(userLedPosX, userLedPosY);
       canvas.drawPicture(picture);
@@ -1089,8 +994,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
       picture = minMeasuredValueBufferRecorder.endRecording();
       canvas.save();
       canvas.translate(centerX, centerY);
-      canvas.rotate(
-          rotationOffset + HALF_PI + (minMeasuredValue - minValue) * angleStep);
+      canvas.rotate(rotationOffset + HALF_PI + (minMeasuredValue - minValue) * angleStep);
       canvas.translate(-centerX, -centerY);
       canvas.translate(imageWidth * 0.4865, imageHeight * 0.105);
       canvas.drawPicture(picture);
@@ -1103,8 +1007,7 @@ void drawRadial(Canvas canvas, Size canvasSize, Parameters parameters) {
       picture = maxMeasuredValueBufferRecorder.endRecording();
       canvas.save();
       canvas.translate(centerX, centerY);
-      canvas.rotate(
-          rotationOffset + HALF_PI + (maxMeasuredValue - minValue) * angleStep);
+      canvas.rotate(rotationOffset + HALF_PI + (maxMeasuredValue - minValue) * angleStep);
       canvas.translate(-centerX, -centerY);
       canvas.translate(imageWidth * 0.4865, imageHeight * 0.105);
       canvas.drawPicture(picture);
