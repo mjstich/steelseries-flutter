@@ -1,6 +1,6 @@
 name: steelseries_flutter
 description: "A port of the steel series gauges to flutter.  The port supports radial, linear and many of the original custom steel series gauges."
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/mjstich/steelseries-flutter
 
 environment:

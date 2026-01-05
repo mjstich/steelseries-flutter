@@ -22,3 +22,7 @@
 
 * Add thumbnail image.
 
+## 0.0.7
+
+* Address linux build issue due to case of font file.
+
