@@ -26,3 +26,7 @@
 
 * Address linux build issue due to case of font file.
 
+## 0.0.8
+
+* Update versioning files.
+
