@@ -47,7 +47,7 @@ class _RadialGaugePageState extends State<RadialGaugePage> {
             foregroundType: ForegroundTypeEnum.TYPE3,
             fontType: FontTypeEnum.LCDMono,
             area: [
-              Section(85, 100, Colors.red.shade900.withOpacity(0.4)),
+              Section(85, 100, Colors.red.shade900.withValues(alpha: 0.4)),
             ],
             section: [
               Section(0, 60, Colors.green.shade600),

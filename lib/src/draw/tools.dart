@@ -189,8 +189,7 @@ class GradientWrapper {
         upperIndex = i;
       }
     }
-    var interpolationFraction =
-        (fraction - lowerLimit) / (upperLimit - lowerLimit);
+    var interpolationFraction = (fraction - lowerLimit) / (upperLimit - lowerLimit);
     return getColorFromFraction(
       colors[lowerIndex],
       colors[upperIndex],
@@ -200,19 +199,17 @@ class GradientWrapper {
     );
   }
 
-  Color getColorFromFraction(Color sourceColor, Color destinationColor,
-      double range, double fraction, bool returnRawData) {
+  Color getColorFromFraction(Color sourceColor, Color destinationColor, double range, double fraction, bool returnRawData) {
     double INT_TO_FLOAT = 1 / 255;
-    int sourceRed = sourceColor.red;
-    int sourceGreen = sourceColor.green;
-    int sourceBlue = sourceColor.blue;
-    double sourceAlpha = sourceColor.opacity;
+    int sourceRed = (sourceColor.r * 255.0).round() & 0xff;
+    int sourceGreen = (sourceColor.g * 255.0).round() & 0xff;
+    int sourceBlue = (sourceColor.b * 255.0).round() & 0xff;
+    double sourceAlpha = sourceColor.a;
 
-    int deltaRed = destinationColor.red - sourceRed;
-    int deltaGreen = destinationColor.green - sourceGreen;
-    int deltaBlue = destinationColor.blue - sourceBlue;
-    double deltaAlpha =
-        destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
+    int deltaRed = ((destinationColor.r * 255.0).round() & 0xff) - sourceRed;
+    int deltaGreen = ((destinationColor.g * 255.0).round() & 0xff) - sourceGreen;
+    int deltaBlue = ((destinationColor.b * 255.0).round() & 0xff) - sourceBlue;
+    double deltaAlpha = destinationColor.a * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
 
     double fractionRed = (deltaRed / range) * fraction;
     double fractionGreen = (deltaGreen / range) * fraction;
@@ -228,11 +225,7 @@ class GradientWrapper {
     //   //   sourceAlpha + fractionAlpha
     //   // ]
     // } else {
-    return Color.fromRGBO(
-        (sourceRed + fractionRed).toInt(),
-        (sourceGreen + fractionGreen).toInt(),
-        (sourceBlue + fractionBlue).toInt(),
-        sourceAlpha + fractionAlpha);
+    return Color.fromRGBO((sourceRed + fractionRed).toInt(), (sourceGreen + fractionGreen).toInt(), (sourceBlue + fractionBlue).toInt(), sourceAlpha + fractionAlpha);
     //}
   }
 
@@ -293,19 +286,17 @@ class GradientWrapper {
 //   return getColorAt;
 // }
 
-Color getColorFromFraction(Color sourceColor, Color destinationColor,
-    double range, double fraction, bool returnRawData) {
+Color getColorFromFraction(Color sourceColor, Color destinationColor, double range, double fraction, bool returnRawData) {
   double INT_TO_FLOAT = 1 / 255;
-  int sourceRed = sourceColor.red;
-  int sourceGreen = sourceColor.green;
-  int sourceBlue = sourceColor.blue;
-  double sourceAlpha = sourceColor.opacity;
+  int sourceRed = (sourceColor.r * 255.0).round() & 0xff;
+  int sourceGreen = (sourceColor.g * 255.0).round() & 0xff;
+  int sourceBlue = (sourceColor.b * 255.0).round() & 0xff;
+  double sourceAlpha = sourceColor.a;
 
-  int deltaRed = destinationColor.red - sourceRed;
-  int deltaGreen = destinationColor.green - sourceGreen;
-  int deltaBlue = destinationColor.blue - sourceBlue;
-  double deltaAlpha =
-      destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
+  int deltaRed = ((destinationColor.r * 255.0).round() & 0xff) - sourceRed;
+  int deltaGreen = ((destinationColor.g * 255.0).round() & 0xff) - sourceGreen;
+  int deltaBlue = ((destinationColor.b * 255.0).round() & 0xff) - sourceBlue;
+  double deltaAlpha = destinationColor.a * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
 
   double fractionRed = (deltaRed / range) * fraction;
   double fractionGreen = (deltaGreen / range) * fraction;
@@ -321,27 +312,21 @@ Color getColorFromFraction(Color sourceColor, Color destinationColor,
   //   //   sourceAlpha + fractionAlpha
   //   // ]
   // } else {
-  return Color.fromRGBO(
-      (sourceRed + fractionRed).toInt(),
-      (sourceGreen + fractionGreen).toInt(),
-      (sourceBlue + fractionBlue).toInt(),
-      sourceAlpha + fractionAlpha);
+  return Color.fromRGBO((sourceRed + fractionRed).toInt(), (sourceGreen + fractionGreen).toInt(), (sourceBlue + fractionBlue).toInt(), sourceAlpha + fractionAlpha);
   //}
 }
 
-List<double> getColorFromFractionRaw(Color sourceColor, Color destinationColor,
-    double range, double fraction, bool returnRawData) {
+List<double> getColorFromFractionRaw(Color sourceColor, Color destinationColor, double range, double fraction, bool returnRawData) {
   double INT_TO_FLOAT = 1 / 255;
-  int sourceRed = sourceColor.red;
-  int sourceGreen = sourceColor.green;
-  int sourceBlue = sourceColor.blue;
-  double sourceAlpha = sourceColor.opacity;
+  int sourceRed = (sourceColor.r * 255.0).round() & 0xff;
+  int sourceGreen = (sourceColor.g * 255.0).round() & 0xff;
+  int sourceBlue = (sourceColor.b * 255.0).round() & 0xff;
+  double sourceAlpha = sourceColor.a;
 
-  int deltaRed = destinationColor.red - sourceRed;
-  int deltaGreen = destinationColor.green - sourceGreen;
-  int deltaBlue = destinationColor.blue - sourceBlue;
-  double deltaAlpha =
-      destinationColor.opacity * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
+  int deltaRed = ((destinationColor.r * 255.0).round() & 0xff) - sourceRed;
+  int deltaGreen = ((destinationColor.g * 255.0).round() & 0xff) - sourceGreen;
+  int deltaBlue = ((destinationColor.b * 255.0).round() & 0xff) - sourceBlue;
+  double deltaAlpha = destinationColor.a * INT_TO_FLOAT - sourceAlpha * INT_TO_FLOAT;
 
   double fractionRed = (deltaRed / range) * fraction;
   double fractionGreen = (deltaGreen / range) * fraction;
@@ -350,12 +335,7 @@ List<double> getColorFromFractionRaw(Color sourceColor, Color destinationColor,
 
   returnRawData = returnRawData || false;
 
-  return [
-    (sourceRed + fractionRed).toDouble(),
-    (sourceGreen + fractionGreen).toDouble(),
-    (sourceBlue + fractionBlue).toDouble(),
-    sourceAlpha + fractionAlpha
-  ];
+  return [(sourceRed + fractionRed).toDouble(), (sourceGreen + fractionGreen).toDouble(), (sourceBlue + fractionBlue).toDouble(), sourceAlpha + fractionAlpha];
 }
 
 double log10(double value) {
@@ -422,9 +402,7 @@ Path roundedRectangle(double x, double y, double w, double h, double radius) {
 // }
 
 ColorDef customColorDef(Color color) {
-  //const values = getColorValues(color)
-  Color rgbaCol =
-      Color.fromRGBO(color.red, color.green, color.blue, color.opacity);
+  Color rgbaCol = Color.fromRGBO((color.r * 255.0).round() & 0xff, (color.g * 255.0).round() & 0xff, (color.b * 255.0).round() & 0xff, color.a);
 
   Color VERY_DARK = darker(rgbaCol, 0.32);
   Color DARK = darker(rgbaCol, 0.62);
@@ -452,8 +430,7 @@ List<double> rgbToHsl(double red, double green, double blue) {
     hue = saturation = 0; // achromatic
   } else {
     delta = max - min;
-    saturation =
-        lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+    saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
     if (max == red) {
       hue = (green - blue) / delta + (green < blue ? 6 : 0);
     } else if (max == green) {
@@ -569,27 +546,27 @@ double rangeDouble(double value, double limit) {
 }
 
 Color darker(Color color, double fraction) {
-  int red = (color.red * (1 - fraction)).floor();
-  int green = (color.green * (1 - fraction)).floor();
-  int blue = (color.blue * (1 - fraction)).floor();
+  int red = (((color.r * 255.0).round() & 0xff) * (1 - fraction)).floor();
+  int green = (((color.g * 255.0).round() & 0xff) * (1 - fraction)).floor();
+  int blue = (((color.b * 255.0).round() & 0xff) * (1 - fraction)).floor();
 
   red = range(red, 255);
   green = range(green, 255);
   blue = range(blue, 255);
 
-  return Color.fromRGBO(red, green, blue, color.opacity);
+  return Color.fromRGBO(red, green, blue, color.a);
 }
 
 Color lighter(Color color, double fraction) {
-  int red = (color.red * (1 + fraction)).round();
-  int green = (color.green * (1 + fraction)).round();
-  int blue = (color.blue * (1 + fraction)).round();
+  int red = (((color.r * 255.0).round() & 0xff) * (1 + fraction)).round();
+  int green = (((color.g * 255.0).round() & 0xff) * (1 + fraction)).round();
+  int blue = (((color.b * 255.0).round() & 0xff) * (1 + fraction)).round();
 
   red = range(red, 255);
   green = range(green, 255);
   blue = range(blue, 255);
 
-  return Color.fromRGBO(red, green, blue, color.opacity);
+  return Color.fromRGBO(red, green, blue, color.a);
 }
 
 double wrap(double value, double lower, double upper) {
@@ -607,8 +584,7 @@ double getShortestAngle(double from, double to) {
   return wrap(to - from, -180, 180);
 }
 
-TextStyle getFont(double fontHeight, Color color,
-    {FontTypeEnum fontType = FontTypeEnum.RobotoMono, FontWeight? fontWeight}) {
+TextStyle getFont(double fontHeight, Color color, {FontTypeEnum fontType = FontTypeEnum.RobotoMono, FontWeight? fontWeight}) {
   if (fontType == FontTypeEnum.LCDMono) {
     return TextStyle(
       fontSize: fontHeight,

@@ -29,7 +29,7 @@ void drawLightbulb(Canvas canvas, Size canvasSize, Parameters parameters) {
   double imageHeight = size;
 
   List<int> getColorValues(Color color) {
-    return [color.red, color.green, color.blue];
+    return [(color.r * 255.0).round() & 0xff, (color.g * 255.0).round() & 0xff, (color.b * 255.0).round() & 0xff];
   }
 
   void drawOff(Canvas ctx) {
@@ -110,8 +110,7 @@ void drawLightbulb(Canvas canvas, Size canvasSize, Parameters parameters) {
     int red = data[0];
     int green = data[1];
     int blue = data[2];
-    List<double> hsl =
-        rgbToHsl(red.toDouble(), green.toDouble(), blue.toDouble());
+    List<double> hsl = rgbToHsl(red.toDouble(), green.toDouble(), blue.toDouble());
 
     ctx.save();
     Path path = Path();

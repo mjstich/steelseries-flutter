@@ -11,19 +11,15 @@ import 'drawFrame.dart';
 import 'tools.dart';
 
 void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
-  double size =
-      parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
+  double size = parameters.sizeWithDefault(math.min(canvasSize.width, canvasSize.height));
   bool decimalsVisible = parameters.decimalsVisibleWithDefault(false);
   bool textOrientationFixed = parameters.textOrientationFixedWithDefault(false);
-  FrameDesignEnum frameDesign =
-      parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
+  FrameDesignEnum frameDesign = parameters.frameDesignWithDefault(FrameDesignEnum.METAL);
   bool frameVisible = parameters.frameVisibleWithDefault(true);
-  BackgroundColorEnum backgroundColor =
-      parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
+  BackgroundColorEnum backgroundColor = parameters.backgroundColorWithDefault(BackgroundColorEnum.DARK_GRAY);
   bool backgroundVisible = parameters.backgroundVisibleWithDefault(true);
   ColorEnum pointerColor = parameters.pointerColorWithDefault(ColorEnum.RED);
-  ForegroundTypeEnum foregroundType =
-      parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
+  ForegroundTypeEnum foregroundType = parameters.foregroundTypeWithDefault(ForegroundTypeEnum.TYPE1);
   bool foregroundVisible = parameters.foregroundVisibleWithDefault(true);
   bool rotateFace = parameters.rotateFaceWithDefault(false);
 
@@ -146,8 +142,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
 
           ctx.rotate(-(i * RAD_FACTOR) + HALF_PI);
           ctx.translate(-imageWidth * 0.31, 0);
@@ -169,8 +164,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           break;
         case 45:
           ctx.translate(imageWidth * 0.31, 0);
@@ -190,8 +184,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
 
           ctx.rotate(-(i * RAD_FACTOR) + 0.25 * PI);
           ctx.translate(-imageWidth * 0.31, 0);
@@ -213,8 +206,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           break;
 
         case 90:
@@ -234,8 +226,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
 
           ctx.rotate(-(i * RAD_FACTOR));
           ctx.translate(-imageWidth * 0.31, 0);
@@ -257,8 +248,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           break;
 
         case 135:
@@ -278,8 +268,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           ctx.rotate(-(i * RAD_FACTOR) - 0.25 * PI);
           ctx.translate(-imageWidth * 0.31, 0);
 
@@ -299,8 +288,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           break;
         case 180:
           ctx.translate(imageWidth * 0.31, 0);
@@ -319,8 +307,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
 
           ctx.rotate(-(i * RAD_FACTOR) - HALF_PI);
           ctx.translate(-imageWidth * 0.31, 0);
@@ -341,8 +328,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           ctx.translate(-imageWidth * 0.41, 0);
           break;
         case 225:
@@ -363,8 +349,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           ctx.rotate(-(i * RAD_FACTOR) - 0.75 * PI);
           ctx.translate(-imageWidth * 0.31, 0);
 
@@ -384,8 +369,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           break;
 
         case 270:
@@ -405,8 +389,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
 
           ctx.rotate(-(i * RAD_FACTOR) - PI);
           ctx.translate(-imageWidth * 0.31, 0);
@@ -427,8 +410,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           break;
 
         case 315:
@@ -449,8 +431,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           ctx.rotate(-(i * RAD_FACTOR) - 1.25 * PI);
           ctx.translate(-imageWidth * 0.31, 0);
 
@@ -471,8 +452,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
             minWidth: 0,
             maxWidth: imageWidth,
           );
-          textPainter.paint(
-              ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
+          textPainter.paint(ctx, Offset(-textPainter.width / 2, -textPainter.height / 2));
           break;
       }
       ctx.restore();
@@ -570,8 +550,8 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
     );
     path.close();
 
-    Color tmpDarkColor = pointerColor.dark.withOpacity(0.70588);
-    Color tmpLightColor = pointerColor.light.withOpacity(0.70588);
+    Color tmpDarkColor = pointerColor.dark.withValues(alpha: 0.70588);
+    Color tmpLightColor = pointerColor.light.withValues(alpha: 0.70588);
 
     ui.Gradient POINTER_LEVEL_GRADIENT = ui.Gradient.linear(
       Offset(0, 0.154205 * imageHeight),
@@ -607,8 +587,8 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
 
     Color tmpDarkColor = pointerColor.dark;
     Color tmpLightColor = pointerColor.light;
-    tmpDarkColor = tmpDarkColor.withOpacity(0.70588);
-    tmpLightColor = tmpLightColor.withOpacity(0.70588);
+    tmpDarkColor = tmpDarkColor.withValues(alpha: 0.70588);
+    tmpLightColor = tmpLightColor.withValues(alpha: 0.70588);
 
     // POINTER_LEVEL_LEFT
     Path path = Path();
@@ -797,9 +777,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
       //       imageWidth * 0.35
       //     )
     } else {
-      TextStyle font = getFont(
-          decimalsVisible ? imageWidth * 0.095 : imageWidth * 0.11,
-          backgroundColor.labelColor);
+      TextStyle font = getFont(decimalsVisible ? imageWidth * 0.095 : imageWidth * 0.11, backgroundColor.labelColor);
       var textSpan = TextSpan(
         text: '${visibleValue.toStringAsFixed(decimals)}\u00B0',
         style: font,
@@ -814,10 +792,7 @@ void drawLevel(Canvas canvas, Size canvasSize, Parameters parameters) {
         minWidth: 0,
         maxWidth: imageWidth * 0.45,
       );
-      textPainter.paint(
-          canvas,
-          Offset(centerX - textPainter.width / 2,
-              centerY - textPainter.height / 2));
+      textPainter.paint(canvas, Offset(centerX - textPainter.width / 2, centerY - textPainter.height / 2));
       canvas.restore();
     }
 

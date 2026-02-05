@@ -671,10 +671,10 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       Offset(valueBackgroundStartX, valueBackgroundStartY),
       Offset(valueBackgroundStopX, valueBackgroundStopY),
       [
-        labelColor.withOpacity(0.047058 + darker),
-        labelColor.withOpacity(0.145098 + darker),
-        labelColor.withOpacity(0.149019 + darker),
-        labelColor.withOpacity(0.047058 + darker),
+        labelColor.withValues(alpha: 0.047058 + darker),
+        labelColor.withValues(alpha: 0.145098 + darker),
+        labelColor.withValues(alpha: 0.149019 + darker),
+        labelColor.withValues(alpha: 0.047058 + darker),
       ],
       [0, 0.48, 0.49, 1],
     );
@@ -717,10 +717,10 @@ void drawLinearBargraph(Canvas canvas, Size canvasSize, Parameters parameters) {
       Offset(valueBorderStartX, valueBorderStartY),
       Offset(valueBorderStopX, valueBorderStopY),
       [
-        labelColor.withOpacity(0.298039 + darker),
-        labelColor.withOpacity(0.686274 + darker),
-        labelColor.withOpacity(0.698039 + darker),
-        labelColor.withOpacity(0.4 + darker),
+        labelColor.withValues(alpha: 0.298039 + darker),
+        labelColor.withValues(alpha: 0.686274 + darker),
+        labelColor.withValues(alpha: 0.698039 + darker),
+        labelColor.withValues(alpha: 0.4 + darker),
       ],
       [0, 0.48, 0.49, 1],
     );

@@ -610,10 +610,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
         Offset(valueBackgroundStartX, valueBackgroundStartY),
         Offset(valueBackgroundStopX, valueBackgroundStopY),
         [
-          labelColor.withOpacity(0.05 + darker),
-          labelColor.withOpacity(0.15 + darker),
-          labelColor.withOpacity(0.15 + darker),
-          labelColor.withOpacity(0.05 + darker),
+          labelColor.withValues(alpha: 0.05 + darker),
+          labelColor.withValues(alpha: 0.15 + darker),
+          labelColor.withValues(alpha: 0.15 + darker),
+          labelColor.withValues(alpha: 0.05 + darker),
         ],
         [0, 0.48, 0.49, 1],
       );
@@ -656,10 +656,10 @@ void drawLinear(Canvas canvas, Size canvasSize, Parameters parameters) {
         Offset(valueBorderStartX, valueBorderStartY),
         Offset(valueBorderStopX, valueBorderStopY),
         [
-          labelColor.withOpacity(0.03 + darker),
-          labelColor.withOpacity(0.69),
-          labelColor.withOpacity(0.7),
-          labelColor.withOpacity(0.4),
+          labelColor.withValues(alpha: 0.03 + darker),
+          labelColor.withValues(alpha: 0.69),
+          labelColor.withValues(alpha: 0.7),
+          labelColor.withValues(alpha: 0.4),
         ],
         [0, 0.48, 0.49, 1],
       );

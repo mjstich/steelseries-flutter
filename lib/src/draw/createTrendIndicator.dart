@@ -8,8 +8,7 @@ import 'tools.dart';
 
 Map<String, ui.Picture> trendIndicatorCache = {};
 
-ui.Picture createTrendIndicator(
-    double width, TrendStateEnum onSection, List<LedColorEnum> colors) {
+ui.Picture createTrendIndicator(double width, TrendStateEnum onSection, List<LedColorEnum> colors) {
   double height = width * 2;
   //String cacheKey = onSection.toString() + width.toString() + colors[0].toString() + colors[1].toString() + colors[2].toString();
 
@@ -87,12 +86,12 @@ ui.Picture createTrendIndicator(
         Offset(0.5 * width, 0.2 * height),
         0,
         [
-          ledColor.coronaColor.withOpacity(0),
-          ledColor.coronaColor.withOpacity(0.3),
-          ledColor.coronaColor.withOpacity(0.2),
-          ledColor.coronaColor.withOpacity(0.1),
-          ledColor.coronaColor.withOpacity(0.05),
-          ledColor.coronaColor.withOpacity(0),
+          ledColor.coronaColor.withValues(alpha: 0),
+          ledColor.coronaColor.withValues(alpha: 0.3),
+          ledColor.coronaColor.withValues(alpha: 0.2),
+          ledColor.coronaColor.withValues(alpha: 0.1),
+          ledColor.coronaColor.withValues(alpha: 0.05),
+          ledColor.coronaColor.withValues(alpha: 0),
         ],
         <double>[0.0, 0.5, 0.7, 0.8, 0.85, 1],
         TileMode.clamp,
@@ -104,10 +103,7 @@ ui.Picture createTrendIndicator(
         ..shader = grad
         ..style = ui.PaintingStyle.fill;
       Path path = Path();
-      Rect rect = Rect.fromCenter(
-          center: Offset(0.5 * width, 0.2 * height),
-          width: 0.7 * width * 2,
-          height: 0.7 * width * 2);
+      Rect rect = Rect.fromCenter(center: Offset(0.5 * width, 0.2 * height), width: 0.7 * width * 2, height: 0.7 * width * 2);
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);
@@ -123,11 +119,9 @@ ui.Picture createTrendIndicator(
 
     if (onSection == TrendStateEnum.STEADY) {
       paint.color = ledColor.outerColor_ON;
-      Rect rect = Rect.fromLTWH(
-          0.128 * width, 0.41 * height, 0.744 * width, 0.074 * height);
+      Rect rect = Rect.fromLTWH(0.128 * width, 0.41 * height, 0.744 * width, 0.074 * height);
       path.addRect(rect);
-      rect = Rect.fromLTWH(
-          0.128 * width, 0.516 * height, 0.744 * width, 0.074 * height);
+      rect = Rect.fromLTWH(0.128 * width, 0.516 * height, 0.744 * width, 0.074 * height);
       path.addRect(rect);
       path.close();
       canvas.drawPath(path, paint);
@@ -144,8 +138,7 @@ ui.Picture createTrendIndicator(
       Paint paint = Paint()
         ..shader = grad
         ..style = ui.PaintingStyle.fill;
-      Rect rect = Rect.fromLTWH(
-          0.128 * width, 0.41 * height, 0.744 * width, 0.074 * height);
+      Rect rect = Rect.fromLTWH(0.128 * width, 0.41 * height, 0.744 * width, 0.074 * height);
       path.addRect(rect);
       path.close();
       canvas.drawPath(path, paint);
@@ -161,8 +154,7 @@ ui.Picture createTrendIndicator(
       );
       paint.shader = grad;
       path = Path();
-      rect = Rect.fromLTWH(
-          0.128 * width, 0.516 * height, 0.744 * width, 0.074 * height);
+      rect = Rect.fromLTWH(0.128 * width, 0.516 * height, 0.744 * width, 0.074 * height);
       path.addRect(rect);
       path.close();
       canvas.drawPath(path, paint);
@@ -188,15 +180,13 @@ ui.Picture createTrendIndicator(
       paint.color = const Color.fromRGBO(255, 255, 255, 0.3);
       path = Path();
       path.moveTo(0.128 * width + 0.744 * width, 0.41 * height);
-      path.lineTo(
-          0.128 * width + 0.744 * width, 0.41 * height + 0.074 * height);
+      path.lineTo(0.128 * width + 0.744 * width, 0.41 * height + 0.074 * height);
       path.lineTo(0.128 * width, 0.41 * height + 0.074 * height);
       canvas.drawPath(path, paint);
 
       path = Path();
       path.moveTo(0.128 * width + 0.744 * width, 0.516 * height);
-      path.lineTo(
-          0.128 * width + 0.744 * width, 0.516 * height + 0.074 * height);
+      path.lineTo(0.128 * width + 0.744 * width, 0.516 * height + 0.074 * height);
       path.lineTo(0.128 * width, 0.516 * height + 0.074 * height);
       canvas.drawPath(path, paint);
     } else {
@@ -205,12 +195,12 @@ ui.Picture createTrendIndicator(
         Offset(0.5 * width, 0.2 * height),
         0,
         [
-          ledColor.coronaColor.withOpacity(0),
-          ledColor.coronaColor.withOpacity(0.3),
-          ledColor.coronaColor.withOpacity(0.2),
-          ledColor.coronaColor.withOpacity(0.1),
-          ledColor.coronaColor.withOpacity(0.05),
-          ledColor.coronaColor.withOpacity(0),
+          ledColor.coronaColor.withValues(alpha: 0),
+          ledColor.coronaColor.withValues(alpha: 0.3),
+          ledColor.coronaColor.withValues(alpha: 0.2),
+          ledColor.coronaColor.withValues(alpha: 0.1),
+          ledColor.coronaColor.withValues(alpha: 0.05),
+          ledColor.coronaColor.withValues(alpha: 0),
         ],
         <double>[0.0, 0.5, 0.7, 0.8, 0.85, 1],
         TileMode.clamp,
@@ -223,10 +213,7 @@ ui.Picture createTrendIndicator(
         ..style = ui.PaintingStyle.fill;
 
       Path path = Path();
-      Rect rect = Rect.fromCenter(
-          center: Offset(0.5 * width, 0.2 * height),
-          width: 0.7 * width * 2,
-          height: 0.7 * width * 2);
+      Rect rect = Rect.fromCenter(center: Offset(0.5 * width, 0.2 * height), width: 0.7 * width * 2, height: 0.7 * width * 2);
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);
@@ -312,12 +299,12 @@ ui.Picture createTrendIndicator(
         Offset(0.5 * width, 0.8 * height),
         0,
         [
-          ledColor.coronaColor.withOpacity(0),
-          ledColor.coronaColor.withOpacity(0.3),
-          ledColor.coronaColor.withOpacity(0.2),
-          ledColor.coronaColor.withOpacity(0.1),
-          ledColor.coronaColor.withOpacity(0.05),
-          ledColor.coronaColor.withOpacity(0),
+          ledColor.coronaColor.withValues(alpha: 0),
+          ledColor.coronaColor.withValues(alpha: 0.3),
+          ledColor.coronaColor.withValues(alpha: 0.2),
+          ledColor.coronaColor.withValues(alpha: 0.1),
+          ledColor.coronaColor.withValues(alpha: 0.05),
+          ledColor.coronaColor.withValues(alpha: 0),
         ],
         <double>[0.0, 0.5, 0.7, 0.8, 0.85, 1],
         TileMode.clamp,
@@ -329,10 +316,7 @@ ui.Picture createTrendIndicator(
         ..shader = grad
         ..style = ui.PaintingStyle.fill;
       Path path = Path();
-      Rect rect = Rect.fromCenter(
-          center: Offset(0.5 * width, 0.8 * height),
-          width: 0.7 * width * 2,
-          height: 0.7 * width * 2);
+      Rect rect = Rect.fromCenter(center: Offset(0.5 * width, 0.8 * height), width: 0.7 * width * 2, height: 0.7 * width * 2);
       path.addArc(rect, 0, TWO_PI);
       path.close();
       canvas.drawPath(path, paint);

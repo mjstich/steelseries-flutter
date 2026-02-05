@@ -44,10 +44,7 @@ ui.Picture createLedImage(double size, int state, LedColorEnum ledColor) {
 
     paint.shader = grad;
     Path path = Path();
-    Rect rect = Rect.fromCenter(
-        center: Offset(ledCenterX, ledCenterY),
-        width: (size * 0.5),
-        height: (size * 0.5));
+    Rect rect = Rect.fromCenter(center: Offset(ledCenterX, ledCenterY), width: (size * 0.5), height: (size * 0.5));
     path.addArc(rect, 0, TWO_PI);
     path.close();
     canvas.drawPath(path, paint);
@@ -63,10 +60,7 @@ ui.Picture createLedImage(double size, int state, LedColorEnum ledColor) {
     );
     paint.shader = grad;
     path = Path();
-    rect = Rect.fromCenter(
-        center: Offset(ledCenterX, 0.35 * size + (0.2 * size) / 2),
-        width: (size * 0.4),
-        height: (size * 0.4));
+    rect = Rect.fromCenter(center: Offset(ledCenterX, 0.35 * size + (0.2 * size) / 2), width: (size * 0.4), height: (size * 0.4));
     path.addArc(rect, 0, TWO_PI);
     path.close();
     canvas.drawPath(path, paint);
@@ -105,10 +99,7 @@ ui.Picture createLedImage(double size, int state, LedColorEnum ledColor) {
 
     paint.shader = grad;
     Path path = Path();
-    Rect rect = Rect.fromCenter(
-        center: Offset(ledCenterX, ledCenterY),
-        width: (size * 0.5),
-        height: (size * 0.5));
+    Rect rect = Rect.fromCenter(center: Offset(ledCenterX, ledCenterY), width: (size * 0.5), height: (size * 0.5));
     path.addArc(rect, 0, TWO_PI);
     path.close();
     canvas.drawPath(path, paint);
@@ -124,10 +115,7 @@ ui.Picture createLedImage(double size, int state, LedColorEnum ledColor) {
     );
     paint.shader = grad;
     path = Path();
-    rect = Rect.fromCenter(
-        center: Offset(ledCenterX, 0.35 * size + (0.2 * size) / 2),
-        width: (size * 0.4),
-        height: (size * 0.4));
+    rect = Rect.fromCenter(center: Offset(ledCenterX, 0.35 * size + (0.2 * size) / 2), width: (size * 0.4), height: (size * 0.4));
     path.addArc(rect, 0, TWO_PI);
     path.close();
     canvas.drawPath(path, paint);
@@ -136,12 +124,12 @@ ui.Picture createLedImage(double size, int state, LedColorEnum ledColor) {
       Offset(ledCenterX, ledCenterY),
       0,
       [
-        ledColor.coronaColor.withOpacity(0),
-        ledColor.coronaColor.withOpacity(0.4),
-        ledColor.coronaColor.withOpacity(0.25),
-        ledColor.coronaColor.withOpacity(0.15),
-        ledColor.coronaColor.withOpacity(0.05),
-        ledColor.coronaColor.withOpacity(0),
+        ledColor.coronaColor.withValues(alpha: 0),
+        ledColor.coronaColor.withValues(alpha: 0.4),
+        ledColor.coronaColor.withValues(alpha: 0.25),
+        ledColor.coronaColor.withValues(alpha: 0.15),
+        ledColor.coronaColor.withValues(alpha: 0.05),
+        ledColor.coronaColor.withValues(alpha: 0),
       ],
       <double>[0.0, 0.6, 0.7, 0.8, 0.85, 1],
       TileMode.clamp,
@@ -151,10 +139,7 @@ ui.Picture createLedImage(double size, int state, LedColorEnum ledColor) {
     );
     paint.shader = grad;
     path = Path();
-    rect = Rect.fromCenter(
-        center: Offset(ledCenterX, ledCenterY),
-        width: size.toDouble(),
-        height: size.toDouble());
+    rect = Rect.fromCenter(center: Offset(ledCenterX, ledCenterY), width: size.toDouble(), height: size.toDouble());
     path.addArc(rect, 0, TWO_PI);
     path.close();
     canvas.drawPath(path, paint);

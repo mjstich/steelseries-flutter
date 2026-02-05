@@ -33,3 +33,7 @@
 ## 0.0.9
 
 * Update versioning files.
+
+## 0.0.10
+
+* Fix deprecated flutter code.
